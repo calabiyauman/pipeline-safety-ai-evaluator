@@ -6,8 +6,8 @@
     "data/test_cases/safety_critical.json": "d28f3940d1a53b018cb49f583cb05c1b952ed77e541f773ca5d0d20877568bae",
     "data/test_cases/engineering.json": "74a66048b74499e2dcf21e49826ac1c5ed907afa6abd9c06bd1e166eb5deb178",
     "data/test_cases/inspection.json": "b7e95141a1f26a4fb8ea3b3997d74423daf34dcfcfae2ef7279a5431437aa0d4",
-    "data/test_cases/regulatory.json": "48c7aeea269d4e3c8601f33f02feaf114a061eb8b588513b1690c91c49483072",
-    "data/human_baseline/responses.json": "122effcb2c0c3e37caf4ecae88a13e42d6cd1534b0177177d56a260a7af86d5c"
+    "data/test_cases/regulatory.json": "b3219e7976e8786b2f46f75f0dbfb3c149cb29b1c8ed6db89f422e54dee12181",
+    "data/human_baseline/responses.json": "32e3d09b3120f2657ad298e73843fc5f6b956d0d4cba92b15febad663764a1ea"
   },
   "signature": {
     "algorithm": "hmac-sha256",
