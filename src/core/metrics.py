@@ -480,7 +480,7 @@ class MetricCalculator:
                         verified += 1
                     elif right_val == 0 and abs(left_val) < 1e-9:
                         verified += 1
-            except:
+            except Exception:
                 # Could not verify
                 total -= 1
         

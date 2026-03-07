@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![CI](https://github.com/calabiyauman/pipeline-safety-ai-evaluator/actions/workflows/ci.yml/badge.svg)](https://github.com/calabiyauman/pipeline-safety-ai-evaluator/actions/workflows/ci.yml)
 
 **Status:** Version 1.0.0 | **Maintained by:** Pipeline AI Solutions LLC  
 **Research Paper:** [In Preparation] | **Conference Submission:** 
