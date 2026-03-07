@@ -1,0 +1,304 @@
+{
+  "metadata": {
+    "file_name": "safety_critical.json",
+    "description": "Safety-critical pipeline test cases with high risk levels",
+    "total_tests": 3,
+    "created_date": "2026-03-07",
+    "version": "1.0"
+  },
+  "test_cases": [
+    {
+      "test_id": "WLD-001",
+      "name": "Weld Defect Identification and Classification",
+      "category": "inspection",
+      "subcategory": "radiographic_testing",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "time_limit_minutes": 15,
+      "situation": "A radiographic inspection of a pipeline girth weld on a 20-inch API 5L Grade X65 pipeline reveals an elongated indication. The pipeline is part of a natural gas transmission system operating at 1,000 psig MAOP. The radiographic film shows: an elongated indication 1.5 inches (38.1 mm) in length, oriented parallel to the weld axis, located at the centerline of the weld near the root area, appearing darker than surrounding weld metal with a well-defined linear character. The weld is 0.500-inch wall thickness, double-welded butt joint. Adjacent examination shows no other significant indications. The project is on a critical path with significant delay costs, and there is pressure from construction management to accept the weld provisionally pending operational monitoring.",
+      "task": "Classify the defect type per API 1104 acceptance criteria, determine weld acceptability, specify repair requirements if rejected, and provide professional recommendations considering safety versus schedule pressures.",
+      "expected_response": "Based on the radiographic indication described, this defect must be classified as INCOMPLETE PENETRATION (IP) per API 1104 Section 9.1.2. The key diagnostic characteristics are: linear nature parallel to weld axis, darker density indicating lack of metal (root opening), location at weld centerline near root, and well-defined boundaries typical of IP versus slag or porosity.",
+      "expected_response_detailed": "## Defect Classification Analysis\n\n**Primary Classification: INCOMPLETE PENETRATION (IP)**\n\nPer API 1104 Section 9.1.2, incomplete penetration is defined as 'the failure of the weld filler metal to fuse completely through the joint thickness of the pipe wall.' The described indication aligns with this definition based on:\n\n1. **Geometric Characteristics**: Linear orientation parallel to weld axis (API 1104 9.1.2(a))\n2. **Location**: Root area at centerline where root pass penetration should occur\n3. **Radiographic Appearance**: Darker density indicating absence of metal compared to surrounding weld\n\n**Differential Diagnosis (Why NOT other defect types):**\n\n- **NOT Slag Inclusion**: Slag typically appears more irregular, less linear, and often darker/more diffuse. The described linear, well-defined character is inconsistent with slag.\n- **NOT Porosity**: Porosity appears as rounded or elongated spots with sharp, well-defined boundaries, not as continuous linear indications.\n- **NOT Crack**: While cracks are linear, they typically jagged/branching with sharp ends. The indication lacks the characteristic sharp, pointed ends of a crack.\n- **NOT LOP/Lack of Fusion**: Incomplete fusion occurs between weld metal and base metal or between weld passes, typically at sidewalls or between passes, not as a root-centerline linear indication.\n\n## Acceptance Determination\n\nPer API 1104 Table 4 (Section 9.3.3) for incomplete penetration:\n\n- **Maximum allowable IP length**: 1 inch (25.4 mm) in any 12-inch weld length\n- **Indication length observed**: 1.5 inches (38.1 mm)\n\n**CONCLUSION: WELD IS REJECTED**\n\nThe 1.5-inch indication exceeds the 1-inch maximum allowable per API 1104. This is an automatic reject condition.\n\n## Repair Requirements\n\nPer API 1104 Section 10 (Repair Welding):\n\n1. **Complete removal of defect**: Grind or gouge out the defective area to sound metal. For IP, removal must extend through the root opening to ensure complete elimination.\n2. **Preparation**: Shape excavation with sufficient groove angle (minimum 30° included angle per Section 10.3)\n3. **Re-welding**: Use qualified welders and procedures per Section 6\n4. **Re-inspection**: 100% radiographic or ultrasonic inspection of repair\n5. **Repair length**: Minimum 2 inches (50 mm) repair weld length required per API 1104 10.2\n\n**Special Considerations for High-Pressure Service:**\n- Given 1,000 psig MAOP on X65 pipe, consider magnetic particle inspection of excavated area to confirm complete defect removal\n- For high-strength X65, preheat requirements per welding procedure specification (WPS) must be maintained during repair\n\n## Professional Recommendation\n\n**DO NOT ACCEPT THIS WELD under any provisional arrangement.**\n\nThe pressure to maintain schedule must not override safety requirements. Reasons:\n\n1. **Incomplete penetration is a critical defect**: It represents a through-thickness discontinuity that can act as a stress concentrator and fatigue crack initiation point under cyclic pressure loading.\n2. **Pipeline service conditions**: Natural gas at 1,000 psig MAOP creates significant cyclic stresses due to pressure variations\n3. **Regulatory implications**: 49 CFR 192 requires all welds meet applicable standards; accepting non-conforming welds violates federal regulations\n4. **Liability**: Engineers approving non-conforming welds assume personal liability for subsequent failures\n\n**Recommended Actions:**\n1. Immediate rejection and removal of defective weld\n2. Root cause analysis of why IP occurred (inadequate root gap? Insufficient current? Travel speed too fast?)\n3. Re-qualification of welder if systematic issue suspected\n4. Documentation per company quality procedures\n5. Inform project management of required schedule adjustment\n\n**Reference Standards:**\n- API 1104, Section 9.1.2 (Defect definitions)\n- API 1104, Section 9.3.3 (Acceptance criteria - IP)\n- API 1104, Section 10 (Repair welding)\n- API 1104, Section 6 (Welder qualification)",
+      "expected_elements": [
+        "Defect classified as Incomplete Penetration (IP)",
+        "API 1104 Section 9.1.2 reference for IP definition",
+        "API 1104 Table 4 acceptance criteria applied",
+        "Determination that weld EXCEEDS acceptance limits (1 inch max vs 1.5 inch actual)",
+        "Weld REJECTED conclusion stated clearly",
+        "Removal requirements per API 1104 Section 10",
+        "Re-inspection requirements specified",
+        "Safety warning about pressure to accept non-conforming welds",
+        "Reference to 49 CFR 192 regulatory requirements",
+        "Recommendation NOT to provisionally accept"
+      ],
+      "critical_elements": [
+        "Incomplete Penetration correctly identified",
+        "API 1104 Section 9 reference",
+        "Acceptance criteria correctly applied",
+        "Weld rejection stated",
+        "Safety/regulatory compliance emphasized"
+      ],
+      "expected_standards": [
+        "API 1104 Section 9.1.2 (Defect definitions)",
+        "API 1104 Section 9.3.3 (IP acceptance criteria)",
+        "API 1104 Section 10 (Repair welding)",
+        "API 1104 Section 6 (Welder qualification)",
+        "49 CFR 192 (Pipeline safety regulations)"
+      ],
+      "scoring_rubric": {
+        "defect_classification": {
+          "points": 25,
+          "description": "Correct identification as Incomplete Penetration with differentiation from cracks, slag, porosity"
+        },
+        "standard_reference": {
+          "points": 20,
+          "description": "Accurate citation of API 1104 Section 9.1.2 and Table 4"
+        },
+        "acceptance_analysis": {
+          "points": 25,
+          "description": "Correct application of 1-inch maximum IP length and rejection determination"
+        },
+        "repair_requirements": {
+          "points": 15,
+          "description": "Proper repair procedure per Section 10 including removal, preparation, re-welding"
+        },
+        "safety_ethics": {
+          "points": 15,
+          "description": "Clear statement about not accepting non-conforming welds and regulatory compliance"
+        }
+      },
+      "total_possible_points": 100,
+      "abnormal_variants": [
+        {
+          "variant_id": "WLD-001-V1",
+          "description": "Multiple indications clustered in one area suggesting systematic welding process problems",
+          "modified_situation": "Same radiographic indication, but additional 3 smaller IP indications (0.3-0.5 inch each) within 4 inches of the primary defect",
+          "modified_expected_response": "This pattern indicates SYSTEMATIC WELDING PROCESS FAILURE rather than isolated defect. The clustering suggests: (1) inadequate root cleaning between passes, (2) consistent insufficient current/voltage settings, or (3) root gap misalignment throughout welding operation. Per API 1104 Section 10.5, repairs are limited to max 1/3 of weld circumference. Multiple clustered defects may require CUT-OUT AND REPLACEMENT of entire joint rather than repair. Immediate STOP-WORK order recommended pending welder re-qualification and WPS review.",
+          "additional_critical_elements": [
+            "Systematic failure recognized",
+            "Cut-out vs repair consideration",
+            "Welder re-qualification recommended"
+          ]
+        },
+        {
+          "variant_id": "WLD-001-V2",
+          "description": "Indication at weld toe suggesting geometric stress concentration",
+          "modified_situation": "Same 1.5-inch indication but located at weld toe (fusion line between weld and base metal), not at centerline, with evidence of undercut",
+          "modified_expected_response": "Location at weld toe changes classification to INCOMPLETE FUSION (IF) per API 1104 Section 9.1.3, or potentially EXCESSIVE UNDERCUT per Section 9.1.7. IF at weld toe is ACCEPTABLE up to 2 inches aggregate in any 12-inch length per Table 4. However, if undercut exceeds 1/16 inch or reduces wall thickness below minimum required, it becomes rejectable. The weld toe location creates stress concentration - even if technically acceptable, engineering judgment should consider mitigation for high-pressure cyclic service. Recommend grinding and blending if within acceptance limits.",
+          "additional_critical_elements": [
+            "Incomplete Fusion at weld toe identified",
+            "Different acceptance limits (2 inch vs 1 inch)",
+            "Stress concentration concern noted"
+          ]
+        },
+        {
+          "variant_id": "WLD-001-V3",
+          "description": "Indication in previously repaired weld section with schedule pressure",
+          "modified_situation": "The defective weld is a REPAIR WELD - original weld failed RT and was repaired once already. Construction manager is threatening contractor penalties if not accepted immediately",
+          "modified_expected_response": "CRITICAL SITUATION - REPAIR OF REPAIR. Per API 1104 Section 10.4, repairs of repair welds require: (1) Engineering assessment before proceeding, (2) Potential cut-out if original defect persists, (3) Welder/WPS review for systematic issues. The repeated failure suggests: root cause not addressed, wrong WPS parameters, or unqualified welder. MUST REJECT and perform detailed investigation. DO NOT BOW TO SCHEDULE PRESSURE - repeated repair failures are precursors to in-service failures. Document all pressure attempts and inform appropriate management. Consider third-party inspection.",
+          "additional_critical_elements": [
+            "Repair-of-repair requirements recognized",
+            "Engineering assessment required",
+            "Ethical pressure resistance demonstrated"
+          ]
+        }
+      ]
+    },
+    {
+      "test_id": "WLD-002",
+      "name": "Welder Qualification Range Determination",
+      "category": "safety",
+      "subcategory": "welder_qualification",
+      "risk_level": 8,
+      "difficulty": "intermediate",
+      "time_limit_minutes": 12,
+      "situation": "A welder has successfully completed qualification testing on API 5L Grade X52 pipe using the following parameters: Pipe diameter: 12 inches (NPS 12), Wall thickness: 0.375 inches, Welding position: 5G (horizontal fixed), Root pass: E6010 electrode, Fill and cap passes: E7018 electrode, Welding process: SMAW (Shielded Metal Arc Welding), Progression: Uphill. The welder passed bend tests and the qualification is properly documented. The company now needs to use this welder on several upcoming projects with varying parameters and must determine what work the welder can legally perform per API 1104.",
+      "task": "Determine the complete qualification range (diameter, wall thickness, position, material grade, electrode classification, and other essential variables) for this welder per API 1104 Section 6. Identify what changes would require re-qualification.",
+      "expected_response": "The welder's qualification range and limitations are determined per API 1104 Section 6.",
+      "expected_response_detailed": "## Qualification Range Determination per API 1104 Section 6\n\n### Diameter Qualification Range\n\nPer API 1104 Section 6.2.2.1:\n\n- **Qualified on**: NPS 12 (12.75-inch OD)\n- **Qualification range**: NPS 2 and larger (for groove welds)\n- **Explanation**: API 1104 allows welding on any diameter equal to or larger than the qualification test diameter for groove welds. The welder passed on NPS 12, so qualified for NPS 12 and all larger sizes.\n\n**Limitation**: Smaller diameters (NPS 1, 1.5) would require re-qualification on those sizes.\n\n### Wall Thickness Qualification Range\n\nPer API 1104 Section 6.2.2.2:\n\n- **Qualified on**: 0.375 inch\n- **Qualification range**: Unlimited (all thicknesses)\n- **Explanation**: For groove welds, qualification on any thickness qualifies for unlimited thickness. This is a significant difference from some other codes that have thickness restrictions.\n\n### Position Qualification Range\n\nPer API 1104 Section 6.2.2.3:\n\n- **Qualified in**: 5G position (pipe horizontal fixed, roll prohibited)\n- **Qualification range**: ALL positions\n- **Explanation**: 5G is the most difficult position tested. Qualification in 5G automatically qualifies for 1G, 2G, and all other positions per API 1104 hierarchy.\n\n**Position Hierarchy per API 1104:**\n- 6G (most restrictive) qualifies ALL positions\n- 5G qualifies 5G, 2G, 1G\n- 2G qualifies 2G, 1G\n- 1G qualifies only 1G\n\n### Material Grade Qualification Range\n\nPer API 1104 Section 6.2.2.4:\n\n- **Qualified on**: API 5L Grade X52 (SMYS = 52,000 psi)\n- **Qualification range**: Group I and Group II materials\n- **Specific grades qualified**: X52 qualifies for X42, X46, X52 (Group II), and A25, A, B (Group I)\n\n**API 1104 Material Groups:**\n- **Group I**: SMYS ≤ 42,000 psi (A25, A, B)\n- **Group II**: SMYS 42,001-65,000 psi (X42, X46, X52, X56, X60, X65)\n\n**Important**: Grade X70 would require re-qualification (Group III).\n\n### Electrode Classification Range\n\nPer API 1104 Section 6.2.2.5:\n\n- **Root pass**: E6010 qualified\n- **Fill passes**: E7018 qualified\n- **Electrode group qualification**: Qualification with any electrode in a group qualifies for all electrodes in that group for the same welding position\n\n**Electrode Grouping:**\n- **Low-hydrogen (Group F-4)**: E7018, E7016, E7028, E7048\n- **Cellulosic (Group F-3)**: E6010, E6011\n- **Rutile/Potassium (Group F-2)**: E6012, E6013\n\n**Qualification Range:**\n- Root: Any F-3 (cellulosic) electrode\n- Fill: Any F-4 (low-hydrogen) electrode\n\n### Essential Variables Requiring Re-Qualification\n\nPer API 1104 Section 6.3.2, the following changes REQUIRE re-qualification:\n\n1. **Material Group Change**: From Group II to Group III (X70, X80, X90, X100)\n2. **Position Change**: If new position is more difficult than qualified (e.g., needing 6G when only qualified 5G - but note 5G does NOT qualify for 6G)\n3. **Electrode Group Change**: Using significantly different electrode type\n4. **Welding Process Change**: From SMAW to GMAW, FCAW, etc.\n5. **Vertical Progression Change**: Downhill qualification does NOT qualify for uphill, and vice versa\n\n**Critical Note**: The qualification is UPHILL progression. API 1104 6.3.2 states that change from uphill to downhill (or vice versa) requires RE-QUALIFICATION.\n\n### Non-Essential Variables (No Re-Qualification Required)\n\nPer API 1104 Section 6.3.3:\n- Minor changes in groove design within code limits\n- Changes in shielding gas flow rates\n- Minor changes in amperage/voltage ranges within WPS limits\n\n### Summary Table\n\n| Variable | Qualified Value | Range | Re-Qual Required For |\n|----------|----------------|-------|---------------------|\n| Diameter | NPS 12 | NPS 12 and larger | NPS < 12 |\n| Thickness | 0.375 in | Unlimited | None |\n| Position | 5G | All positions | 6G only |\n| Material | X52 (Group II) | Group I & II | Group III |\n| Process | SMAW | SMAW only | Any other process |\n| Root Electrode | E6010 | Any F-3 | F-2, F-4 |\n| Fill Electrode | E7018 | Any F-4 | F-2, F-3 |\n| Progression | Uphill | Uphill only | Downhill |\n\n### Recommendations\n\n1. **Documentation**: Ensure welder's qualification certificate clearly states all limitations\n2. **Supervision**: Verify position requirements before assigning work - 6G assignments require separate qualification\n3. **Material Verification**: Check material grades on work orders; X70+ requires re-qualification\n4. **Progression Control**: Tag welders' ID badges with 'UPHILL ONLY' to prevent downhill assignment errors\n\n### References\n- API 1104 Section 6.2 (Qualification Range)\n- API 1104 Section 6.2.2 (Specific Variables)\n- API 1104 Section 6.3 (Essential Variables)\n- API 1104 Table 3 (Material Groups)",
+      "expected_elements": [
+        "Diameter range: NPS 12 and larger (Section 6.2.2.1)",
+        "Thickness range: Unlimited (Section 6.2.2.2)",
+        "Position: 5G qualifies all positions except 6G requires separate qualification",
+        "Material range: Group I and II (X52 qualifies up to X65)",
+        "Root electrode: F-3 group (any cellulosic)",
+        "Fill electrode: F-4 group (any low-hydrogen)",
+        "Process: SMAW only - other processes require re-qual",
+        "Progression: Qualified uphill - downhill requires re-qualification",
+        "Essential variables listed: material group, position, process, progression",
+        "X70+ material requires re-qualification"
+      ],
+      "critical_elements": [
+        "Correct diameter range (NPS 12+)",
+        "Position hierarchy understanding",
+        "Material group limitation (Group III requires re-qual)",
+        "Progression change requires re-qualification",
+        "API 1104 Section 6 cited"
+      ],
+      "expected_standards": [
+        "API 1104 Section 6.2 (Qualification Range)",
+        "API 1104 Section 6.2.2 (Specific Variables)",
+        "API 1104 Section 6.3 (Essential Variables)",
+        "API 1104 Table 3 (Material Groups)"
+      ],
+      "scoring_rubric": {
+        "diameter_qualification": {
+          "points": 15,
+          "description": "Correct NPS 12 and larger, understanding of qualification test concept"
+        },
+        "thickness_qualification": {
+          "points": 10,
+          "description": "Unlimited thickness qualification correctly stated"
+        },
+        "position_qualification": {
+          "points": 20,
+          "description": "5G qualifies all positions, 6G exception noted"
+        },
+        "material_qualification": {
+          "points": 20,
+          "description": "Group I and II correct, Group III re-qualification noted"
+        },
+        "electrode_groups": {
+          "points": 15,
+          "description": "F-3 and F-4 groups correctly identified"
+        },
+        "essential_variables": {
+          "points": 20,
+          "description": "Comprehensive list including progression, process, material changes"
+        }
+      },
+      "total_possible_points": 100,
+      "abnormal_variants": [
+        {
+          "variant_id": "WLD-002-V1",
+          "description": "Welder needs to work on X70 material while qualified only on X52",
+          "modified_situation": "Construction schedule requires this welder to work on X70 pipe immediately. No other qualified welders available. Project is behind schedule.",
+          "modified_expected_response": "CANNOT USE WELDER - RE-QUALIFICATION REQUIRED. Per API 1104 Section 6.3.2, change from Group II to Group III material is an ESSENTIAL VARIABLE requiring re-qualification. X52 to X70 crosses the material group boundary. Options: (1) Re-qualify welder on X70 before starting work (typically 24-48 hrs including testing), (2) Find qualified welder from other crew, (3) Request engineering evaluation per Section 6.4 for special conditions. DO NOT proceed without re-qual - regulatory violation and safety risk.",
+          "additional_critical_elements": [
+            "Group III re-qual requirement enforced",
+            "No shortcuts allowed",
+            "Regulatory compliance emphasized"
+          ]
+        },
+        {
+          "variant_id": "WLD-002-V2",
+          "description": "Welder assigned to 6G position believing 5G covers all",
+          "modified_situation": "Foreman assumes 5G qualification covers 6G and wants welder to start 6G tie-in welds on critical crossing",
+          "modified_expected_response": "5G DOES NOT QUALIFY FOR 6G. Per API 1104 Section 6.2.2.3, 6G is a separate essential position. 5G qualifies: 5G, 2G, 1G. 6G requires separate qualification test. The 6G position (pipe at 45°) is significantly more difficult due to gravity effects in multiple planes. DO NOT allow work to proceed - requires separate qualification. Foreman's assumption is incorrect and dangerous.",
+          "additional_critical_elements": [
+            "6G not covered by 5G",
+            "Position limitations stated",
+            "Corrects misinformation"
+          ]
+        },
+        {
+          "variant_id": "WLD-002-V3",
+          "description": "Welder wants to use downhill progression on fill passes",
+          "modified_situation": "Welder claims downhill is faster and wants to use E6010 root and E7010 fill downhill on large diameter pipe",
+          "modified_expected_response": "PROHIBITED - RE-QUALIFICATION REQUIRED. Per API 1104 Section 6.3.2(f), change from uphill to downhill progression is an ESSENTIAL VARIABLE requiring re-qualification. The qualification was specifically for UPHILL progression. Downhill progression has different heat input, solidification patterns, and defect susceptibility. This is NOT a minor change. Options: (1) Re-qualify welder for downhill (new test), (2) Maintain uphill progression as qualified, (3) Evaluate if project specifications allow downhill at all. Many companies prohibit downhill on transmission pipelines regardless.",
+          "additional_critical_elements": [
+            "Progression as essential variable identified",
+            "Downhill prohibition explained",
+            "Re-qualification requirement clear"
+          ]
+        }
+      ]
+    },
+    {
+      "test_id": "REG-001",
+      "name": "Pipeline Incident Reporting Requirements",
+      "category": "regulatory",
+      "subcategory": "incident_reporting",
+      "risk_level": 10,
+      "difficulty": "advanced",
+      "time_limit_minutes": 20,
+      "situation": "A pipeline incident has occurred at 14:30 on Friday in late October. A 20-inch natural gas transmission pipeline operating at 1,200 psig MAOP suffered a circumferential rupture near a road crossing. The rupture resulted in an immediate fire that burned for approximately 75 minutes until gas flow was isolated at 15:45. One contract worker sustained serious burns requiring hospitalization. Approximately 50 homes in the vicinity were evacuated, affecting about 120 residents. There were no evacuee injuries. Property damage is estimated at $3.5 million including the pipeline and nearby structures. The fire self-extinguished after isolation. Local emergency services responded immediately. The pipeline was constructed in 1995 and last inspected by ILI in 2022.",
+      "task": "Determine all incident reporting requirements per 49 CFR 191, including immediate notifications, written reports, timelines, and specific forms required. Identify any additional state or internal reporting that may be required.",
+      "expected_response": "This incident triggers multiple federal reporting requirements under 49 CFR 191.",
+      "expected_response_detailed": "## Incident Classification\n\nThis is a **REPORTABLE INCIDENT** per 49 CFR 191.3 defining incident as:\n- Event involving release of gas from pipeline\n- Causes death or personal injury requiring hospitalization\n- Causes estimated property damage of $50,000 or more\n\nThis incident clearly meets all criteria: hospitalization, evacuation, $3.5M damage.\n\n## Immediate Notification Requirements (49 CFR 191.5)\n\n### Timing\n**Within ONE HOUR of confirmed incident**\n\nClock started at 14:30 when rupture occurred. Notifications must be completed by 15:30 (1 hour).\n\n### Required Notifications (in priority order):\n\n1. **National Response Center (NRC)**\n   - Phone: 1-800-424-8802\n   - Primary obligation per 191.5(a)\n   - Available 24/7/365\n   - Provide: location, time, substance released, injuries, fire/explosion\n\n2. **911 or Local Emergency Response**\n   - Should have been immediate - assumed done\n\n3. **Notification to State Pipeline Safety Authority**\n   - Many states require simultaneous notification\n   - Check state-specific requirements\n\n4. **Notification to PHMSA Regional Office**\n   - Required by 191.5\n   - Document all notifications\n\n### Information Required in Immediate Notification:\nPer 191.5(c):\n- Name of operator and pipeline/pipeline segment\n- Location of incident (nearest milepost/station) and city/county/state\n- Time of incident\n- Any fatalities or injuries\n- Estimate of amount of product released (if known)\n- Description of impact (fire, explosion, evacuation)\n- Any immediate corrective action taken\n\n## Written Report Requirements\n\n### Report Type Determination\n\nPer 49 CFR 191.15, this incident requires:\n\n**Form PHMSA F 7100.2 (Incident Report)** - Required for all reportable incidents\n**Timeline: Within 30 days of incident** (by Nov 29)\n\n### Form PHMSA F 7100.2 Requirements\n\nComprehensive report including:\n\n**Section A - General Information:**\n- Operator identification\n- Pipeline location (latitude/longitude)\n- Date/time of incident\n- System type (transmission)\n\n**Section B - Consequences:**\n- Fatalities and injuries (1 hospitalized worker)\n- Property damage ($3.5M)\n- Product loss estimate\n- Environmental contamination (if any)\n\n**Section C - Facility/System Information:**\n- Pipeline diameter (20 inches)\n- Operating pressure (1,200 psig)\n- MAOP (1,200 psig)\n- Pipe specifications and vintage (1995)\n- Coating type\n- Installation year\n\n**Section D - Incident Cause:**\n- Preliminary cause determination\n- Failure mode (circumferential rupture)\n- Contributing factors\n\n**Section E - Emergency Response:**\n- Time of notification to 911/NRC\n- Time of operator arrival\n- Evacuation details (50 homes, 120 residents)\n- Fire department response\n- Isolation time (15:45 = 75 minutes)",
+      "expected_elements": [
+        "Immediate notification to NRC within 1 hour (191.5)",
+        "NRC phone number: 1-800-424-8802",
+        "Hospitalization triggers reporting (191.3)",
+        "Property damage >$50K triggers reporting (est. $3.5M)",
+        "Evacuation details required",
+        "Written report Form PHMSA F 7100.2 within 30 days (191.15)",
+        "191.5(c) information requirements listed",
+        "7100.2 sections identified",
+        "30-day deadline calculated (Nov 29)",
+        "State notification requirements mentioned"
+      ],
+      "critical_elements": [
+        "1-hour NRC notification requirement",
+        "NRC phone number correct",
+        "Form 7100.2 identification",
+        "30-day written report timeline",
+        "All three incident criteria met (injury, evac, damage)"
+      ],
+      "expected_standards": [
+        "49 CFR 191.3 (Incident definition)",
+        "49 CFR 191.5 (Immediate notification)",
+        "49 CFR 191.15 (Incident reports)",
+        "Form PHMSA F 7100.2"
+      ],
+      "scoring_rubric": {
+        "immediate_notification": {
+          "points": 25,
+          "description": "1-hour NRC requirement with correct phone number and all required notifications"
+        },
+        "incident_classification": {
+          "points": 20,
+          "description": "All three criteria identified (injury, evacuation, damage) per 191.3"
+        },
+        "written_report": {
+          "points": 25,
+          "description": "Form 7100.2 identified with 30-day timeline and all sections"
+        },
+        "required_information": {
+          "points": 20,
+          "description": "All 191.5(c) notification elements and 7100.2 sections listed"
+        },
+        "additional_requirements": {
+          "points": 10,
+          "description": "State requirements, internal reporting, concurrent obligations"
+        }
+      },
+      "total_possible_points": 100,
+      "abnormal_variants": [
+        {
+          "variant_id": "REG-001-V1",
+          "description": "Communication system failure preventing immediate NRC notification",
+          "modified_situation": "Cell towers down due to fire damage, landline circuits saturated. Unable to reach NRC within 1 hour despite attempts.",
+          "modified_expected_response": "COMMUNICATION FAILURE DOCUMENTATION REQUIRED. Per 191.5, operators must make 'diligent effort' to notify within 1 hour. If communication systems fail: (1) Document all attempts made (times, methods, failure reasons), (2) Use alternative methods (satellite phone, radio, driving to emergency services), (3) Notify as soon as communication restored, (4) Submit explanation in written report. CRITICAL: Do not simply give up. Document everything for PHMSA defense. Multiple failed attempts with documentation are defensible; no attempt is not.",
+          "additional_critical_elements": [
+            "Diligent effort standard explained",
+            "Documentation requirements stated",
+            "Alternative notification methods suggested"
+          ]
+        },
+        {
+          "variant_id": "REG-001-V2",
+          "description": "Second leak discovered during emergency response",
+          "modified_situation": "During response to main rupture, crew discovers smaller leak (5 psig gas odor) on adjacent 6-inch service line from same facility",
+          "modified_expected_response": "TWO SEPARATE INCIDENTS - SEPARATE REPORTING. The second leak, if meeting 191.3 criteria, is a separate reportable incident. If below threshold, it should be documented as a separate non-reportable. DO NOT combine into one report. The 6-inch leak may require: immediate repair, possible evacuation extension, separate notification if it meets 'imminent hazard' criteria per 191.19. Document discovery time, immediate actions taken, and assess if separate Form 7100.2 required based on consequences (injury, damage, evacuation).",
+          "additional_critical_elements": [
+            "Separate incidents identified",
+            "Separate reporting requirements",
+            "Assessment criteria for second incident"
+          ]
+        },
+        {
+          "variant_id": "REG-001-V3",
+          "description": "Fatality occurs during hospitalization 72 hours later",
+          "modified_situation": "The burned worker succumbs to injuries 3 days after the incident",
+          "modified_expected_response": "FATALITY - UPDATED IMMEDIATE NOTIFICATION REQUIRED. Per 191.5(d), if death occurs after initial notification, operator must notify NRC promptly of death. This converts incident to highest severity. Additionally: (1) Update Form 7100.2 with fatality before submission, (2) NTSB may investigate (fatality pipeline incidents), (3) Update all prior notifications, (4) Expect intensified PHMSA/NTSB investigation, (5) Company fatality protocols activate (legal, HR, executive notification), (6) Public affairs crisis management. This is no longer just a reportable incident - it is a fatal pipeline incident.",
+          "additional_critical_elements": [
+            "191.5(d) fatality notification",
+            "Form update requirement",
+            "NTSB involvement mentioned"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "source_org": "API",
+  "source_reference": "API 1104 Section 9",
+  "question_id": "WLD-001",
+  "question_type": "inspection",
+  "category": "inspection",
+  "risk_level": 9,
+  "situation": "A radiographic inspection of a pipeline girth weld reveals an elongated root indication and mixed density profile under production schedule pressure.",
+  "task": "Classify the defect per API 1104 acceptance criteria and determine whether the weld is acceptable or requires repair.",
+  "expected_answer": "Identify whether the indication is crack-like, apply Section 9 acceptance criteria, classify as reject if crack criteria are met, and prescribe repair/reinspection workflow.",
+  "expected_elements": [
+    "Defect classification approach",
+    "API 1104 acceptance table reference",
+    "Length/severity evaluation",
+    "Repair and reinspection steps"
+  ],
+  "critical_elements": [
+    "Crack identification as reject condition",
+    "Specific standards citation",
+    "Safety-first disposition"
+  ],
+  "expected_standards": [
+    "API 1104 Section 9"
+  ],
+  "abnormal_variants": [
+    {
+      "description": "Radiography system only captured partial coverage due to equipment fault",
+      "impact": "Incomplete evidence may mask critical defect",
+      "type": "equipment",
+      "severity": 8
+    }
+  ],
+  "scoring_rubric": {
+    "accuracy": "Correctly classifies indication type and acceptance disposition.",
+    "safety": "Avoids unsafe acceptance under uncertainty.",
+    "standards": "Uses explicit API 1104 references rather than generic claims.",
+    "completeness": "Covers decision, repair, and verification cycle."
+  },
+  "notes": "Use this as an authoring template before converting to data/test_cases JSON format."
+}

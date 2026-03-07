@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "file_name": "regulatory.json",
+    "description": "Regulatory compliance test cases",
+    "total_tests": 2,
+    "created_date": "2026-03-07",
+    "version": "1.0"
+  },
+  "test_cases": [
+    {
+      "test_id": "DES-001",
+      "name": "Class Location Change and MAOP Determination",
+      "category": "regulatory",
+      "subcategory": "class_location",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "time_limit_minutes": 20,
+      "situation": "A natural gas transmission pipeline was constructed in 1985. Current class location changed from Class 1 to Class 3 (52 dwellings within 220 yards). Original MAOP 1,000 psig, test pressure 1,250 psig (1.25×). Pipeline is API 5L Grade X52, 16-inch diameter, 0.375-inch wall thickness.",
+      "task": "Determine required actions per 49 CFR 192.611, calculate if current MAOP can be maintained in Class 3, and establish compliance timeline.",
+      "expected_response": "Class location change analysis per ASME B31.8 and 192.611.",
+      "expected_response_detailed": "## Class Location Change Analysis\n\n**Step 1: Class 3 Confirmed**\n52 dwellings > 46 threshold per ASME B31.8 Table 841.1.6-1\n\n**Step 2: Maximum Allowable Pressure Calculation**\nPer ASME B31.8 Section 841.1.1:\nP_max = (2 × S × F × E × T × t) / D\nWhere:\n- S = 52,000 psi (X52 SMYS)\n- F = 0.50 (Class 3 design factor)\n- E = 1.00\n- T = 1.00\n- t = 0.375 in\n- D = 16.0 in\n\nP_max = (2 × 52,000 × 0.50 × 0.375) / 16 = 1,219 psig\n\n**Step 3: MAOP Determination**\n- Current MAOP: 1,000 psig\n- Maximum for Class 3: 1,219 psig\n- 1,000 < 1,219 ∴ MAOP CAN BE MAINTAINED\n\n**Step 4: Required Actions per 192.611**\nWithin 12 months of class change:\n1. Document class determination\n2. Verify MAOP adequacy\n3. No pressure reduction required\n4. No re-testing required\n5. Enhanced patrols (weekly for Class 3)\n\n**Conclusion:**\n- Class 3 confirmed\n- MAOP 1,000 psig compliant\n- Weekly patrols required\n- Re-inspection interval: 7 years (vs 15 for Class 1)",
+      "expected_elements": [
+        "Class 3 confirmed (52 dwellings > 46 threshold)",
+        "Design factor F = 0.50 for Class 3",
+        "Maximum pressure 1,219 psig calculated",
+        "Current MAOP 1,000 psig can be maintained",
+        "192.611 compliance actions within 12 months",
+        "No pressure reduction required",
+        "No re-testing required",
+        "Enhanced Class 3 patrols weekly"
+      ],
+      "critical_elements": [
+        "Class 3 identification",
+        "F = 0.50 applied",
+        "1,219 psig maximum calculated",
+        "1000 psig maintained conclusion",
+        "192.611 requirements cited"
+      ],
+      "expected_standards": [
+        "49 CFR 192.611",
+        "49 CFR 192.619",
+        "ASME B31.8 Table 841.1.6-1"
+      ],
+      "scoring_rubric": {
+        "class_identification": {"points": 15, "description": "Class 3 determination"},
+        "maop_calculation": {"points": 25, "description": "Max pressure 1,219 psig"},
+        "maop_determination": {"points": 20, "description": "1000 psig maintained"},
+        "regulatory_actions": {"points": 20, "description": "192.611 requirements"},
+        "enhanced_requirements": {"points": 10, "description": "Class 3 patrols"},
+        "retesting": {"points": 10, "description": "No re-test required"}
+      },
+      "total_possible_points": 100,
+      "abnormal_variants": [
+        {
+          "variant_id": "DES-001-V1",
+          "description": "Original test records lost, only 1.1x test documented",
+          "modified_expected_response": "Test records insufficient. Per 192.619, MAOP limited to Test/1.25 = 880 psig if documentation shows 1.1x. Operating at 1,000 psig NON-COMPLIANT. Required: Reduce pressure to 880 psig or re-test to 1,250 psig. CRITICAL compliance issue."
+        },
+        {
+          "variant_id": "DES-001-V2",
+          "description": "Class 4 multi-story building constructed",
+          "modified_expected_response": "Class 4 has F=0.40. P_max = 975 psig. Current 1,000 > 975. VIOLATION. Required: Immediate pressure reduction to 975 psig or lower. Consider relocation or major mitigation."
+        }
+      ]
+    },
+    {
+      "test_id": "REG-002",
+      "name": "Integrity Management Assessment Plan per Subpart O",
+      "category": "regulatory",
+      "subcategory": "integrity_management",
+      "risk_level": 8,
+      "difficulty": "advanced",
+      "time_limit_minutes": 25,
+      "situation": "50-mile gas transmission pipeline in HCA with multiple threats: External corrosion moderate (40% wall loss found), Internal corrosion low, Third-party damage high (construction nearby), Manufacturing defects unknown (pre-1970 pipe), Equipment failure low. Pipeline is 36-inch, 800 psig MAOP, pre-1970 longitudinal seam with unknown type.",
+      "task": "Develop integrity assessment plan per 49 CFR 192 Subpart O for all threats, with methods, priorities, and timelines.",
+      "expected_response": "Comprehensive IM plan per 192.917-192.937.",
+      "expected_response_detailed": "## Integrity Assessment Plan per 49 CFR 192 Subpart O\n\n### Threat 1: External Corrosion (Moderate)\n**Method:** In-Line Inspection (MFL) + Direct Assessment\n**Priority:** Immediate (12 months)\n**Rationale:** Coating damage, active corrosion, HCA location\n**Follow-up:** 3-5 year re-inspection, excavate and repair 40% indications\n\n### Threat 2: Internal Corrosion (Low)\n**Method:** Direct Assessment (Internal Corrosion)\n**Priority:** Deferred (5 years)\n**Rationale:** Dry gas condition, low risk\n**Follow-up:** Continue gas quality monitoring\n\n### Threat 3: Third-Party Damage (High)\n**Method:** ILI (geometry tool) + Accelerated Patrols + Public Awareness\n**Priority:** Immediate (6 months)\n**Rationale:** 18 dwellings under construction, directional drilling nearby\n**Follow-up:** Weekly patrols during construction, ILI every 2 years\n\n### Threat 4: Manufacturing Defects (Unknown - CRITICAL)\n**Method:** Hydrostatic Pressure Test (192.925 requires pressure test for unknown pre-1970 seam)\n**Priority:** Immediate (12 months)\n**Rationale:** Pre-1970 seam highest failure rate, cannot assess with ILI\n**Test Parameters:** 1.25 × MAOP = 1,000 psig, 8-hour hold\n**Follow-up:** Every 5 years OR ILI every 2 years if passes\n\n### Threat 5: Equipment Failure (Low)\n**Method:** Periodic inspections per O&M procedures\n**Priority:** Routine (5 years)\n**Rationale:** Modern equipment (1995), good maintenance history\n\n### Summary Timeline:\n- 0-6 months: Third-party patrols, ILI scheduling, pressure test planning\n- 6-12 months: Complete pressure test and ILI\n- 12-18 months: Repairs from findings\n- Ongoing: Weekly patrols during construction\n\n### References:\n- 49 CFR 192.917 (Threat identification)\n- 49 CFR 192.925 (Assessment methods)\n- 49 CFR 192.935 (Baseline assessment)\n- 49 CFR 192.937 (Continual assessment)",
+      "expected_elements": [
+        "Manufacturing defects: Pressure test required per 192.925",
+        "Pressure test 1.25× MAOP = 1,000 psig",
+        "External corrosion: ILI method selected",
+        "Third-party: High priority, 6 months",
+        "Pre-1970 seam requires pressure test",
+        "Weekly patrols for third-party",
+        "192.925 requirement cited",
+        "192.937 continual assessment intervals"
+      ],
+      "critical_elements": [
+        "Pre-1970 requires pressure test",
+        "192.925(a)(1) cited",
+        "Test pressure 1.25× MAOP",
+        "High priority for manufacturing defects",
+        "Subpart O requirements referenced"
+      ],
+      "expected_standards": [
+        "49 CFR 192.917",
+        "49 CFR 192.925",
+        "49 CFR 192.935",
+        "49 CFR 192.937"
+      ],
+      "scoring_rubric": {
+        "manufacturing_threat": {"points": 25, "description": "Pre-1970 requires pressure test per 192.925"},
+        "external_corrosion": {"points": 15, "description": "ILI method for external corrosion"},
+        "third_party": {"points": 20, "description": "High priority with patrols/awareness"},
+        "priorities": {"points": 20, "description": "Correct timeline prioritization"},
+        "methods": {"points": 15, "description": "Appropriate methods per 192.925"},
+        "follow_up": {"points": 5, "description": "Re-inspection intervals"}
+      },
+      "total_possible_points": 100,
+      "abnormal_variants": [
+        {
+          "variant_id": "REG-002-V1",
+          "description": "ILI infeasible due to flow conditions",
+          "modified_expected_response": "ILI infeasible - pressure test becomes primary for threats assessable by ILI. Per 192.925, if ILI not feasible, must use acceptable alternative: pressure test or direct assessment. For external corrosion: increase direct assessment locations. For manufacturing: pressure test still required."
+        },
+        {
+          "variant_id": "REG-002-V2",
+          "description": "HCA identified in only 2 miles of 50-mile segment",
+          "modified_expected_response": "HCA-specific requirements apply only to 2-mile segment. Non-HCA portion follows standard requirements. Can isolate HCA portion for focused assessment. May require separate MAOP for HCA vs non-HCA sections per 192.619(b)(2)."
+        }
+      ]
+    }
+  ]
+}

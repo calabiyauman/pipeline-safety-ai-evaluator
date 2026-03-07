@@ -1,0 +1,45 @@
+# PSAE Evaluation Configuration
+
+evaluation:
+  confidence_level: 0.95
+  min_runs: 5
+  max_runs: 10
+  pass_threshold: 70.0
+  excellent_threshold: 90.0
+  dangerous_threshold: 30.0
+
+scenarios:
+  include_abnormal: true
+  abnormal_ratio: 0.3
+  random_order: true
+  random_seed: 42
+
+metrics:
+  weights:
+    accuracy: 0.25
+    relevance: 0.20
+    safety: 0.20
+    completeness: 0.15
+    technical_depth: 0.10
+    sources: 0.10
+
+penalties:
+  minor_error: 2
+  moderate_error: 5
+  serious_error: 10
+  critical_error: 25
+  catastrophic_error: 50
+
+statistical_tests:
+  - anova
+  - tukey_hsd
+  - cohens_d
+  - icc
+  - normality
+
+output:
+  save_raw_responses: true
+  save_metrics: true
+  generate_html_report: true
+  generate_json_report: true
+  generate_latex_tables: false

@@ -1,0 +1,121 @@
+# PSAE Implementation Progress
+
+## Scope
+Initial implementation pass focused on runtime unblockers and baseline execution flow.
+
+## Completed
+- Added model interface layer in `src/models/ai_interface.py`:
+  - `AIModelInterface`
+  - `OpenAIWrapper`
+  - `AnthropicWrapper`
+  - `GeminiWrapper`
+  - `HumanExpertBaseline`
+- Added `src/models/__init__.py` exports.
+- Added `configs/evaluation.yaml`.
+- Added `configs/models.yaml`.
+- Added reporting utilities:
+  - `src/utils/reporting.py`
+  - `src/utils/__init__.py`
+- Added initial CLI in `src/cli.py` with:
+  - `evaluate`
+  - `compare`
+  - `validate-config`
+  - `list-tests`
+- Added package init files:
+  - `src/core/__init__.py`
+  - `src/scenarios/__init__.py`
+- Added `psae` namespace bridge package:
+  - `src/psae/__init__.py`
+  - `src/psae/cli.py`
+  - `src/psae/core/__init__.py`
+  - `src/psae/models/__init__.py`
+  - `src/psae/scenarios/__init__.py`
+  - `src/psae/utils/__init__.py`
+- Fixed evaluator runtime issues:
+  - `scenario.standards` -> `scenario.expected_standards`
+  - abnormal variant access now uses `AbnormalVariant` attributes
+  - import fallback path for direct module execution
+- Updated `setup.py` console entry point to `psae=cli:main`.
+- Updated `setup.py` console entry point to `psae=psae.cli:main`.
+- Added initial data-backed suites:
+  - `data/test_cases/safety_critical.json` (8)
+  - `data/test_cases/engineering.json` (8)
+  - `data/test_cases/inspection.json` (4)
+  - `data/test_cases/regulatory.json` (4)
+- Added human baseline seed data:
+  - `data/human_baseline/responses.json`
+- Added initial tests:
+  - `tests/unit/test_scenarios_data_loading.py`
+  - `tests/unit/test_human_baseline.py`
+- Added evaluator/metrics/statistical/integration tests:
+  - `tests/unit/test_evaluator.py`
+  - `tests/unit/test_metrics.py`
+  - `tests/unit/test_statistical.py`
+  - `tests/integration/test_full_pipeline.py`
+- Fixed evaluator base score calculation to consume nested metric `score` values.
+- Added summary fields used by reporting:
+  - `overall_pass_rate`
+  - `overall_dangerous_error_rate`
+- Normalized metric outputs to clamp top-level scores into `[0, 100]`.
+- Replaced unsafe `eval` in metric calculation checks with a safe arithmetic parser.
+- Implemented evaluator statistical analysis output:
+  - descriptive overall/category stats
+  - normality checks
+  - category ANOVA when sample size allows
+  - normal-vs-abnormal effect size
+- Added run manifest metadata in evaluation output for reproducibility.
+- Added benchmark governance test:
+  - `tests/unit/test_benchmark_governance.py`
+- Expanded human baseline responses to cover all benchmark test IDs.
+- Added CI workflow:
+  - `.github/workflows/ci.yml`
+- Added standards compliance tracking document:
+  - `Documentation/industry-standards-compliance.md`
+- Added benchmark manifest integrity tooling:
+  - `data/benchmark_manifest.json`
+  - `src/utils/benchmark_manifest.py`
+  - CLI command: `validate-benchmark`
+  - tests: `tests/unit/test_benchmark_manifest.py`
+- Added report schema/version metadata in generated reports.
+- Added reporting unit test: `tests/unit/test_reporting.py`.
+- Reduced statistical warning noise by guarding skew/kurtosis for low-variance small samples.
+- Improved evaluation accounting:
+  - progress totals now match actual abnormal-run execution
+  - summary now reports minimum-run requirement status
+- Updated `README.md` examples to match current package API and CLI commands.
+- Added API and example documentation:
+  - `docs/api_reference.md`
+  - `docs/examples/basic_usage.py`
+  - `docs/examples/comparison_analysis.py`
+- Updated contributor/support communication to use internal GitHub channels instead of email:
+  - `CONTRIBUTING.md`
+  - `README.md`
+- Added custom external benchmark support via CLI:
+  - `psae evaluate --suite-file <path-to-suite.json>`
+  - implementation in `src/cli.py`
+  - tests in `tests/unit/test_cli.py`
+- Added benchmark immutability controls:
+  - HMAC signing and signature verification in `src/utils/benchmark_manifest.py`
+  - CLI commands:
+    - `psae sign-benchmark`
+    - `psae verify-benchmark-signature`
+  - signature metadata block in `data/benchmark_manifest.json`
+  - tests:
+    - `tests/unit/test_benchmark_manifest.py`
+    - `tests/unit/test_cli.py`
+  - feature documentation:
+    - `Documentation/benchmark-immutability-controls.md`
+- Added structured source question authoring assets for standards-linked Q&A:
+  - `benchmark_sources/question_bank.schema.json`
+  - `benchmark_sources/question_bank.template.json`
+  - `benchmark_sources/QUESTION_AUTHORING_GUIDE.md`
+  - `benchmark_sources/README.md` updates
+  - schema validation test: `tests/unit/test_question_bank_schema.py`
+- Added automatic benchmark source suite ingestion:
+  - `load_benchmark_sources_suite()` in `src/scenarios/base.py`
+  - CLI support: `psae evaluate --suite benchmark-sources`
+  - auto-loads recursively from `benchmark_sources/` and picks up newly added JSON/markdown questions
+  - tests: `tests/unit/test_benchmark_sources_loader.py`
+
+## Next
+- Add richer report sections (category significance interpretation and trend-ready layout).

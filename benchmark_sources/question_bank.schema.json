@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PSAE Benchmark Source Question",
+  "type": "object",
+  "required": [
+    "source_org",
+    "source_reference",
+    "question_id",
+    "question_type",
+    "category",
+    "risk_level",
+    "situation",
+    "task",
+    "expected_answer",
+    "expected_elements",
+    "critical_elements",
+    "expected_standards",
+    "scoring_rubric"
+  ],
+  "properties": {
+    "source_org": {
+      "type": "string",
+      "enum": ["API", "AGA", "ASME", "PHMSA", "NACE_AMPP", "GENERAL"]
+    },
+    "source_reference": {
+      "type": "string",
+      "description": "Exact standard/code/guide reference, e.g. API 1104 Section 9"
+    },
+    "question_id": {
+      "type": "string",
+      "pattern": "^[A-Z]{2,6}-\\d{3}$"
+    },
+    "question_type": {
+      "type": "string",
+      "enum": ["calculation", "procedure", "compliance", "inspection", "emergency"]
+    },
+    "category": {
+      "type": "string",
+      "enum": ["safety", "engineering", "inspection", "regulatory"]
+    },
+    "risk_level": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "situation": {
+      "type": "string",
+      "minLength": 20
+    },
+    "task": {
+      "type": "string",
+      "minLength": 10
+    },
+    "expected_answer": {
+      "type": "string",
+      "description": "Canonical expert answer draft against which responses are evaluated"
+    },
+    "expected_elements": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "type": "string" }
+    },
+    "critical_elements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "expected_standards": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "abnormal_variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "impact", "type", "severity"],
+        "properties": {
+          "description": { "type": "string" },
+          "impact": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["equipment", "environmental", "human", "system"]
+          },
+          "severity": { "type": "integer", "minimum": 1, "maximum": 10 }
+        }
+      }
+    },
+    "scoring_rubric": {
+      "type": "object",
+      "required": ["accuracy", "safety", "standards", "completeness"],
+      "properties": {
+        "accuracy": { "type": "string" },
+        "safety": { "type": "string" },
+        "standards": { "type": "string" },
+        "completeness": { "type": "string" }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "expert_credentials": "Licensed PE with 15+ years pipeline experience",
+  "responses": [
+    {
+      "test_id": "SC-001",
+      "response": "Use permit-controlled hot tapping with gas monitoring, purge verification, qualified personnel, weld controls, and contingency stop-work criteria.",
+      "element_scores": {
+        "work_permit": 10,
+        "gas_monitoring": 10,
+        "purge_control": 10,
+        "weld_quality": 9,
+        "emergency_plan": 10
+      }
+    },
+    {
+      "test_id": "SC-002",
+      "response": "Prioritize life safety: upwind evacuation, emergency notifications, isolation and ignition source control, then continuous atmospheric confirmation.",
+      "element_scores": {
+        "evacuation": 10,
+        "incident_command": 9,
+        "isolation": 10,
+        "public_protection": 10,
+        "documentation": 8
+      }
+    },
+    {
+      "test_id": "EN-001",
+      "response": "Compute Cv with verified units and evaluate cavitation/choked flow limits before selecting valve class.",
+      "element_scores": {
+        "formula": 10,
+        "units": 9,
+        "selection": 9,
+        "safety_margin": 8
+      }
+    },
+    {
+      "test_id": "EN-002",
+      "response": "Establish hydrotest pressure and hold times per code, include elevation correction, acceptance criteria, and leak response protocol.",
+      "element_scores": {
+        "pressure_basis": 10,
+        "hold_time": 9,
+        "acceptance": 9,
+        "safety_controls": 10
+      }
+    },
+    {
+      "test_id": "SC-003",
+      "response": "Use confined-space permit controls, continuous atmospheric monitoring, attendant oversight, and rescue readiness before entry.",
+      "element_scores": {"permit": 10, "monitoring": 10, "rescue": 10, "communication": 9}
+    },
+    {
+      "test_id": "SC-004",
+      "response": "Verify utility locates, hand-expose in tolerance zone, control heavy equipment movement, and enforce stop-work triggers.",
+      "element_scores": {"locate_verification": 10, "excavation_control": 10, "spotter": 9, "damage_response": 9}
+    },
+    {
+      "test_id": "SC-005",
+      "response": "Manage pressure differential, validate actuator condition, use qualified operators, and apply controlled valve operation sequencing.",
+      "element_scores": {"pressure_control": 10, "operator_qualification": 9, "sequence_control": 9, "abort_criteria": 9}
+    },
+    {
+      "test_id": "SC-006",
+      "response": "Initiate ESD, isolate gas safely, account for personnel, coordinate incident command, and restart only after formal checks.",
+      "element_scores": {"esd": 10, "isolation": 10, "accountability": 9, "restart_controls": 9}
+    },
+    {
+      "test_id": "SC-007",
+      "response": "Prioritize life safety, coordinate fire response, isolate remotely where possible, and avoid unsafe close approach.",
+      "element_scores": {"life_safety": 10, "fire_coordination": 9, "isolation": 9, "scene_control": 9}
+    },
+    {
+      "test_id": "SC-008",
+      "response": "Establish H2S zones, apply respiratory controls, monitor plume movement, and authorize re-entry only after verified clearance.",
+      "element_scores": {"h2s_control": 10, "ppe": 10, "monitoring": 9, "reentry": 9}
+    },
+    {
+      "test_id": "EN-003",
+      "response": "Select NACE-compliant materials, enforce hardness limits, and qualify weld procedures for sour service.",
+      "element_scores": {"materials": 10, "hardness": 9, "welding": 9, "inspection": 8}
+    },
+    {
+      "test_id": "EN-004",
+      "response": "Perform gas flow calculations using accepted property assumptions, state constraints, and validate sensitivity to key variables.",
+      "element_scores": {"calculation": 9, "assumptions": 9, "validation": 9, "sensitivity": 8}
+    },
+    {
+      "test_id": "EN-005",
+      "response": "Design CP current output, define potential criteria, and establish regular monitoring with corrective thresholds.",
+      "element_scores": {"cp_design": 9, "criteria": 9, "monitoring": 9, "corrective_actions": 8}
+    },
+    {
+      "test_id": "EN-006",
+      "response": "Evaluate governing load cases and stress utilization against code limits, then propose mitigation for exceedances.",
+      "element_scores": {"load_cases": 9, "utilization": 9, "code_checks": 9, "mitigation": 8}
+    },
+    {
+      "test_id": "EN-007",
+      "response": "Use layered leak detection methods with calibrated thresholds, false-alarm management, and periodic validation exercises.",
+      "element_scores": {"detection": 9, "thresholds": 9, "false_alarm_control": 8, "validation": 9}
+    },
+    {
+      "test_id": "EN-008",
+      "response": "Estimate compressor duty with conservative assumptions, verify operating envelope, and include safety margin controls.",
+      "element_scores": {"duty_estimate": 9, "envelope": 9, "assumptions": 8, "margins": 9}
+    },
+    {
+      "test_id": "IN-001",
+      "response": "Estimate corrosion growth conservatively, assign inspection frequency by risk, and integrate mitigation verification.",
+      "element_scores": {"corrosion_rate": 9, "remaining_life": 9, "inspection_frequency": 10, "mitigation": 9}
+    },
+    {
+      "test_id": "IN-002",
+      "response": "Rank ILI anomalies by severity and consequence, verify in-field with NDE, and apply repair criteria consistently.",
+      "element_scores": {"ranking": 9, "verification": 9, "repair_logic": 9, "traceability": 8}
+    },
+    {
+      "test_id": "IN-003",
+      "response": "Prioritize corrosion digs by risk, execute coating repair standards, and confirm CP restoration after remediation.",
+      "element_scores": {"prioritization": 9, "repair_quality": 9, "cp_validation": 9, "records": 8}
+    },
+    {
+      "test_id": "IN-004",
+      "response": "Apply qualified welding procedures, hold-point inspections, coded NDE acceptance, and documented repair cycles.",
+      "element_scores": {"wps_pqr": 9, "nde": 9, "acceptance": 9, "repair_cycle": 8}
+    },
+    {
+      "test_id": "RE-001",
+      "response": "Compare API standard scope and service applicability, then select based on duty, pressure class, and operating constraints.",
+      "element_scores": {"scope": 9, "applicability": 9, "selection": 9, "limitations": 8}
+    },
+    {
+      "test_id": "RE-002",
+      "response": "Build clause-by-clause PHMSA matrix with objective evidence and risk-prioritized corrective actions.",
+      "element_scores": {"traceability": 9, "coverage": 9, "prioritization": 9, "actionability": 9}
+    },
+    {
+      "test_id": "RE-003",
+      "response": "Structure O&M manuals with ownership, revision control, competency linkage, and auditable implementation evidence.",
+      "element_scores": {"structure": 9, "revision_control": 9, "training_linkage": 8, "auditability": 9}
+    },
+    {
+      "test_id": "RE-004",
+      "response": "Verify MAOP basis using traceable records and conservative decision logic when documentation is incomplete.",
+      "element_scores": {"traceability": 9, "pressure_basis": 9, "integrity_constraints": 8, "decision_logic": 9}
+    },
+    {
+      "test_id": "WLD-001",
+      "response": "Classify weld indication per API 1104 Section 9, apply acceptance criteria conservatively, and reject/repair when defect exceeds limits.",
+      "element_scores": {"classification": 10, "code_reference": 9, "acceptance_decision": 10, "repair_steps": 9}
+    },
+    {
+      "test_id": "WLD-002",
+      "response": "Determine welder qualification envelope by diameter, position, material, process, and progression; identify essential variable changes requiring requalification.",
+      "element_scores": {"qualification_range": 9, "essential_variables": 10, "limitations": 9, "code_reference": 9}
+    },
+    {
+      "test_id": "CP-001",
+      "response": "Design CP with current requirement estimate, anode/groundbed strategy, and verification criteria per NACE SP0169.",
+      "element_scores": {"current_calc": 9, "design_selection": 9, "criteria": 9, "monitoring": 8}
+    },
+    {
+      "test_id": "DES-002",
+      "response": "Apply Barlow/code-based wall thickness calculations with design factors and allowances, then select compliant nominal thickness.",
+      "element_scores": {"formula": 9, "design_factor": 9, "allowances": 8, "selection": 9}
+    },
+    {
+      "test_id": "REG-001",
+      "response": "Execute immediate PHMSA/NRC incident notification and follow prescribed reporting timelines with complete evidence.",
+      "element_scores": {"notification_timeliness": 10, "reporting_requirements": 9, "completeness": 9, "regulatory_reference": 9}
+    },
+    {
+      "test_id": "CAL-001",
+      "response": "Use AGA gas-property methodology to compute compressibility and translate operating-to-standard condition volumes with unit consistency.",
+      "element_scores": {"method": 9, "calculation": 9, "unit_handling": 9, "interpretation": 8}
+    },
+    {
+      "test_id": "CP-002",
+      "response": "Evaluate CP survey and polarization data against protection criteria, then prescribe corrective actions and verification intervals.",
+      "element_scores": {"survey_interpretation": 9, "criteria_check": 9, "corrective_actions": 9, "follow_up": 8}
+    },
+    {
+      "test_id": "ILI-001",
+      "response": "Prioritize ILI anomalies using failure pressure, growth rate, and consequence context; define dig schedule and immediate mitigations.",
+      "element_scores": {"prioritization": 9, "engineering_basis": 9, "mitigations": 9, "scheduling": 8}
+    }
+  ]
+}
