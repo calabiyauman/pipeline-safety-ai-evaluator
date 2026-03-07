@@ -65,7 +65,7 @@ Test cases are the heart of PSAE. We welcome contributions particularly for:
 
 ```bash
 # Clone the repository
-git clone https://github.com/pipelinegpt/psae.git
+git clone https://github.com/calabiyauman/pipeline-safety-ai-evaluator.git
 cd psae
 
 # Create virtual environment

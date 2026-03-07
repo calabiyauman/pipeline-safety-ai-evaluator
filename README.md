@@ -271,7 +271,7 @@ pipeline-safety-ai-evaluator/
 
 ```bash
 # Clone the repository
-git clone https://github.com/pipelinegpt/psae.git
+git clone https://github.com/calabiyauman/pipeline-safety-ai-evaluator.git
 cd psae
 
 # Create virtual environment
@@ -383,7 +383,7 @@ This evaluation framework is based on:
   title = {Pipeline Safety AI Evaluator: A Framework for Safety-Critical AI Evaluation},
   author = {Carnahan, Doug and et al.},
   year = {2026},
-  url = {https://github.com/pipelinegpt/psae},
+  url = {https://github.com/calabiyauman/pipeline-safety-ai-evaluator},
   version = {1.0.0}
 }
 
@@ -433,9 +433,9 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ## 📞 Contact & Support
 
-- **Issues:** [GitHub Issues](https://github.com/pipelinegpt/psae/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/pipelinegpt/psae/discussions)
-- **Security:** [GitHub Security Advisories](https://github.com/pipelinegpt/psae/security/advisories)
+- **Issues:** [GitHub Issues](https://github.com/calabiyauman/pipeline-safety-ai-evaluator/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/calabiyauman/pipeline-safety-ai-evaluator/discussions)
+- **Security:** [GitHub Security Advisories](https://github.com/calabiyauman/pipeline-safety-ai-evaluator/security/advisories)
 - **Website:** [pipelinegpt.ai/psae](https://pipelinegpt.ai/psae)
 
 ---

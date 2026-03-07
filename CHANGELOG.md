@@ -138,4 +138,4 @@ Planned for v2.0.0:
 
 **Version 1.0.0 represents a complete, production-ready framework for evaluating AI systems in pipeline safety-critical applications.**
 
-For questions or contributions, visit: https://github.com/pipelinegpt/psae
+For questions or contributions, visit: https://github.com/calabiyauman/pipeline-safety-ai-evaluator
