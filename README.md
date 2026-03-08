@@ -12,7 +12,7 @@
 
 ---
 
-## 🎯 Mission Statement
+##  Mission Statement
 
 The Pipeline Safety AI Evaluator (PSAE) provides a rigorous, scientifically-validated framework for evaluating AI systems in pipeline safety-critical applications. Built on peer-reviewed methodologies from safety-critical systems research, PSAE addresses the unique challenges of assessing AI in environments where incorrect recommendations can result in catastrophic failures, environmental disasters, or loss of life.
 
@@ -29,28 +29,28 @@ The Pipeline Safety AI Evaluator (PSAE) provides a rigorous, scientifically-vali
 
 ---
 
-## 📊 Framework Overview
+##  Framework Overview
 
 ### Evaluation Taxonomy (11 Dimensions)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    PSAE EVALUATION FRAMEWORK                     │
+│                    PSAE EVALUATION FRAMEWORK                    │
 ├─────────────────────────────────────────────────────────────────┤
 │  Primary Metrics (Weighted)                                     │
-│  ├── Accuracy [25%]      - Information correctness               │
-│  ├── Relevance [20%]   - Domain appropriateness                │
-│  ├── Safety [20%]        - Protocol adherence (critical tests)   │
-│  ├── Completeness [15%] - Coverage of all question aspects       │
-│  ├── Technical Depth [10%] - Engineering calculations            │
-│  └── Sources [10%]      - Reference utilization                  │
+│  ├── Accuracy [25%]      - Information correctness              │
+│  ├── Relevance [20%]   - Domain appropriateness                 │
+│  ├── Safety [20%]        - Protocol adherence (critical tests)  │
+│  ├── Completeness [15%] - Coverage of all question aspects      │
+│  ├── Technical Depth [10%] - Engineering calculations           │
+│  └── Sources [10%]      - Reference utilization                 │
 │                                                                 │
 │  Secondary Metrics                                              │
-│  ├── Error Penalty      - Dangerous recommendation deduction     │
-│  ├── Standard Compliance - Code/standard adherence                 │
-│  ├── Human-AI Performance - Collaborative effectiveness        │
-│  ├── Response Time      - Performance measurement                  │
-│  └── Robustness        - Abnormal condition handling           │
+│  ├── Error Penalty      - Dangerous recommendation deduction    │
+│  ├── Standard Compliance - Code/standard adherence              │
+│  ├── Human-AI Performance - Collaborative effectiveness         │
+│  ├── Response Time      - Performance measurement               │
+│  └── Robustness        - Abnormal condition handling            │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -65,7 +65,7 @@ The Pipeline Safety AI Evaluator (PSAE) provides a rigorous, scientifically-vali
 
 ---
 
-## 🔬 Scientific Methodology
+##  Scientific Methodology
 
 ### 1. Scenario-Based Evaluation
 
@@ -108,7 +108,7 @@ STATISTICAL_CONFIG = {
 
 ---
 
-## 🧪 Test Case Portfolio
+##  Test Case Portfolio
 
 ### Core Test Suite (24 Tests)
 
@@ -221,7 +221,7 @@ Inspection-Critical (4 tests, Risk Level 7-9/10)
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 pipeline-safety-ai-evaluator/
@@ -266,7 +266,7 @@ pipeline-safety-ai-evaluator/
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Installation
 
@@ -365,7 +365,7 @@ psae verify-benchmark-signature
 
 ---
 
-## 🔬 Research & Publications
+##  Research & Publications
 
 ### Peer-Reviewed Framework
 
@@ -405,7 +405,7 @@ This evaluation framework is based on:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from:
 - Pipeline industry professionals
@@ -424,7 +424,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
-## 📜 License
+##  License
 
 MIT License - See [LICENSE](LICENSE) file for details.
 
@@ -432,25 +432,5 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📞 Contact & Support
-
-- **Issues:** [GitHub Issues](https://github.com/calabiyauman/pipeline-safety-ai-evaluator/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/calabiyauman/pipeline-safety-ai-evaluator/discussions)
-- **Security:** [GitHub Security Advisories](https://github.com/calabiyauman/pipeline-safety-ai-evaluator/security/advisories)
-- **Website:** [pipelinegpt.ai/psae](https://pipelinegpt.ai/psae)
-
----
-
-## 🙏 Acknowledgments
-
-- **PHMSA** for incident data and regulatory guidance
-- **AGA** for industry standards and best practices
-- **NIST** for AI RMF framework
-- **METR** for autonomy evaluation methodologies
-- **Mulcare Pipeline Solutions** for operational expertise
-
----
-
 **Built with ❤️ for safer pipelines**
 
-*This project is a research initiative of Pipeline AI Solutions LLC*
