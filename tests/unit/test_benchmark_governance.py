@@ -20,8 +20,11 @@ def test_human_baseline_covers_all_test_cases():
         except Exception:
             # Allow temporarily invalid in-progress files; loader may fallback to built-ins.
             continue
-        scenarios = data.get("scenarios") or data.get("test_cases") or []
-        all_test_ids.update(scenario["test_id"] for scenario in scenarios)
+        if isinstance(data, list):
+            scenarios = data
+        else:
+            scenarios = data.get("scenarios") or data.get("test_cases") or []
+        all_test_ids.update(scenario["test_id"] for scenario in scenarios if isinstance(scenario, dict))
 
     assert all_test_ids, "No valid test IDs discovered from data/test_cases files."
 
