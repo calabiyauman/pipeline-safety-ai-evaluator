@@ -23,8 +23,17 @@ def load_manifest(manifest_path: str | None = None) -> Dict[str, Any]:
         return json.load(handle)
 
 
+def _canonicalize_line_endings(path: Path, content: bytes) -> bytes:
+    """Normalize line endings for text artifacts so checksums are OS-stable."""
+    if path.suffix.lower() in {".json", ".md", ".txt", ".yaml", ".yml", ".csv"}:
+        return content.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return content
+
+
 def file_sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    content = path.read_bytes()
+    canonical = _canonicalize_line_endings(path, content)
+    return hashlib.sha256(canonical).hexdigest()
 
 
 def _manifest_core_payload(manifest: Dict[str, Any]) -> Dict[str, Any]:
