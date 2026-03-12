@@ -1,0 +1,102 @@
+{
+  "name": "inspection_generated",
+  "test_cases": [
+    {
+      "test_id": "INSP-020",
+      "name": "AC/DC Interference Mitigation",
+      "category": "inspection",
+      "subcategory": "cp_monitoring",
+      "risk_level": 8,
+      "difficulty": "advanced",
+      "time_limit_minutes": 20,
+      "situation": "Pipeline parallels 230kV transmission line 30 miles. Measurements show: Touch potential up to 25 VAC at valve sites. Station potentials: -850mV CSE normal, -1,050mV near tower (200mV shift). Soil resistivity 3,000 ohm-cm. Pipeline: 18-inch, 0.375-inch wall, FBE coated. Two HV towers within 100 feet of pipeline crossings.",
+      "task": "Assess AC interference per NACE SP0177, determine touch voltage limits, evaluate DC interference from CP, specify mitigation, establish monitoring.",
+      "expected_response_detailed": "## AC/DC Interference Assessment\n\n### NACE SP0177 Analysis\n\n**Touch Voltage Limits:**\n| Condition | Limit (Vrms) |\n|-----------|-------------|\n| Routine | 15 VAC |\n| Qualified personnel | 30 VAC |\n| Emergency | 100 VAC |\n\n**CURRENT: 25 VAC > 15 VAC LIMIT**\n\n**Exceeds safe limit by 67%**\n\n### DC CP Interference\n\n**200mV shift = interference confirmed**\n\nPer NACE SP0169 Section 10: >100mV shift requires investigation\n\n**Mechanisms:**\n- AC induction in pipeline (steady state)\n- AC fault coupling\n- DC rectifier influence\n\n### Safety Evaluation\n\n**Touch Voltage 25 VAC:**\n- Threshold feel: 1-5 VAC\n- Let-go threshold: 6-9 VAC\n- 25 VAC: Painful, dangerous\n\n**Shock current:**\nI = V/R = 25/1000 = 25mA (dangerous)\n\n### Mitigation Requirements\n\n**Required per SP0177:**\n\n**1. Grounding Mats**\n- Install at all valve sites\n- Size: 6×6 feet minimum\n- Resistance <25 ohms\n\n**2. Gradient Control**\n- Copper conductor around stations\n- Zinc ribbon parallel to pipeline\n- 20 feet from pipeline\n\n**3. DC Decoupling**\n- Polarization cells\n- Spark gaps rated for 1,000V\n- One-way current flow\n\n**4. Shielding**\n- Copper wire above pipe\n- Grounded at each end\n- Reduces induced voltage\n\n### Monitoring Protocol\n\n**Initial:**\n- 24-hour monitoring at worst location\n- Record AC voltage, pipeline potential\n- Weather correlation\n\n**Ongoing:**\n- Annual AC surveys\n- Quarterly at critical sites\n\n**Emergency:**\n- During electrical storms\n- During pipeline maintenance\n\n### Installation Costs\n\n**Estimated:** $75,000 for 30-mile section\n\n**Priority:** Valves within 500 feet of towers\n\n### References: NACE SP0177, SP0169 Section 10",
+      "expected_elements": [
+        "25 VAC exceeds 15 VAC limit",
+        "200mV interference shift",
+        "Grounding mats required",
+        "SP0177 compliance",
+        "Qualified limit 30 VAC",
+        "Decoupling cells",
+        "$75,000 estimate"
+      ],
+      "critical_elements": [
+        "SP0177 touch voltage limits",
+        "25 VAC > 15 VAC",
+        "Grounding requirements",
+        "Decoupling provisions",
+        "Monitoring protocol"
+      ],
+      "expected_standards": [
+        "NACE SP0177",
+        "NACE SP0169"
+      ],
+      "total_possible_points": 100
+    },
+    {
+      "test_id": "INSP-021",
+      "name": "UT Shear Wave - Crack Sizing",
+      "category": "inspection",
+      "subcategory": "ut_testing",
+      "risk_level": 9,
+      "difficulty": "expert",
+      "time_limit_minutes": 25,
+      "situation": "Shear wave UT on 24-inch X65 girth weld. Indication shows: DAC 65-75%, -6dB drop at half-amplitude points, 1.25-inch length zone, -3dB roll-off pattern at ends. Located at fusion line (TOFD cross-section shows defect depth 3/16-inch from OD). Wall 0.500 inches. No adjacent indications. This is tie-in weld after hydrostatic test failure.",
+      "task": "Classify indication type per API 1104 Appendix E, determine height using DAC method, calculate length, assess acceptability, size for repair.",
+      "expected_response_detailed": "## Shear Wave Crack Sizing\n\n### Indication Classification: CRACK\n\n**Per API 1104 Appendix E:**\n\n| Feature | Observation | Indication |\n|---------|-------------|------------|\n| DAC | 65-75% | Planar reflector |\n| Amplitude drop | -6dB at ends | Sharp edges |\n| Roll-off | -3dB | Crack-like |\n| Location | 3/16 from OD | Surface/near-surf |\n\n**Differential:**\n- NOT slag (smooth roll-off)\n- NOT porosity (low DAC)\n- NOT IP (OD location)\n\n**Conclusion: Circumferential crack**\n\n### Height Sizing (DAC Method)\n\n**6dB drop method:**\n\nAt 6dB drop, amplitude = 50% of max\n\nHeight relates to beam spread:\nh ≈ (beam width at defect) × factor\n\nFor 55° probe on 24-inch:\n- Beam spread at 0.312 in depth: ~0.15 in\n- 6dB drop indicates: ~0.08-0.12 inch\n\n**Estimated height: 0.10 inch**\n\n### Length Sizing\n\n**6dB end points:**\n- Indication length: 1.25 inches\n\n**Acceptance per API 1104:**\n\n**Section 9.2.2: ANY CRACK = AUTOMATIC REJECTION**\n\nLength, height, location: IMMATERIAL\n\n**WELD REJECTED**\n\n### Repair Sizing\n\n**Even though auto-reject, document for repair:**\n\nAPI 1104 Section 10 requires:\n\n**Removal length:**\n- Defect: 1.25 inches\n- Remove: 1.25 + 2 + 2 = **5.25 inches**\n- Round to 6 inches\n\n**Height:**\n- 0.10 inch (shallow)\n- Not through-wall (3/16 from OD)\n\n**Depth:**\n- 3/16 from OD = 0.1875 in\n- Near OD\n\n### Root Cause\n\nHydrostatic test failure context:\n- Likely hydrogen-induced (HIC)\n- Cold weather during welding?\n- Material issue (X65)?\n- Need metallurgical analysis\n\n### Documentation\n\nUT Report must include:\n- DAC amplitude (65-75%)\n- Scan positions\n- Sizing method (6dB)\n- Depth (3/16 OD)\n- Classification: Crack\n**Rejected per API 1104 9.2.2**\n\n### References: API 1104 Appendix E, Section 9.2.2",
+      "expected_elements": [
+        "Circumferential crack",
+        "65-75% DAC",
+        "6dB length 1.25 in",
+        "0.10 inch height",
+        "Any crack auto-reject",
+        "6 inch removal",
+        "Hydrostatic context",
+        "API 1104 9.2.2"
+      ],
+      "critical_elements": [
+        "Crack classification",
+        "Any crack rejection",
+        "6dB method",
+        "Removal 6 inches",
+        "HIC suspected"
+      ],
+      "expected_standards": [
+        "API 1104"
+      ],
+      "total_possible_points": 100
+    },
+    {
+      "test_id": "INSP-022",
+      "name": "MFL Data Quality Assessment",
+      "category": "inspection",
+      "subcategory": "ili_analysis",
+      "risk_level": 7,
+      "difficulty": "intermediate",
+      "time_limit_minutes": 18,
+      "situation": "MFL inspection of 42-inch crude oil pipeline just completed. Analysis shows: Tool velocity varied 2.5-5.0 ft/sec (spec <4 ft/sec), High-pass filter triggered 15 times, GPS positions accurate but 3% of data has poor metal loss characterization, Tool magnetization at 98% (good), No odometer wheel slip detected. Pipeline: 120 miles, 15,000 metal loss features total.",
+      "task": "Evaluate data quality per API 1163 Section 4, determine if inspection meets acceptance criteria, identify degraded data sections, specify re-run requirements.",
+      "expected_response_detailed": "## MFL Data Quality Assessment per API 1163\n\n### API 1163 Section 4 Requirements\n\n**Acceptance Criteria:**\n\n| Parameter | Standard | Actual | Pass? |\n|-----------|----------|--------|-------|\n| Velocity | 1-10 ft/sec | 2.5-5.0 | ✓ OK |\n| Filter events | <5% | 15 events | ? |\n| Magnetization | >90% | 98% | ✓ OK |\n| Positioning | ±1% | Accurate | ✓ OK |\n| Data quality | <2% poor | 3% | X FAIL |\n\n**Primary Issue: 3% poor characterization > 2% limit**\n\n### Velocity Analysis\n\n**Range: 2.5-5.0 ft/sec**\n\nPer API 1163:\n- Maximum: 10 ft/sec\n- Recommended: <4 ft/sec for best accuracy\n- Current: Within spec but wide variation\n\n**Concern: 5.0 ft/sec exceeds recommended**\n\nHigh velocity sections may have depth errors\n\n### High-Pass Filter Events\n\n**15 trigger events:**\n- Typically indicates: ferromagnetic debris, magnetization issues\n- Spec: <5% of pipeline\n- 15/120 miles = 0.125% ✓ OK\n\n### Poor Characterization Regions\n\n**3% of 120 miles: 3.6 miles**\n\nPossible causes:\n- Excessive velocity (5.0 ft/sec sections)\n- Heavy internal deposits\n- Wall thickness transitions\n- Magnetization variations\n\n### Assessment Decision\n\n**Inspection PARTIALLY ACCEPTABLE**\n\nRequirements:\n1. Re-run 3.6 miles of degraded data\n2. Or: Manual verification of critical features in poor sections\n3. Document velocity correlation\n\n### Re-run Strategy\n\n**Identify degraded sections:**\n- Map GPS positions\n- Prioritize Class areas\n- Focus on highest velocity zones\n\n**Alternative:**\n- Accept if depth uncertainty <10%\n- Conservative repair criteria\n- Re-inspection in 2 years\n\n### Tool Performance\n\n**Positives:**\n- 98% magnetization (excellent)\n- No wheel slip\n- GPS accurate\n- Overall acceptable metrics\n\n**Improvements for next run:**\n- Limit velocity to <4 ft/sec\n- Pre-clean if heavy deposits suspected\n\n### References: API 1163 Section 4",
+      "expected_elements": [
+        "3% poor > 2% limit FAIL",
+        "5.0 ft/sec velocity concern",
+        "Re-run 3.6 miles",
+        "98% magnetization OK",
+        "15 filter events OK",
+        "Manual verification option",
+        "API 1163 acceptance criteria"
+      ],
+      "critical_elements": [
+        "3% poor data rejection",
+        "Velocity variation",
+        "Re-run requirements",
+        "API 1163 criteria application"
+      ],
+      "expected_standards": [
+        "API 1163"
+      ],
+      "total_possible_points": 100
+    }
+  ]
+}

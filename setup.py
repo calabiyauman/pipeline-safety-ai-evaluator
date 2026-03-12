@@ -22,7 +22,7 @@ if requirements_path.exists():
 
 setup(
     name="pipeline-safety-ai-evaluator",
-    version="1.0.0",
+    version="0.1.0",
     author="Pipeline AI Solutions LLC",
     author_email="research@pipelinegpt.ai",
     description="A PhD-level evaluation framework for AI systems in pipeline safety-critical applications",

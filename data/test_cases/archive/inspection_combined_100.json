@@ -1,0 +1,80 @@
+{
+  "name": "inspection_combined_100",
+  "test_cases": [
+    {
+      "test_id": "INSP-001",
+      "name": "RT Weld Defect IP Assessment",
+      "category": "inspection",
+      "subcategory": "radiographic_testing",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "time_limit_minutes": 20,
+      "situation": "20-inch X65 pipeline RT shows 1.5-inch linear indication parallel to weld axis at root, darker density. Wall 0.500in. Management pressure to accept.",
+      "task": "Classify per API 1104, determine acceptability with code references, specify repairs, address ethics.",
+      "expected_response_detailed": "INCOMPLETE PENETRATION. API 1104 Table 4 Section 9.3.3: aggregate IP limit 1 inch per 12 inches. 1.5-inch exceeds. WELD REJECTED. Repair length 5.5 inches (1.5+2+2). 30° groove. 100% UT/RT after repair. Per 49 CFR 192.241(c), schedule pressure never justifies safety compromise.",
+      "expected_standards": [
+        "API 1104 Section 9.3.3",
+        "API 1104 Section 10",
+        "49 CFR 192.241(c)"
+      ],
+      "scoring_rubric": {
+        "defect_ID": 25,
+        "acceptance": 25,
+        "repair": 25,
+        "ethics": 15,
+        "standards": 10
+      },
+      "total_possible_points": 100
+    },
+    {
+      "test_id": "INSP-002",
+      "name": "UT Thickness Corrosion Evaluation",
+      "category": "inspection",
+      "subcategory": "ultrasonic_testing",
+      "risk_level": 8,
+      "difficulty": "intermediate",
+      "time_limit_minutes": 15,
+      "situation": "30-inch X60 pipeline, wall 0.500in. UT: LocA=0.425in, LocB=0.360in, LocC=0.480in. Operating 1,000psig, MAOP 1,200psig. Class 2. Installed 1990.",
+      "task": "Calculate wall loss, assess per API 1160, determine repair needs, corrosion rate.",
+      "expected_response_detailed": "LocA: 15% loss - monitor, re-inspect 2yr. LocB: 28% loss - scheduled repair within 1yr. LocC: 4% - routine monitor. Corrosion rate: 4.1 mpy. Hoop at B = 41,667psi > 36,000psi (Class 2 design). RECOMMEND: Pressure reduction to 864psig OR immediate repair.",
+      "expected_standards": [
+        "ASME Section V",
+        "API 1160",
+        "ASME B31.8"
+      ],
+      "scoring_rubric": {
+        "calculations": 30,
+        "API_1160": 25,
+        "corrosion_rate": 20,
+        "pressure_check": 15,
+        "monitoring": 10
+      },
+      "total_possible_points": 100
+    },
+    {
+      "test_id": "INSP-003",
+      "name": "MFL Feature Prioritization",
+      "category": "inspection",
+      "subcategory": "in_line_inspection",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "time_limit_minutes": 25,
+      "situation": "30-inch X65 pipeline, 1,200psig MAOP. Features: A=20%/3in/ext general, B=50%/1in/ext pit, C=40%/6in/int at creek crossing.",
+      "task": "Prioritize per API 1160, calculate RSF per ASME B31G, determine repair timelines.",
+      "expected_response_detailed": "Priority: B (>50% IMMEDIATE), C (40%/RSF=0.78<0.90, 60 days), A (RSF=0.96, 180 days). RSF C: L/√(Dt)=6/3.87=1.55, M=1.71, RSF=0.78. Timeline: B=24hr, C=60day, A=180day. Repairs: B and C=Type B sleeve, A=composite.",
+      "expected_standards": [
+        "API 1160",
+        "ASME B31G",
+        "API 1163"
+      ],
+      "scoring_rubric": {
+        "prioritization": 30,
+        "RSF_calc": 30,
+        "timeline": 20,
+        "repair_method": 15,
+        "creek_factor": 5
+      },
+      "total_possible_points": 100
+    }
+  ]
+}

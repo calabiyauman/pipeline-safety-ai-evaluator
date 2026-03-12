@@ -2,11 +2,55 @@
   "metadata": {
     "file_name": "engineering.json",
     "description": "Engineering calculation and design test cases",
-    "total_tests": 3,
+    "total_tests": 51,
     "created_date": "2026-03-07",
     "version": "1.0"
   },
   "test_cases": [
+    {
+      "test_id": "ENG-004",
+      "name": "MAOP Verification Per 192.619",
+      "category": "engineering",
+      "subcategory": "pressure_design",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "expected_response_detailed": "30-year-old pipeline per 192.619(g): New MAOP is greater of 80% established (960 psig) or 85% test (1,275 psig). Operating 1,100 psig < 1,275, no reduction required. Wall 0.500 in > 0.305 required. Retest recommended at 1,375 psig within 5 years.",
+      "situation": "MAOP Verification Per 192.619",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-005",
+      "name": "Relief Valve Sizing per API 520",
+      "category": "engineering",
+      "subcategory": "valve_design",
+      "risk_level": 8,
+      "difficulty": "advanced",
+      "expected_response_detailed": "15,000 HP compressors blocked discharge: K orifice (2.545 sq in) at 1,440 psig set, dual installation with 3-way valve, 7% blowdown to 1,339 psig, API 521 fire case 1,754 psig max accumulation, inlet drop <3%.",
+      "situation": "Relief Valve Sizing per API 520",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-006",
+      "name": "Thermal Stress Analysis - Road Crossing",
+      "category": "engineering",
+      "subcategory": "stress_analysis",
+      "risk_level": 7,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "120-foot span: 0.936 inches thermal expansion, 19,500 psi thermal stress, 25,100 psi von Mises with traffic < 46,800 allowable. 8-foot cover adequate, sandy soil reduces step potential, full burial required per B31.8.",
+      "situation": "Thermal Stress Analysis - Road Crossing",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-007",
+      "name": "Leak Detection System Design",
+      "category": "engineering",
+      "subcategory": "leak_detection",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "expected_response_detailed": "API RP 1130 Class 4 LDS: mass balance + RTTM primary, acoustic fiber backup, 26 measurement points, 10 MMSCFD threshold (1% of 800 MMSCF), 1-second update, three-tier alarm system, transient filtering 10-minute window.",
+      "situation": "Leak Detection System Design",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
     {
       "test_id": "CP-001",
       "name": "Cathodic Protection System Design",
@@ -298,6 +342,539 @@
           ]
         }
       ]
+    },
+    {
+      "test_id": "ENG-001",
+      "name": "Control Valve Sizing for Compressor Station",
+      "category": "engineering",
+      "subcategory": "control_valve_sizing",
+      "risk_level": 7,
+      "difficulty": "advanced",
+      "time_limit_minutes": 35,
+      "situation": "A new compressor station requires a control valve to regulate gas flow from second stage compression discharge to transmission pipeline. Operating conditions: Inlet pressure (P1): 1,200 psig, Outlet pressure (P2): 800 psig, Design flow: 350 MMSCFD, Maximum flow: 425 MMSCFD, Minimum flow: 100 MMSCFD. Gas specific gravity: 0.60, Temperature: 100°F, Z: 0.85, Pc: 673 psia, Tc: 356°R. Required turndown: 4:1. Valve: Globe with linear characteristic. Line size: 24-inch. Noise limit: 85 dBA.",
+      "task": "Size the control valve using ISA-75.01: calculate required Cv for design, maximum, and minimum conditions, determine valve size (typically 1-2 line sizes smaller), calculate actual Cv at all conditions, calculate percent opening at design flow, evaluate noise level using IEC 60534-8-3, check for cavitation, verify operating range (15-80% opening preferred). Specify body size, trim size, and rated Cv.",
+      "expected_response_detailed": "## Control Valve Sizing per ISA-75.01\n\n### Parameters\n- P1 = 1,214.7 psia, P2 = 814.7 psia, ΔP = 400 psid\n- T = 559.67°R, Q = 350 MMSCFD, G = 0.60, Z = 0.85\n\n### Critical Flow Check\n- P2/P1 = 814.7/1214.7 = 0.671\n- Fk × χ = 0.907 × 0.65 = 0.590\n- 0.671 > 0.590: NOT choked flow\n\n### Cv Calculations\n- Expansion factor Y = 0.696\n- Cv_design = 8,661\n- Cv_max = 10,515\n- Cv_min = 2,477\n\n### Valve Selection\n- Line size: 24 inches\n- Selected: 20-inch ANSI 600 globe valve\n- Trim: 16-inch, Rated Cv: 15,000\n\n### Travel Calculations\n- Design: 8,661/15,000 = 57.8%\n- Maximum: 10,515/15,000 = 70.1%\n- Minimum: 2,477/15,000 = 16.5%\n- All within 15-80% acceptable range ✓\n\n### Noise\n- Estimated: 85-90 dBA\n- Specify low-noise trim\n\n### References\n- ISA-75.01.01\n- IEC 60534-8-3",
+      "expected_elements": [
+        "Cv_design = 8,661",
+        "Cv_max = 10,515",
+        "Cv_min = 2,477",
+        "20-inch valve selected",
+        "Rated Cv = 15,000",
+        "Design travel 57.8%",
+        "ISA-75.01 formula"
+      ],
+      "critical_elements": [
+        "Cv calculations correct",
+        "Choked flow check",
+        "Valve size selection",
+        "Travel % in 15-80% range",
+        "ISA-75.01 reference"
+      ],
+      "expected_standards": [
+        "ISA-75.01",
+        "IEC 60534-8-3",
+        "API RP 520"
+      ],
+      "scoring_rubric": {
+        "cv_calculations": 25,
+        "valve_selection": 25,
+        "travel_verification": 25,
+        "noise_evaluation": 15,
+        "cavitation_check": 10
+      },
+      "abnormal_variants": [
+        {
+          "variant_id": "ENG-001-V1",
+          "description": "Choked flow condition detected at maximum flow",
+          "modified_expected_response": "CHOKED FLOW - OVERSIZE REQUIRED. If choked, need larger valve or different trim. Consider characterized cage or multi-stage trim to handle high pressure drop without choking."
+        }
+      ]
+    },
+    {
+      "test_id": "ENG-002",
+      "name": "Pipeline Stress Analysis - River Crossing",
+      "category": "engineering",
+      "subcategory": "stress_analysis",
+      "risk_level": 6,
+      "difficulty": "intermediate",
+      "time_limit_minutes": 30,
+      "situation": "A 36-inch pipeline crosses a river through a horizontal directional drill (HDD). The crossing is 1,800 feet long with the following profile: Entry point at elevation 850 feet, exit point at elevation 855 feet, river bottom at deepest point elevation 815 feet located at 900 feet along profile. The pipeline is API 5L X65 with 0.625-inch wall thickness. Operating pressure is 1,200 psig. Soil conditions: Entry/exit zones sandy clay, river bottom loose silt. Groundwater table is at 840 feet elevation. Winter temperature: -10°F, summer: 95°F. Construction: Pullback completed, pipeline empty during installation, hydrotest at 1,500 psig.",
+      "task": "Perform stress analysis per ASME B31.8 and API RP 1111. Calculate bending stresses from HDD profile, determine if stress ratios are within limits, evaluate hydrotest stresses, check for upheaval buckling potential, and specify required depth of cover at river bottom.",
+      "expected_response_detailed": "## Stress Analysis per ASME B31.8 and API RP 1111\n\n### Pipeline Parameters\n- Diameter: 36 inches, Wall: 0.625 inches\n- Material: API 5L X65 (SMYS = 65,000 psi)\n- Maximum profile depth: 35 feet below entry\n\n### Bending Stress Calculation\n\n**HDD Bending Radius:**\n- Minimum radius per API RP 1111: 1,200 × D = 1,200 × 36 = 1200 inches = 100 feet\n- Actual radius at deepest point: ~1,200 feet (from profile)\n- Much greater than minimum - ACCEPTABLE\n\n**Bending Stress Formula:**\nσ_bending = (E × D) / (2 × R)\nWhere E = 29×10⁶ psi, D = 36 in, R = 1,200×12 = 14,400 in\n\nσ_bending = (29×10⁶ × 36) / (2 × 14,400) = 36,250 psi\n\n**Total Stress:**\n- Hoop: PD/2t = (1,200×36)/(2×0.625) = 34,560 psi\n- Axial: Pr/2t = 34,560/2 = 17,280 psi\n- Combined: Using von Mises or Tresca\n\n**ASME B31.8 Limits:**\n- Design factor F = 0.72 (Class 1) = 46,800 psi\n- Combined stress <90% SMYS = 58,500 psi\n\n### Hydrotest Stress\n- P_test = 1,500 psig\n- Hoop = (1,500×36)/(2×0.625) = 43,200 psi\n- Within 90% SMYS (58,500 psi) - ACCEPTABLE\n\n### Depth of Cover\n- API RP 1111: Minimum 10 feet at river bottom\n- Actual: Entry 850 ft - 815 ft = 35 feet\n- Well above minimum - ACCEPTABLE\n\n### References\n- ASME B31.8 Section 833\n- API RP 1111 Section 4",
+      "expected_elements": [
+        "Bending stress calculation",
+        "HDD radius 100 ft minimum",
+        "Bending stress 36,250 psi",
+        "Hoop stress 34,560 psi",
+        "90% SMYS limit (58,500 psi)",
+        "Depth of cover 10 ft minimum",
+        "API RP 1111 reference"
+      ],
+      "critical_elements": [
+        "Minimum radius calculation",
+        "Bending stress formula",
+        "90% SMYS hydrotest limit",
+        "ASME B31.8 stress limits",
+        "API RP 1111 cover depth"
+      ],
+      "expected_standards": [
+        "ASME B31.8 Section 833",
+        "API RP 1111 Section 4",
+        "API 5L (SMYS values)"
+      ],
+      "scoring_rubric": {
+        "bending_calculation": 25,
+        "hoop_stress": 25,
+        "combined_limits": 25,
+        "hydrotest_check": 15,
+        "cover_depth": 10
+      },
+      "abnormal_variants": [
+        {
+          "variant_id": "ENG-002-V1",
+          "description": "Calculated bending stress exceeds allowable",
+          "modified_expected_response": "OVER-STRESS CONDITION. If bending stress exceeds limits: increase radius, reduce entry angle, or increase wall thickness. May require re-design of HDD profile."
+        }
+      ]
+    },
+    {
+      "test_id": "ENG-003",
+      "name": "Wall Thickness Design - Class Location",
+      "category": "engineering",
+      "subcategory": "wall_thickness_design",
+      "risk_level": 8,
+      "difficulty": "intermediate",
+      "time_limit_minutes": 15,
+      "situation": "Design a new natural gas pipeline: Material: API 5L Grade X70 (SMYS 70,000 psi), Diameter: 42 inches NPS (42-inch OD), Design pressure (MAOP): 1,440 psig, Class location: Class 2 per ASME B31.8, Design temperature: 100°F, Corrosion allowance: 0.0625 inches, Construction: Traditional open-cut, Below ground with 36-inch minimum cover.",
+      "task": "Calculate minimum required wall thickness per ASME B31.8 Section 841.1. Select appropriate commercial wall thickness and verify compliance. Verify hoop stress is within allowable limits.",
+      "expected_response_detailed": "## Wall Thickness Calculation per ASME B31.8\n\n### Design Formula\nt = (P × D) / (2 × S × F × E × T)\n\n### Parameters\n- P = 1,440 psi\n- D = 42.0 inches\n- S = 70,000 psi (X70 SMYS)\n- F = 0.60 (Class 2 from Table 841.1.6-1)\n- E = 1.00 (seamless)\n- T = 1.000 (100°F ≤ 250°F)\n\n### Calculation\nt = (1,440 × 42) / (2 × 70,000 × 0.60 × 1.00 × 1.00)\nt = 60,480 / 84,000\nt = 0.720 inches\n\n### Corrosion Allowance\nTotal = 0.720 + 0.0625 = 0.7825 inches\n\n### Commercial Selection\n- 0.750 inches: Insufficient (0.750 < 0.7825)\n- 0.875 inches: ACCEPTABLE (0.875 > 0.7825)\n- Selection: 0.875 inches\n\n### Hoop Stress Verification\nσ_h = (P × D) / (2 × t) = (1,440 × 42) / (2 × 0.875) = 40,320 psi\nσ_allowable = S × F × E × T = 70,000 × 0.60 = 42,000 psi\n40,320 < 42,000 ✓ ACCEPTABLE\n\n### References\n- ASME B31.8-2022 Section 841.1.1\n- Table 841.1.6-1 (Design factors)",
+      "expected_elements": [
+        "Barlow's formula",
+        "F = 0.60 for Class 2",
+        "S = 70,000 psi for X70",
+        "Calculated t = 0.720 in",
+        "With corrosion: 0.7825 in",
+        "Selected: 0.875 in",
+        "Hoop stress 40,320 psi",
+        "Allowable 42,000 psi"
+      ],
+      "critical_elements": [
+        "Correct formula application",
+        "Design factor F = 0.60",
+        "Corrosion allowance addition",
+        "Commercial wall selection",
+        "Hoop stress verification"
+      ],
+      "expected_standards": [
+        "ASME B31.8 Section 841.1",
+        "ASME B31.8 Table 841.1.6-1",
+        "API 5L"
+      ],
+      "scoring_rubric": {
+        "formula_application": 25,
+        "design_factor": 20,
+        "calculation": 25,
+        "commercial_selection": 20,
+        "verification": 10
+      },
+      "abnormal_variants": [
+        {
+          "variant_id": "ENG-003-V1",
+          "description": "Class location changes to Class 3 after pipe ordered",
+          "modified_expected_response": "CLASS 3 REQUIRES REDESIGN. F = 0.50 for Class 3. Recalculate: t = 0.864 in, required 0.9265 in. Current 0.875 pipe INSUFFICIENT. Options: reduce MAOP to 1,200 psig or reorder 1.0 inch wall."
+        }
+      ]
+    },
+    {
+      "test_id": "ENG-008",
+      "name": "Pipeline Anchor Design",
+      "category": "engineering",
+      "subcategory": "mechanical_design",
+      "risk_level": 7,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "River crossing anchors: thrust = pressure × area = 1,200 psig × 28.27 in² = 33,924 lbs. Safety factor 2.5: anchor capacity 84,810 lbs. Concrete anchor 5,000 lbs/yd³: volume needed 17 cubic yards. Include thermal movement accommodation, riverbed scour protection, cathodic isolation if dissimilar metals, 2-foot burial below scour depth per B31.8.",
+      "situation": "Pipeline Anchor Design",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-009",
+      "name": "Compressor Station Layout",
+      "category": "engineering",
+      "subcategory": "station_design",
+      "risk_level": 6,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "NFPA 37 spacing: 50 feet from property line, 10 feet between compressors (with 1-hour rated wall), 75 feet from high occupancy, noise 55 dBA at property line per OSHA 1910.95. Ventilation: 6 air changes/hour minimum, LEL detection at low points, fire-rated doors (1.5 hour), emergency shutdown within 100 feet of any point, eye wash/safety shower for chemical area, deluge system for compressors per NFPA 37.",
+      "situation": "Compressor Station Layout",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-010",
+      "name": "Flow Equation Selection",
+      "category": "engineering",
+      "subcategory": "hydraulics",
+      "risk_level": 5,
+      "difficulty": "basic",
+      "expected_response_detailed": "AGA NX-19 for high pressure transmission (typical for pipelines >500 psig and >12 inches). Weymouth for early planning/quick estimates. Panhandle A for longer lines with Reynolds >4,000. Modified Panhandle for higher accuracy with elevation changes. Isothermal flow assumption valid when temperature variation <20°F. B31.8 non-isothermal correction for significant elevation change.",
+      "situation": "Flow Equation Selection",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-011",
+      "name": "Valve Actuation Time",
+      "category": "engineering",
+      "subcategory": "valve_design",
+      "risk_level": 6,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "API 6D for pipeline valves: closure time target <30 seconds for 16-inch. Hydraulic actuator sizing: torque = 2,500 ft-lb for double-block valve. Operating pressure 1,500 psig, accumulator 2,500 psi, cylinder 6-inch bore. Valve CV requirement for blowdown: calculate orifice per API 521. Manual override required for power loss. Position indication to SCADA required for Class 3/4.",
+      "situation": "Valve Actuation Time",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-012",
+      "name": "Pig Launcher Design",
+      "category": "engineering",
+      "subcategory": "mechanical_design",
+      "risk_level": 6,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Barrel diameter: 1.25 × pipe ID (30-inch becomes 37.5-inch). Length: 2× longest pig + 10 feet typically. Pressure rating: MAOP + test margin. Closure: quick-opening closure rated for cycles, safety interlock. Drain: 2-inch minimum to containment. Vent: 4-inch to safe elevation or flare. Bypass line for equalization. Supports: saddle supports with slide plates for thermal movement. ASME B31.3 for launcher piping.",
+      "situation": "Pig Launcher Design",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-013",
+      "name": "Scraper Design for Paraffin Removal",
+      "category": "engineering",
+      "subcategory": "pipeline_maintenance",
+      "risk_level": 5,
+      "difficulty": "basic",
+      "expected_response_detailed": "Progressive cavity pump requires: bypass around pump for pigging (3-port valve), scraper selection based on deposit thickness (mandrel pigs for light deposits, brush pigs for heavy), by-pass holes in discs for wax removal, speed 2-5 ft/sec optimum, tracking required for paraffin monitoring, batch vs continuous treatment evaluation, chemical inhibition if recurring, production impact during pigging, receiver capacity for debris.",
+      "situation": "Scraper Design for Paraffin Removal",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-014",
+      "name": "Vibration Analysis - Reciprocating Compressor",
+      "category": "engineering",
+      "subcategory": "mechanical_analysis",
+      "risk_level": 7,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Pulsation study per API 618: pulsation bottle sizing for 1-2% peak-to-peak pressure variation. Acoustic filter: Helmholtz resonator if 2× frequency matches mechanical natural frequency. Mechanical vibration: 0.15 inches/second RMS maximum at bearings. Piping: 5× diameter minimum from bend to compressor. Orifice plates for pulsation damping. Study covers 0-2× running speed. Reciprocating: torque fluctuation analysis. Foundation: dynamic stiffness for vibration isolation.",
+      "situation": "Vibration Analysis - Reciprocating Compressor",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-015",
+      "name": "Fugitive Emissions Calculation",
+      "category": "engineering",
+      "subcategory": "environmental",
+      "risk_level": 5,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "EPA Method 21: screening values per leak definition. LDAR program: 500 ppm threshold for first attempt, repair within 15 days, re-screen within 90. Component counts: valves, flanges, pump seals, compressor seals. Emission factors: valves 0.0056 kg/hr (gas), flanges 0.0006 kg/hr. Annual throughput 250 MMSCFD = 365 days × leak factor. Greenhouse gas: methane 25× CO2. Reporting required >25,000 metric tons CO2e annually for GHGRP.",
+      "situation": "Fugitive Emissions Calculation",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-016",
+      "name": "Pipeline Crossings - Railroad",
+      "category": "engineering",
+      "subcategory": "crossing_design",
+      "risk_level": 8,
+      "difficulty": "advanced",
+      "expected_response_detailed": "DOT crossing regulations: 6-foot minimum cover under track (reinforced concrete if less). Railroad approval required: design submission 180 days in advance. Cathodic protection isolation at crossing. Casings: carrier pipe inside casing with casing insulators (electrical isolation vent to atmosphere). Bored crossings: HDD minimum 10-foot depth below subgrade. Monitoring: settlement gauges during construction. Insurance: railroad protective liability required.",
+      "situation": "Pipeline Crossings - Railroad",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-017",
+      "name": "Meter Station Uncertainty",
+      "category": "engineering",
+      "subcategory": "measurement",
+      "risk_level": 6,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Orifice meter uncertainty: 0.5% of reading (AGA Report 3). Ultrasonic: 0.2% if calibrated, 0.5% if not. Coriolis: 0.1% for mass flow. Temperature correction: ±2°F = ±0.4% uncertainty. Pressure: ±2 psi at 1,000 psi = ±0.2%. Combined uncertainty: square root of sum of squares. Check: 5-year recalibration per API 21.1. Station balance: ±0.2% shipper/receiver agreement.",
+      "situation": "Meter Station Uncertainty",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-018",
+      "name": "Fiber Optic Cable Installation",
+      "category": "engineering",
+      "subcategory": "communications",
+      "risk_level": 4,
+      "difficulty": "basic",
+      "expected_response_detailed": "Cable in conduit: HDPE pipe 1.25-inch inside 2-inch conduit minimum, 40-foot spacing of intermediate access points, pulling tension 600 lbs maximum, bend radius 10× cable diameter, splice closures every 2 miles, SCADA integration for leak detection and third-party interference detection, power at each station for amplifiers, redundancy for critical sections (diverse routing if available), OTDR testing after installation for attenuation verification.",
+      "situation": "Fiber Optic Cable Installation",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-019",
+      "name": "Buckle Arrestor Spacing",
+      "category": "engineering",
+      "difficulty": "advanced",
+      "expected_response_detailed": "Offshore pipeline: buckle arrestor spacing based on propagation pressure. Propagation pressure 2,500 psi for 24-inch X65. Arrestor required within 1,000 feet of potential buckle sources (fishing gear, anchors). Design: concrete or steel sleeves. Spacing formula: P_prop/γ_water - external pressure margin. Limit state design: 1.1 safety factor on propagation. Installation: over pipe without girth weld interference, cathodic protection continuity or isolation depending on design.",
+      "situation": "Buckle Arrestor Spacing",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-020",
+      "name": "Slug Catcher Sizing",
+      "category": "engineering",
+      "difficulty": "advanced",
+      "expected_response_detailed": "Slug catcher vessel: inlet separator for two-phase flow. Volume based on maximum expected slug from pigging operation. 1,000 barrels liquid holdup for offshore, 2-4 hours residence time onshore. Diameter selected for vapor velocity (0.5-1.5 ft/sec). Liquid level control: 30-60% operating range. Instrumentation: level transmitter, pressure safety relief, temperature, densitometer for liquid composition. Per API 14E.",
+      "situation": "Slug Catcher Sizing",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-021",
+      "name": "Pipe Support Spacing Calculation",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "API 570 spacing: span = √(0.33 × E × I / w) where E modulus, I moment of inertia, w distributed load. 24-inch schedule 40: span approximately 25 feet for liquid service, 35 feet gas. Account for concentrated loads (valves). Allowable deflection 0.5 inch. Thermal expansion guide spacing: full guide every second support. Shoe height for insulation maintenance.",
+      "situation": "Pipe Support Spacing Calculation",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-022",
+      "name": "Strain Based Design Limitations",
+      "category": "engineering",
+      "difficulty": "expert",
+      "expected_response_detailed": "SBD for extreme terrain: tensile strain limit 0.5% typical, 2.5% with deformation control. Compressive strain: 0.2% wrinkle initiation, 0.5-1% acceptance with wrinkles monitored. Notched bar compression test for girth weld. Bending strain monitoring during installation. Ovality limit 3% per API 5L. Crack arrest required if defect tolerance lower than flaw size.",
+      "situation": "Strain Based Design Limitations",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-023",
+      "name": "Gas Dehydration Unit Design",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Glycol dehydration: TEG circulation rate 2-5 gallons per lb water removed. Reboiler 400°F max (TEG degradation). Stripping gas if <7 lb/MMscf specification. Regenerator tray efficiency. Flash tank 75 psig minimum, 15-minute retention. Filter for hydrocarbon removal. pH adjustment for corrosion. Glycol losses 0.05-0.1 gallon/MMscf.",
+      "situation": "Gas Dehydration Unit Design",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-024",
+      "name": "Pipeline Surge Analysis",
+      "category": "engineering",
+      "difficulty": "advanced",
+      "expected_response_detailed": "Water hammer for liquid pipelines: Joukowsky equation ΔP = ρ × a × ΔV. Wave speed a = √(1/ρ × (1/K + D/(t×E))). Surge pressure can exceed 2× operating. Mitigation: surge tanks, controlled valve closure (10+ seconds), check valves with dashpots, pressure relief. Transient software (OLGA, PipelineStudio) for modeling. Worst case: ESD instantaneous closure.",
+      "situation": "Pipeline Surge Analysis",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-025",
+      "name": "Cathodic Protection Rectifier Sizing",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Rectifier current output: based on coating quality and surface area. New FBE coating: 0.1-0.5 mA/sq ft. Poor coating: 2-10 mA/sq ft. Voltage output: overcome soil resistivity and anode bed resistance. Typical pipe ground bed: 50-amp output, 24 volts. Deep anode beds for congested areas. Remote monitoring via SCADA. Transformer-rectifier efficiency 70%. Reference electrode calibration annually per NACE SP0169.",
+      "situation": "Cathodic Protection Rectifier Sizing",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-026",
+      "name": "Block Valve Spacing per Class",
+      "category": "engineering",
+      "difficulty": "basic",
+      "expected_response_detailed": "192.745 spacing: Class 1 (rural) 10 miles, Class 2 (suburban) 7.5 miles, Class 3 (towns) 4 miles, Class 4 (urban) 2.5 miles. Exceptions: navigable waterways every crossing, HCA within limits, offshore platforms. Automatic or remote-controlled for Class 3/4. Manual acceptable Class 1/2 if accessible within 1 hour. Test frequency: partial stroke monthly, full stroke annually. Location markers required.",
+      "situation": "Block Valve Spacing per Class",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-027",
+      "name": "Gas Quality Specification Limits",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Pipeline tariff specifications: H2S <0.25-1 grain/100 scf (4-16 ppm), CO2 <2-3%, moisture dew point 20°F below coldest operating, heating value 950-1,150 Btu/scf, hydrocarbon dew point line conditions (no liquids), O2 <10 ppm, total sulfur <5-20 grains. Wobbe index for interchangeability. Delivery specifications in interconnect agreements per GPA 2261.",
+      "situation": "Gas Quality Specification Limits",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-028",
+      "name": "Pipeline Re-Rating Procedure",
+      "category": "engineering",
+      "difficulty": "advanced",
+      "expected_response_detailed": "Re-rating per 192.619: if test data available new MAOP = test pressure / 1.25. If older than 5 years: 85% of test or 80% of MAOP if never pressure tested. Engineering analysis for wall thickness, material properties, elevation profile, class location changes. Pressure reduction notification to PHMSA within 5 days. Customer notification if contractual MAOP affected. Records updated to reflect new MAOP.",
+      "situation": "Pipeline Re-Rating Procedure",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-029",
+      "name": "Pipeline Upheaval Buckling",
+      "category": "engineering",
+      "difficulty": "expert",
+      "expected_response_detailed": "Upheaval in buried pipelines: thermal expansion with vertical restraint creates compressive axial load. Critical condition when axial force exceeds >4EI/L² (Euler buckling). Prevention: deeper burial, trench backfill quality, intermittent rock dump (virtual anchor), vertical loops for expansion, on-bottom stability for offshore. Design: Hobbs upheaval formula, vertical out-of-straightness limit 0.5% typically, effective axial force calculation including temperature and pressure effects.",
+      "situation": "Pipeline Upheaval Buckling",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-030",
+      "name": "Cold Weather Pipeline Operation",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Low temperature concerns: brittle fracture susceptibility, decompression limits per CSA Z662, Joule-Thomson cooling (-7°F per 1,000 psi drop), hydrate formation (temperature above hydrate curve required), viscosity increase for liquids. Materials: Charpy V-notch impact testing temperature, transition curve shift. Protection: methanol/glycol injection for hydrate inhibition, insulation on above-ground pipe, heat tracing for instrumentation, freeze protection for valves and instruments.",
+      "situation": "Cold Weather Pipeline Operation",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-031",
+      "name": "Inertial Pigging Design",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Inertial pig (foam or unsealed) for dewaxing: velocity 5-15 ft/sec, bypass ports to prevent stuck conditions, cup design for scraping, magnet for MFL tools, transmitter for tracking. Launcher design for inertial pigs (larger bore than pipeline). Velocity control via back pressure. Cleaning efficiency 70-90% typically. Multiple pigs in train for heavy deposits. Barrels 2× pipe length minimum.",
+      "situation": "Inertial Pigging Design",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-032",
+      "name": "Hydrotest Water Treatment",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Hydrotest water specification: pH 5-8, chlorides <50 ppm for stainless, suspended solids <50 ppm, oxygen <1 ppm if stainless present. Treatment: filtration, pH adjustment with sodium carbonate, biocide addition if hold >3 days, corrosion inhibitor 200-500 ppm for carbon steel. Disposal: settlement ponds, pH adjustment, discharge permit compliance, NPDES or state specific. Drying: air displacement with methanol slug, nitrogen displacement, vacuum drying.",
+      "situation": "Hydrotest Water Treatment",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-033",
+      "name": "Pipeline Capacity Optimization",
+      "category": "engineering",
+      "difficulty": "advanced",
+      "expected_response_detailed": "Capacity increase options: loop lines (parallel segment), line pack utilization (pressure increase), drag reduction agents (0.5-2% throughput increase, ongoing cost), compressor station addition (incremental), dehydration bypass (if specification allows), MAOP increase (if test data supports). Economic analysis: incremental cost vs revenue, net present value, payback period. Constraints: class location limiting MAOP, compression power availability.",
+      "situation": "Pipeline Capacity Optimization",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-034",
+      "name": "Vortex Shedding Analysis",
+      "category": "engineering",
+      "difficulty": "expert",
+      "expected_response_detailed": "Helmholtz resonator or vortex shedding in thermowells and probes: Strouhal number S = f×D/V, critical velocity when shedding frequency matches natural frequency of structure. Prevention: helical strakes, shrouds, increased stiffness, reduced length/diameter ratio, turbulence promotion. Piping: Spans susceptible if f_shedding ≈ f_span. Damping via snubbers. Thermowell design: ASME PTC 19.3 TW for wake frequency calculation.",
+      "situation": "Vortex Shedding Analysis",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-035",
+      "name": "Pipeline River Crossing Hydrology",
+      "category": "engineering",
+      "difficulty": "advanced",
+      "expected_response_detailed": "100-year flood elevation determination: FEMA maps or site-specific analysis. Scour depth calculation: CSU or HEC-18 methods, typically 2-3 feet in cohesive soils, 5-10+ in non-cohesive. Countermeasures: riprap, articulating concrete blocks, sheet piling, guide banks. Depth of burial: below predicted scour depth plus 2 feet minimum. Directional drill preferred over open cut in flood-prone areas. Monitoring: settlement gauges after construction.",
+      "situation": "Pipeline River Crossing Hydrology",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-036",
+      "name": "Facility Siting Per EP Guidelines",
+      "category": "engineering",
+      "difficulty": "advanced",
+      "expected_response_detailed": "NFPA 59A for LNG, OSHA PSM for high hazard. Siting: occupied building distances, property line clearances, fire protection water supply, access for emergency response, prevailing wind for vapor dispersion. Blast radius: from maximum credible event, overpressure 0.5 psi for buildings. Toxic release: ERPG-2 concentration at property line. Radiation: 5,000 Btu/ft²/hr at property line. Quantitative Risk Assessment for optimized siting.",
+      "situation": "Facility Siting Per EP Guidelines",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-037",
+      "name": "Pipeline Integrity Management Plan",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "IMP per 192 Subpart O: baseline assessment within 10 years, reassessment every 7 years maximum, five-year schedule, HCAs identified per 192.5, threats addressed (external corrosion, internal, SCC, third-party, material, equipment), prevention and mitigation measures, performance metrics, communication plan, management of change, quality assurance. Continuous integrity assessment vs periodic.",
+      "situation": "Pipeline Integrity Management Plan",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-038",
+      "name": "Meter Sizing Application",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Orifice meter: beta ratio 0.2-0.7 optimal (0.25-0.5 typical), permanent pressure loss 2-4× differential, turndown 3:1 typical, accuracy ±0.5% if calibrated range. Ultrasonic: path configuration (single-path 2-3% accuracy, multi-path 0.5%), straight run requirements (10D upstream, 5D downstream), turndown 100:1. Coriolis: accuracy 0.1-0.2%, liquid or dense gas only. Selection: fluid properties, flow range, accuracy requirement, maintenance access, cost lifecycle.",
+      "situation": "Meter Sizing Application",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-039",
+      "name": "Pipeline Loop Line Sizing",
+      "category": "engineering",
+      "difficulty": "advanced",
+      "expected_response_detailed": "Loop line design: parallel segment reduces flow resistance. Loop line length fraction determined by required flow increase. Hydraulic calculation: equivalent resistance of parallel lines lower than either alone. Sizing: typically equal diameter to mainline, shorter length to achieve 10-20% capacity increase. Pig trap sizing: accommodate both main and loop. Valve arrangement: bypass to isolate either line. Tie-in: hot tap or shutdown. Economic: cost of loop vs compressor station.",
+      "situation": "Pipeline Loop Line Sizing",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-040",
+      "name": "Hydraulic Analysis Software",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Pipeline simulation: steady-state for capacity rating, transient for line pack and surge analysis, optimization for compressor scheduling. Common software: PipelineStudio (SPS), OLGA for multiphase, PIPESYS. Data requirements: pipe segments with elevation profile, diameter, wall, roughness, stations (compressors, heaters, valves), boundary conditions, fluid composition. Calibration: field data matching (pressure, flow, temperature). Sensitivity: what-if scenarios for operations.",
+      "situation": "Hydraulic Analysis Software",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-041",
+      "name": "Pressure Regulation Station",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Pressure regulation: monitor regulators (active/standby), pilot-operated valves, slam-shuts on high/low pressure. Sizing: Cv calculation for maximum flow at minimum inlet. Turndown: 10:1 typical, wider with dual-range. Accuracy: ±1% of setpoint. Response time: 1-2 seconds. Filter upstream: 40 micron typical. Relief protection downstream. Station piping: minimum bends, supports for weight, thermal expansion loops. Emergency response: full close time from control signal. SCADA: pressure trending, alarms on deviation.",
+      "situation": "Pressure Regulation Station",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-042",
+      "name": "Pipeline Recommissioning",
+      "category": "engineering",
+      "difficulty": "advanced",
+      "expected_response_detailed": "Recommissioning after mothball: inspection prior to return (external, ILI if long outage). Integrity verification: pressure test per original design or 192.619. Cleaning: pigging to remove deposits, dehydration if required. Purging: air removal for gas, inert gas (nitrogen) displacement. Valves: cycle testing, seat tightness. Instruments: calibration. Corrosion: inhibitor injection if internal. Cathodic protection: current requirement verification. Documentation: recommissioning checklist, as-left configurations.",
+      "situation": "Pipeline Recommissioning",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-043",
+      "name": "Seismic Design Criteria",
+      "category": "engineering",
+      "difficulty": "expert",
+      "expected_response_detailed": "ASCE 7 seismic design: spectral acceleration Ss and S1 from USGS maps. Site class (A-F) from soil properties. Design spectrum: short period and 1-second acceleration. Pipeline strain: longitudinal from wave propagation, transverse from PGV. Design: fault crossing accommodation (flexible joints, offset), liquefaction mitigation (deep burial, soil improvement), landslide avoidance or stabilization. ASME B31.8 Case N-755 for seismic. Emergency shutdown on seismic trigger (earthquake early warning).",
+      "situation": "Seismic Design Criteria",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-044",
+      "name": "Meter Proving",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Meter prover: pipe prover (displacement) or compact prover (piston). Prover volume: 10,000× meter resolution minimum for 0.05% uncertainty. Master meter method as alternative. Temperature compensation: 1°F = 0.3% volume change. Pressure: compressibility factor. Runs: minimum 5 consecutive within 0.05% repeatability. Frequency: annually or per contract. Factor calculation: prover volume / meter indicated. Uncertainty: 0.1% typical for pipe prover.",
+      "situation": "Meter Proving",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-045",
+      "name": "Pipeline Construction Inspection",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Construction inspection phases: clearing and grading, trenching, stringing, welding (100% of welds inspected X-ray or UT), joint coating, lowering in, backfill, testing, cleanup. Welding: WPS compliance, NDE acceptance, repair procedures. Coating: holiday testing 100%. Lowering: stress analysis, bending radius, sling protection. Backfill: material selection, compaction density. Test: hydrostatic, leak detection, pressure holding. Documentation: daily reports, as-built drawings, test records.",
+      "situation": "Pipeline Construction Inspection",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-046",
+      "name": "Pipeline Capacity Assessment",
+      "category": "engineering",
+      "difficulty": "advanced",
+      "expected_response_detailed": "Maximum operating capacity not always equal to nameplate: MAOP limit, compressor station power, temperature constraints, customer nominations. Capacity model: actual vs theoretical. Bottleneck identification: station with highest pressure ratio, pipeline segment with most friction. Debottlenecking: loop lines, compressor upgrades, drag reducers, MAOP increase. Seasonal capacity: winter demand peaks. Interruptible vs firm service. Storage injection/withdrawal impact on capacity booking.",
+      "situation": "Pipeline Capacity Assessment",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-047",
+      "name": "Ground Bed Anode Design",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Deep anode bed: 100+ feet depth for low resistance, multiple tubular anodes in coke breeze backfill. Design: 50 Amp typical output, resistance less than 0.5 Ohm, 20-year design life. Anode consumption: 1 lb/Amp-year. Cable sizing: voltage drop calculation, HMWPE insulation rated for chlorine if applicable. Vent pipes for gas release. Monitoring: individual anode current measurement. Shallow ground bed: 20-50 feet spacing, graphite or HSCI anodes, horizontal or vertical. Soil resistivity testing for location.",
+      "situation": "Ground Bed Anode Design",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "ENG-048",
+      "name": "Pipeline Abandonment",
+      "category": "engineering",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Abandonment per 192.727: purge of hazardous liquids or gas (inert gas displacement), fill with water or inert material if potential contamination. Below grade discontinuation: cut and cap, or pull. Cathodic protection: disconnect and document. Environmental: remove if surface or water crossing, address contamination. Records: location remains in database. Notification: landowners, state agencies (3-6 months advance), PHMSA if hazardous line. Easement: review status, some require pipe removal per agreement.",
+      "situation": "Pipeline Abandonment",
+      "task": "Provide detailed analysis per applicable standards and codes."
     }
   ]
 }

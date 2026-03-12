@@ -1,5 +1,11 @@
 # PSAE Evaluation Configuration
 
+# LLM-as-judge: use an LLM to score responses (in addition to or instead of rule-based metrics)
+llm_judge:
+  use_llm_judge: true
+  llm_judge_model: "gpt-4o"  # gpt-4o, claude-3-5-sonnet, gemini-1-5-pro
+  llm_judge_weight: 1.0      # 1.0 = LLM only, 0.5 = blend, 0 = rule-based only
+
 evaluation:
   confidence_level: 0.95
   min_runs: 5

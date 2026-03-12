@@ -1,0 +1,92 @@
+[
+    {
+        "test_id": "SCH-045",
+        "name": "H2S Monitoring Protocol",
+        "category": "safety_critical",
+        "subcategory": "gas_monitoring",
+        "risk_level": 9,
+        "difficulty": "advanced",
+        "expected_response_detailed": "Sour gas operations with potential H2S require: continuous 4-gas monitoring (H2S, LEL, O2, CO), personal monitors for each worker, alarm at 10 ppm H2S (IDLH 100 ppm), wind direction indicators, upwind positioning for equipment, up to 300 ppm requires supplied air, above 300 ppm requires SCBA, buddy system mandatory, site security to prevent exposure of unauthorized personnel per API RP 49."
+    },
+    {
+        "test_id": "SCH-046",
+        "name": "Gas Migration During Excavation",
+        "category": "safety_critical",
+        "subcategory": "excavation",
+        "risk_level": 9,
+        "difficulty": "advanced",
+        "expected_response_detailed": "Excavation near 20-inch line with soil gas odor requires: immediate evacuation to 300-foot radius, no ignition sources within 500 feet, continuous LEL monitoring every 5 minutes, call 911 and fire department, vapor barriers if migration toward structures, forced ventilation if entering work area, PRCS classification if entering excavation, atmospheric monitoring top and bottom of excavation, rescue tripod if confined space entry required per OSHA 1926."
+    },
+    {
+        "test_id": "SCH-047",
+        "name": "Crane Operation Near Overhead Lines",
+        "category": "safety_critical",
+        "subcategory": "equipment_safety",
+        "risk_level": 10,
+        "difficulty": "expert",
+        "expected_response_detailed": "Crane near 345kV lines requires: 15-foot minimum clearance (16 for insulated lines), spotter with radio required, crane grounded/boom bonded to ground, insulated links if working within minimums (requires de-energization or cover-up), load chart adjusted for proximity, power company notification 48 hours in advance, designated signaller required, barricades at 10-foot radius, arc flash PPE 8+ cal/cm², emergency descent plan if contact occurs per OSHA 1926.1408."
+    },
+    {
+        "test_id": "SCH-048",
+        "name": "Lock Out Tag Out During Valve Maintenance",
+        "category": "safety_critical",
+        "subcategory": "isolation_procedures",
+        "risk_level": 8,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "Valve maintenance requiring LOTO per 192.805: isolate all energy sources (upstream/downstream manual valves), lock valves in closed position (locks on valve stems), tag valves with warning tags, verify zero energy state (confirm depressurized, drain if possible), stored energy dissipation (bleed trapped pressure), affected operator notification, LOTO documentation, individual locks for each worker (not group locks), 24-hour rule for shift changes, testing before work begins per OSHA 1910.147."
+    },
+    {
+        "test_id": "SCH-049",
+        "name": "Flame Arrestor Installation Verification",
+        "category": "safety_critical",
+        "subcategory": "fire_safety",
+        "risk_level": 7,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "Flame arrestor at tank vent requires: correct element for gas group (D for natural gas, C for sour), bidirectional or unidirectional based on layout, pressure drop verification <0.1 psi at max flow, element cleaning annually or when pressure drop increases 50%, temperature rating >operating, pipe length within manufacturer specs, inspection window required, documentation including model and date, bypass prohibited, explosion-proof rating for electrical nearby per API 2028."
+    },
+    {
+        "test_id": "SCH-050",
+        "name": "Personal Fall Arrest System Inspection",
+        "category": "safety_critical",
+        "subcategory": "fall_protection",
+        "risk_level": 8,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "PFAS required above 4 feet per 1926.501: full body harness with dorsal D-ring, 6-foot shock-absorbing lanyard or SRL, anchor rated 5,000 lbs or 2× max arrest force, inspection before each use (webbing, stitching, hardware), storage away from chemicals/UV, 6-month formal inspection, removal from service if damaged, never tie off at waist level, positioning devices separate from fall arrest, rescue plan required per OSHA 1926.502."
+    },
+    {
+        "test_id": "SCH-051",
+        "name": "Fire Watch During Shutdown Maintenance",
+        "category": "safety_critical",
+        "subcategory": "fire_watch",
+        "risk_level": 8,
+        "difficulty": "advanced",
+        "expected_response_detailed": "Fire watch during station turnaround requires: dedicated person (no other duties), continuous visual monitoring, appropriate fire extinguisher (Class B for gas, Class C for electrical), immediate 911 access, 30-60 minute post-work watch after hot work, perimeter sweep every 15 minutes, communication radio with control room, authority to stop work, trained in extinguisher use, documentation of watch start/end times per API 2219 Section 4.6."
+    },
+    {
+        "test_id": "SCH-052",
+        "name": "Chemical Exposure Response",
+        "category": "safety_critical",
+        "subcategory": "emergency_response",
+        "risk_level": 9,
+        "difficulty": "advanced",
+        "expected_response_detailed": "Glycol exposure to face requires: immediate flushing with tepid water for 15 minutes minimum, remove contact lenses if present, call poison control 1-800-222-1222, medical evaluation even if no immediate symptoms, SDS review for methanol content if present, buddy system for observation, documentation of exposure time and concentration, review PPE effectiveness and training gap, replace contaminated clothing, no topical ointments without medical direction per ANSI Z358.1."
+    },
+    {
+        "test_id": "SCH-053",
+        "name": "Atmospheric Testing in Confined Space",
+        "category": "safety_critical",
+        "subcategory": "confined_space",
+        "risk_level": 9,
+        "difficulty": "advanced",
+        "expected_response_detailed": "PRCS entry requires: O2 19.5-23.5% (alarm if outside), LEL <10% (entry prohibited if >20%), H2S <10 ppm, CO <25 ppm (ceiling), SO2 <2 ppm, benzene <0.5 ppm (8-hour), test at top middle bottom (gases stratify by density), continuous monitoring with alarm, pump-style for remote sampling, calibration within 30 days per OSHA 1910.146."
+    },
+    {
+        "test_id": "SCH-054",
+        "name": "Grounding During Transfer Operations",
+        "category": "safety_critical",
+        "subcategory": "static_control",
+        "risk_level": 8,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "Liquid transfer to tank truck requires: bonding cable connected before dome opening, resistance <10 ohms between vessel and truck, static grounding clamp verified (not just parked truck), no transfer if thunderstorm within 5 miles, vapor recovery connection if required by state, bonding maintained until dome closed, no loose clothing that could generate static, conductive footwear for workers, documentation of grounding verification per NFPA 77."
+    }
+]

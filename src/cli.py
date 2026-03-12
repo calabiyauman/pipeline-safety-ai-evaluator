@@ -21,7 +21,7 @@ try:
     from .utils.reporting import ReportGenerator
     from .utils.benchmark_manifest import validate_manifest, sign_manifest, verify_manifest_signature
 except ImportError:
-    __version__ = "1.0.0"
+    __version__ = "0.1.0"
     from core.evaluator import PipelineSafetyEvaluator
     from models import OpenAIWrapper, AnthropicWrapper, GeminiWrapper
     from scenarios.base import load_builtin_suite, TestSuite
@@ -32,6 +32,7 @@ except ImportError:
 MODEL_CHOICES = [
     "gpt-4",
     "gpt-4-turbo",
+    "gpt-4o",
     "claude-3-5-sonnet",
     "claude-3-opus",
     "gemini-1-5-pro",
@@ -47,8 +48,12 @@ def _load_yaml(path: str) -> Dict[str, Any]:
 
 
 def _build_model(name: str):
-    if name in ("gpt-4", "gpt-4-turbo"):
-        model_id = "gpt-4" if name == "gpt-4" else "gpt-4-turbo-preview"
+    if name in ("gpt-4", "gpt-4-turbo", "gpt-4o"):
+        model_id = {
+            "gpt-4": "gpt-4",
+            "gpt-4-turbo": "gpt-4-turbo-preview",
+            "gpt-4o": "gpt-4o",
+        }[name]
         return OpenAIWrapper(api_key=os.getenv("OPENAI_API_KEY"), model=model_id)
     if name in ("claude-3-5-sonnet", "claude-3-opus"):
         model_id = (
@@ -75,7 +80,15 @@ def _load_evaluation_suite(args: argparse.Namespace) -> TestSuite:
 
 
 def cmd_evaluate(args: argparse.Namespace) -> None:
-    evaluator = PipelineSafetyEvaluator(config_path=args.config, output_dir=args.output)
+    overrides = {}
+    if getattr(args, "llm_judge", False):
+        overrides["use_llm_judge"] = True
+    overrides["min_runs"] = args.runs
+    evaluator = PipelineSafetyEvaluator(
+        config_path=args.config,
+        output_dir=args.output,
+        config_overrides=overrides,
+    )
     model = _build_model(args.model)
     suite = _load_evaluation_suite(args)
 
@@ -104,8 +117,16 @@ def cmd_compare(args: argparse.Namespace) -> None:
     reporter = ReportGenerator(args.output)
     comparison: Dict[str, Any] = {"models": {}, "summary": {}}
 
+    overrides = {}
+    if getattr(args, "llm_judge", False):
+        overrides["use_llm_judge"] = True
+    overrides["min_runs"] = args.runs
     for model_name in model_names:
-        evaluator = PipelineSafetyEvaluator(config_path=args.config, output_dir=args.output)
+        evaluator = PipelineSafetyEvaluator(
+            config_path=args.config,
+            output_dir=args.output,
+            config_overrides=overrides,
+        )
         model = _build_model(model_name)
         result = evaluator.evaluate(model=model, test_suite=suite, runs=args.runs)
         comparison["models"][model_name] = result.get("summary", {})
@@ -221,12 +242,22 @@ def build_parser() -> argparse.ArgumentParser:
     eval_parser.add_argument("--output", default="./results", help="Output directory")
     eval_parser.add_argument("--no-abnormal", action="store_true", help="Skip abnormal condition tests")
     eval_parser.add_argument("--no-html", action="store_true", help="Skip HTML report generation")
+    eval_parser.add_argument(
+        "--llm-judge",
+        action="store_true",
+        help="Use LLM-as-judge for scoring (requires OPENAI_API_KEY or judge model API key)",
+    )
 
     compare_parser = subparsers.add_parser("compare", help="Compare models")
     compare_parser.add_argument("--models", required=True, help="Comma-separated model names")
     compare_parser.add_argument("--runs", type=int, default=3, help="Number of runs per test")
     compare_parser.add_argument("--config", help="Configuration file path")
     compare_parser.add_argument("--output", default="./results", help="Output directory")
+    compare_parser.add_argument(
+        "--llm-judge",
+        action="store_true",
+        help="Use LLM-as-judge for scoring",
+    )
 
     validate_parser = subparsers.add_parser("validate-config", help="Validate configuration")
     validate_parser.add_argument("config", help="Config file to validate")

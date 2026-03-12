@@ -1,0 +1,10 @@
+{
+  "metadata": {"test": "agent_write_test"},
+  "test_cases": [
+    {
+      "test_id": "TEST-001",
+      "name": "Agent Write Test",
+      "category": "test"
+    }
+  ]
+}

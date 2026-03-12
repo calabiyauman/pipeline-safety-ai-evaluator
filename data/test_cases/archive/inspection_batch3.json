@@ -1,0 +1,75 @@
+{
+  "name": "inspection_batch3",
+  "test_cases": [
+    {
+      "test_id": "INSP-033",
+      "name": "Visual Weld Inspector Qualifications",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "API 1169 requirements: 3+ years experience, OR Level II MT/PT/UT certification, OR engineering degree with 1 year experience. Eye exam annually (Snellen 20/25 near and far, Jaeger #2). Color vision assessment for fluorescent inspection. Written practical examination by API. Recertification 3 years. AWS CWI also acceptable with NDT endorsements. Continuing education 15 hours per recertification period."
+    },
+    {
+      "test_id": "INSP-034",
+      "name": "Dimensional Tolerance Check",
+      "category": "inspection",
+      "difficulty": "basic",
+      "expected_response_detailed": "API 5L tolerances: wall thickness -12.5% to +15% on average, -10% at any point. OD ±1% for 2+\", weight ±6.5%. Straightness 0.2% of length. End squareness 1.5 mm or 1.6 mm depending on OD. Pipe end bevel 30°+5°-0°. Length variation +50mm/-0mm for random. Measurement tools: ultrasonic thickness gauge (calibrated), pi tape for OD, laser straightness, visual squareness gauge."
+    },
+    {
+      "test_id": "INSP-035",
+      "name": "Phased Array Weld Scan Plan",
+      "category": "inspection",
+      "difficulty": "expert",
+      "expected_response_detailed": "PAUT per ASME V: sectorial scan angles 40-70° for butt welds. Number of elements 16-64. Focal laws calculated for beam coverage of full weld volume. Calibration on IIW block and AWS block for TC and amplitude. TCG (time-corrected gain) for depth compensation. Gate placement 0-200% of thickness. A-scan, S-scan, C-scan display modes. Encoder for mapping. DAC (distance amplitude correction). Procedure qualification essential variable compliance."
+    },
+    {
+      "test_id": "INSP-036",
+      "name": "Positive Material Identification",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "PMI methods: XRF handheld ( portable, quick), OES (accurate, larger sample), LIBS (carbon content capable). API 578 requires PMI for alloy materials at receipt, in-service, after repair. Testing points: random 10% minimum for critical service, 100% for high-temperature or sour service. Elements: Cr, Ni, Mo content verification against material cert. Documentation: heat number traceability. Resolution: 0.1% typically. Safety: laser eye protection, radiation awareness for XRF."
+    },
+    {
+      "test_id": "INSP-037",
+      "name": "Coating Mill Application QC",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "FBE process: surface prep Sa 2.5, anchor profile 2.0-4.0 mils, preheat 400-550°F, powder application 15-25 mils, gel time 8-12 seconds, cure schedule 3 minutes at 450°F. Holiday testing 67.5 V. Adhesion test: pull-off 500+ psi or Elcometer. Bend test 2.5°/D without disbondment. Cathodic disbondment: 1/8-inch max at 28 days. Impact: 80 in-lbs at 0°F. Mill certification review required."
+    },
+    {
+      "test_id": "INSP-038",
+      "name": "Pipe-to-Soil Potential Measurement",
+      "category": "inspection",
+      "difficulty": "basic",
+      "expected_response_detailed": "NACE SP0169: copper-copper sulfate reference electrode (CSE) standard. Measurement: digital voltmeter (high impedance 10 Mohm). Probe placement: 1-3 feet from pipe, in native soil not backfill. IR drop elimination: current interrupter, instant-off method. Potential criteria: -850 mV CSE (energized), -850 mV or more negative (instant-off), 100 mV polarization shift minimum. Test stations every mile maximum, more frequent in high consequence areas."
+    },
+    {
+      "test_id": "INSP-039",
+      "name": "Guided Wave Screening Distance",
+      "category": "inspection",
+      "difficulty": "advanced",
+      "expected_response_detailed": "GWT setup: torsional or longitudinal modes, frequency selection 16-128 kHz typically. Range: 60-foot from transducer ring (coated), 30-foot uncoated, 120-foot in liquid-filled if coated. Resolution: 2-5% CSA detectable at 30 feet, 10% at 60 feet. Fitting flex indicator: bends, tees, supports create echoes. Screening identifies regions of interest, not flaw sizing. Dig verification required for anomalies. Reference standard for calibration. Temperature range -4°F to 140°F operation."
+    },
+    {
+      "test_id": "INSP-040",
+      "name": "In-Line Inspection Tool Selection",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "MFL for metal loss (general corrosion, pitting). UT for crack detection (axial, circumferential, SCC). Geometry for dents, ovality. EMAT for no-contact requirement (high temp). Caliper for internal geometry. Tool selection based on: threat identification, pipeline geometry, product, operating conditions. Speed requirement: 1-10 ft/sec. Passage feasibility: minimum radius check, valve bore check, launcher/receiver sizing. Data quality specification: depth accuracy ±10%, location ±1% length."
+    },
+    {
+      "test_id": "INSP-041",
+      "name": "SCC Detection Methods",
+      "category": "inspection",
+      "difficulty": "expert",
+      "expected_response_detailed": "High pH SCC: colony morphology, intergranular cracking. Near-neutral pH: transgranular, wide cracks. Detection: high-resolution MFL for clusters (not individual cracks), ultrasonic crack detection ( shear wave or phased array for axial cracks, circumferential for girth weld SCC). Hydrostatic testing: proof pressure to 1.5× MAOP for surviving cracks. SCCDA direct assessment per NACE SP0204. Crack sizing critical for FFS assessment per API 579. Excavation and coating removal for direct visual with MT/PT confirmation."
+    },
+    {
+      "test_id": "INSP-042",
+      "name": "Casing Assessment Requirements",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Casing pipe external corrosion: visual and UT for wall thickness. CP effectiveness: electrical isolation maintained (test station), insulator inspection annually. Shorts: metallic contact between carrier and casing. Flooding: casing vents inspection, end seals. Cathodic protection: casing not protectively coated, may require separate CP. Assessment intervals: external every 5 years, hydrostatic if internal corrosion suspected. Short creates shielding, not immediate hazard but reduces CP effectiveness on carrier. Repair: short removal, vent inspection, re-establish isolation."
+    }
+  ]
+}

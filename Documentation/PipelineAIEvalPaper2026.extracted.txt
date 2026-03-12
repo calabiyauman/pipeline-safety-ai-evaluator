@@ -1,0 +1,235 @@
+Pipeline Safety AI Evaluator (PSAE): A Rigorous Framework for Evaluating AI Systems in Pipeline Safety-Critical Applications
+Author: Pipeline AI Solutions Research Team
+Contact: dcarnahan@pipelinegpt.ai
+Version: 1.0.0
+Date: March 6, 2026
+Abstract
+The deployment of artificial intelligence (AI) systems in pipeline safety-critical applications presents unique evaluation challenges. Existing AI benchmarks focus on general-domain tasks and fail to address the high-stakes nature of pipeline operations, where incorrect recommendations can result in catastrophic failures, environmental disasters, or loss of life. We introduce the **Pipeline Safety AI Evaluator (PSAE)**, a comprehensive framework for rigorous evaluation of AI systems in pipeline engineering and safety applications.
+PSAE implements an 11-dimensional evaluation taxonomy addressing accuracy, relevance, safety compliance, completeness, technical depth, and source utilization. The framework incorporates the STAR-R methodology (Situation, Task, Action, Result, Risk) for scenario-based testing and introduces abnormal condition testing. A novel approach to evaluating AI robustness under equipment failures, environmental anomalies, and human factors. Statistical validation is achieved through confidence intervals, inter-rater reliability analysis, and comparison against human expert baselines.
+This paper presents the PSAE framework, its theoretical foundations in safety-critical systems theory, and preliminary results from evaluating leading large language models (GPT-4, Claude 3.5 Sonnet, Gemini 1.5 Pro) against a corpus of 24 hand-crafted test scenarios aligned with industry standards (API 1104, ASME B31.8, NACE SP0169, 49 CFR 192). Results demonstrate significant gaps in AI performance on safety-critical scenarios, with models scoring 85-87% overall but only 79-91% on safety compliance—below the 94% human expert baseline. These findings underscore the necessity for specialized evaluation frameworks in high-risk domains before widespread AI deployment.
+1. Introduction
+1.1 Motivation
+The natural gas pipeline industry in the United States operates approximately 3 million miles of pipelines transporting energy resources to homes, businesses, and industrial facilities[^1]. These systems operate under high pressures (up to 1,440 psig) with catastrophic failure consequences including explosions, fires, environmental contamination, and fatalities[^2].
+Recent advances in large language models (LLMs) have demonstrated potential for knowledge work in engineering domains [^3]. However, evaluating these systems for safety-critical applications requires specialized methodologies beyond traditional NLP benchmarks. Standard benchmarks (e.g., MMLU, HumanEval) measure general knowledge and coding ability but fail to assess domain-specific safety compliance, technical calculation accuracy, and hazard recognition—critical competencies for pipeline operations.
+The Pipeline and Hazardous Materials Safety Administration (PHMSA) reported 98 pipeline incidents in 2023 resulting in 14 fatalities and over $300 million in damage [^4]. Many incidents stem from procedural failures, inadequate training, or miscommunication [^5]. AI systems, if properly validated, could augment human decision-making but only if they demonstrate consistent reliability under both normal and abnormal operating conditions.
+1.2 Problem Statement
+Current AI evaluation suffers from three critical gaps in pipeline applications:
+1. Domain Mismatch: General benchmarks lack pipeline-specific content (e.g., welding codes, corrosion assessment, regulatory compliance)
+2. Safety Blindness: No existing benchmark emphasizes safety-critical failures—an AI that performs well on general questions may provide dangerous recommendations in safety scenarios
+3. Abnormal Condition Neglect: Real-world operations involve equipment failures, unexpected conditions, and time pressure—standard benchmarks test only nominal scenarios
+1.3 Contribution
+We present PSAE, the first comprehensive evaluation framework specifically designed for AI systems in pipeline safety-critical applications. PSAE makes three primary contributions:
+1. STAR-R Methodology: A structured test case format incorporating real-world scenario complexity, risk assessment, and abnormal condition variants
+2. Risk-Adjusted Scoring: Multipliers and penalties that weight safety-critical failures exponentially higher than informational errors
+3. Abnormal Condition Testing: Systematic evaluation of AI performance under equipment failures, environmental stressors, and human factors
+------------------------------------------------------------------------------------------------------------------------------------------
+2. Theoretical Foundation
+2.1 Safety-Critical Systems Theory
+PSAE is grounded in Leveson's STAMP (Systems-Theoretic Accident Model and Processes) framework [^6], which recognizes safety emerges from interactions between technical systems, human operators, organizational context, and environmental factors. This holistic view necessitates evaluating AI not in isolation but as a component of a socio-technical system.
+2.2 Human-AI Collaboration Framework
+Following Amershi et al.'s guidelines for human-AI interaction [^7], PSAE evaluates AI systems across 18 dimensions including:
+- System capability transparency (G1-G2)
+- Contextual relevance (G3-G5)
+- Error recovery support (G7-G8)
+- Explanation provision (G17)
+2.3 Statistical Rigor Standards
+PSAE incorporates statistical validation requirements from NIST AI RMF 1.0[^8]:
+- Minimum 5 runs per scenario for variance estimation
+- 95% confidence intervals on all reported scores
+- Inter-rater reliability (Cohen's κ ≥ 0.8)
+- Effect size reporting (Cohen's d)
+3. PSAE Framework
+3.1 Evaluation Taxonomy
+PSAE implements an 11-dimensional evaluation framework:
+Metric
+Weight
+Description
+Accuracy
+25%
+Information correctness, calculation accuracy, code compliance
+Relevance
+20%
+Domain appropriateness, technical precision, practical applicability
+Safety
+20%
+Protocol adherence, hazard recognition, emergency preparedness
+Completeness
+15%
+Coverage of all question aspects, appropriate depth
+Technical Depth
+10%
+Formula rigor, engineering principles, system understanding
+Sources
+10%
+Reference appropriateness, citation accuracy
+Secondary metrics include error penalties, standard compliance (pass/fail), and human-AI collaborative performance.
+3.2 Risk-Adjusted Scoring
+Safety-critical scenarios receive multipliers and penalties:
+| Test Category | Risk | Multiplier | Penalty Weight |
+|--------------|------|------------|----------------|
+| Safety-Critical | 10/10 | 1.3x | 2.0x |
+| High-Risk | 8-9/10 | 1.2x | 1.5x |
+| Standard | 5-7/10 | 1.0x | 1.0x |
+| Informational | 1-4/10 | 0.9x | 0.5x |
+Error penalties:
+- Minor error: -2 points
+- Moderate error: -5 points
+- Serious error: -10 points
+- Critical error: -25 points
+- Catastrophic error: -50 points (automatic fail)
+3.3 STAR-R Framework
+Each test case follows STAR-R structure:
+Situation: Operational context, environmental conditions, system state
+Task: Specific objective with success criteria
+Action: Expected correct procedure from human expert baseline
+Result: Desired outcome metrics and verification
+Risk: Consequences of AI failure (safety-critical addition)
+3.4 Abnormal Condition Testing
+Novel Contribution: PSAE includes systematic testing of abnormal conditions based on PHMSA incident analysis:
+Category A: Equipment Failures
+- A/C failure during operation
+- Sensor malfunction
+- Communication loss
+- Power interruption
+Category B: Environmental Anomalies
+- Unexpected H2S detection
+- Pressure spikes
+- Temperature extremes
+- Weather events
+Category C: Human Factors
+- Operator fatigue (14+ hour shifts)
+- Time pressure
+- Information overload
+- Communication errors
+Category D: System Degradation
+- Cascade failures
+- Partial shutdowns
+4. Test Case Development
+4.1 Test Suite Organization
+The PSAE test suite comprises 24 core test cases organized by category:
+Safety-Critical (8 tests, Risk Level 10)
+- Hot Tapping Safety Protocols (API 1104)
+- Emergency Gas Leak Response (49 CFR 192.615)
+- Confined Space Entry (OSHA 1910.146)
+- Excavation Near Pipeline (49 CFR 192.614)
+- Valve Operation Under Pressure (API 6D)
+- Compressor Station Emergency Shutdown (API 618)
+- Fire at Pipeline Facility (NFPA 30)
+- Sour Gas Release Response (H2S contingency)
+Engineering-Critical (8 tests, Risk Level 8-9)
+- Control Valve Cv Calculation (ISA-75.01)
+- ASME B31.8 Hydrostatic Testing
+- Sour Gas Material Selection (NACE MR0175)
+- Natural Gas Flow Calculation (AGA Report No. 8)
+- Cathodic Protection Design (NACE SP0169)
+- Pipeline Stress Analysis (ASME B31.8)
+- Leak Detection System Design (API 1130)
+- Compressor Sizing (API 618)
+Inspection-Critical (4 tests, Risk Level 7-9)
+- Sour Gas Corrosion Detection
+- Smart Pigging Data Analysis (API 1163)
+- External Corrosion Assessment (NACE SP0502)
+- Weld Inspection Protocols (API 1104)
+Regulatory (4 tests, Risk Level 5-6)
+- API Valve Standards Comparison
+- PHMSA Compliance Assessment
+- O&M Manual Development (49 CFR 192.605)
+- MAOP Verification (49 CFR 192.619)
+4.2 Standards Alignment
+Each test case references authoritative standards including API 1104, ASME B31.8, NACE SP0169, NACE MR0175, 49 CFR 192, AGA Report No. 8, API 1163, and API 1160.
+4.3 Human Expert Baseline
+All test cases include pre-scored baseline responses from licensed Professional Engineers (PE) with 15+ years of pipeline experience. Inter-rater reliability shows Cohen's κ = 0.85 across test cases.
+---
+5. Statistical Methodology
+5.1 Experimental Design
+Minimum Requirements:
+- Confidence level: 95%
+- Runs per scenario: 5 minimum
+- Statistical tests: ANOVA, Tukey HSD, Cohen's d, ICC
+Power Analysis:
+Minimum 63 samples per group for 80% power to detect medium effect size (d = 0.5).
+5.2 Score Calculation
+```
+Final_Score = μ_runs ± 1.96 × (σ/√n)
+```
+Where μ is mean, σ is standard deviation, n is number of runs.
+5.3 Comparative Analysis
+Statistical comparison across models includes one-way ANOVA, Tukey HSD post-hoc tests, Cohen's d effect size, and ICC for inter-rater reliability.
+------------------------------------------------------------------------------------------------------------------------------------------
+6. Preliminary Results
+6.1 Model Performance
+Evaluation of leading LLMs (March 2026):
+https://github.com/calabiyauman/pipeline-safety-ai-evaluator
+Model
+Overall Score
+Safety Score
+Engineering
+Abnormal
+Human Expert
+94.2 ± 2.1
+97.5 ± 1.8
+92.3 ± 2.5
+95.1 ± 2.0
+GPT-4 Turbo
+87.4 ± 3.2
+91.2 ± 2.9
+86.7 ± 3.4
+79.3 ± 4.1
+Claude 3.5 Sonnet
+85.1 ± 3.5
+89.4 ± 3.1
+84.2 ± 3.6
+76.8 ± 4.5
+Gemini 1.5 Pro
+82.3 ± 3.8
+87.1 ± 3.4
+81.5 ± 3.9
+73.2 ± 4.8
+6.2 Key Findings
+1. Safety Gap: All AI models score 6-10 percentage points below human experts on safety-critical scenarios
+2. Abnormal Condition Vulnerability: Performance drops 8-12% in abnormal conditions
+3. No Statistical Parity: No AI model achieves scores within human expert confidence interval
+6.3 Failure Mode Analysis
+Critical Errors:
+- GPT-4: Recommended welding on pressurized pipeline in 2/5 abnormal runs
+- Claude: Failed to identify incomplete penetration as auto reject
+- Gemini: CP current calculation error (off by 200%)
+------------------------------------------------------------------------------------------------------------------------------------------
+7. Discussion
+7.1 Implications for AI Deployment
+Results suggest current LLMs are not ready for unsupervised deployment in pipeline safety-critical applications. Recommended deployment: Human-AI collaborative with AI providing recommendations requiring expert validation.
+7.2 Framework Limitations
+- Static evaluation vs. dynamic operations
+- Limited context vs. decades of tacit knowledge
+- No causal claims validated
+7.3 Future Work
+Phase 2: Expand to 50 test cases, simulation environments
+Phase 3: Pilot with operators, historical retrospective
+Phase 4: API/ASME standardization proposal
+------------------------------------------------------------------------------------------------------------------------------------------
+8. Conclusion
+The Pipeline Safety AI Evaluator provides rigorous evaluation infrastructure for AI systems in safety-critical pipeline applications. Preliminary results demonstrate significant gaps requiring human oversight. The pursuit of AI in safety-critical domains demands humility, rigor, and unwavering commitment to safety above convenience.
+------------------------------------------------------------------------------------------------------------------------------------------
+References
+[^1]: PHMSA. (2024). *Pipeline Incident 20-Year Trends*.
+[^2]: NTSB. (2011). *San Bruno Pipeline Rupture Report*.
+[^3]: OpenAI. (2024). *GPT-4 Technical Report*.
+[^4]: PHMSA. (2024). *Annual Report on Pipeline Safety*.
+[^5]: GAO. (2023). *Pipeline Safety Report*.
+[^6]: Leveson. (2016). *Engineering a Safer World*. MIT Press.
+[^7]: Amershi et al. (2019). *CHI Guidelines for Human-AI Interaction*.
+[^8]: NIST. (2023). *AI Risk Management Framework 1.0*.
+[^9]: Montgomery. (2017). *Design and Analysis of Experiments*. Wiley.
+------------------------------------------------------------------------------------------------------------------------------------------
+Appendix
+A. Repository Information
+Code: https://github.com/pipelinegpt/psae
+Documentation: https://pipelinegpt.ai/psae/docs
+B. Test Case Example
+Test ID: WLD-001
+Category: Safety-Critical Inspection
+Risk Level: 10/10
+Full test cases with expected answers and scoring rubrics available in benchmark_sources directory.
+------------------------------------------------------------------------------------------------------------------------------------------
+**License**: MIT License for research and educational purposes
+**Disclaimer**: For evaluation and research only. Consult qualified professionals for actual operations.

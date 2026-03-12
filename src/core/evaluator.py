@@ -8,6 +8,7 @@ Implements the STAR-R test methodology and multi-dimensional scoring.
 
 import json
 import logging
+import os
 import time
 import platform
 from pathlib import Path
@@ -19,12 +20,14 @@ from tqdm import tqdm
 try:
     from .metrics import MetricCalculator
     from .statistical import StatisticalAnalyzer
+    from .llm_judge import LLMJudge
     from ..scenarios.base import TestScenario, TestSuite, AbnormalVariant
     from ..models.ai_interface import AIModelInterface
 except ImportError:
     # Fallback for direct module execution before full packaging is finalized.
     from core.metrics import MetricCalculator
     from core.statistical import StatisticalAnalyzer
+    from core.llm_judge import LLMJudge
     from scenarios.base import TestScenario, TestSuite, AbnormalVariant
     from models.ai_interface import AIModelInterface
 
@@ -118,7 +121,8 @@ class PipelineSafetyEvaluator:
         self,
         config_path: Optional[str] = None,
         output_dir: str = "./results",
-        verbose: bool = True
+        verbose: bool = True,
+        config_overrides: Optional[Dict[str, Any]] = None,
     ):
         """
         Initialize the evaluator.
@@ -127,8 +131,11 @@ class PipelineSafetyEvaluator:
             config_path: Path to evaluation configuration YAML
             output_dir: Directory for output reports
             verbose: Enable detailed logging
+            config_overrides: Optional dict merged into config (e.g. {"use_llm_judge": True})
         """
         self.config = self._load_config(config_path)
+        if config_overrides:
+            self.config.update(config_overrides)
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.verbose = verbose
@@ -138,6 +145,17 @@ class PipelineSafetyEvaluator:
         self.statistical_analyzer = StatisticalAnalyzer(
             confidence_level=self.config.get("confidence_level", 0.95)
         )
+        
+        # LLM judge (optional)
+        self.llm_judge: Optional[LLMJudge] = None
+        self.llm_judge_weight: float = float(self.config.get("llm_judge_weight", 1.0))
+        if self.config.get("use_llm_judge", False):
+            judge_model = self._build_judge_model()
+            if judge_model:
+                self.llm_judge = LLMJudge(judge_model)
+                logger.info(f"LLM judge enabled ({self.llm_judge_weight:.0%} weight)")
+            else:
+                logger.warning("LLM judge requested but model could not be built; using rule-based only")
         
         # Results storage
         self.results: List[EvaluationResult] = []
@@ -181,6 +199,39 @@ class PipelineSafetyEvaluator:
         
         return default_config
 
+    def _build_judge_model(self) -> Optional[AIModelInterface]:
+        """Build the LLM judge model from config."""
+        model_name = str(self.config.get("llm_judge_model", "gpt-4o")).strip().lower()
+        try:
+            if model_name in ("gpt-4", "gpt-4-turbo", "gpt-4o"):
+                try:
+                    from ..models import OpenAIWrapper
+                except ImportError:
+                    from models import OpenAIWrapper
+                model_id = "gpt-4" if model_name == "gpt-4" else (
+                    "gpt-4-turbo-preview" if model_name == "gpt-4-turbo" else "gpt-4o"
+                )
+                return OpenAIWrapper(api_key=os.getenv("OPENAI_API_KEY"), model=model_id)
+            if model_name in ("claude-3-5-sonnet", "claude-3-opus"):
+                try:
+                    from ..models import AnthropicWrapper
+                except ImportError:
+                    from models import AnthropicWrapper
+                model_id = (
+                    "claude-3-5-sonnet-20241022" if model_name == "claude-3-5-sonnet"
+                    else "claude-3-opus-20240229"
+                )
+                return AnthropicWrapper(api_key=os.getenv("ANTHROPIC_API_KEY"), model=model_id)
+            if model_name in ("gemini-1-5-pro", "gemini-1.5-pro"):
+                try:
+                    from ..models import GeminiWrapper
+                except ImportError:
+                    from models import GeminiWrapper
+                return GeminiWrapper(api_key=os.getenv("GOOGLE_API_KEY"), model="gemini-1.5-pro")
+        except Exception as e:
+            logger.warning(f"Could not build judge model: {e}")
+        return None
+
     def _normalize_config(self, config: Dict[str, Any]) -> Dict[str, Any]:
         """
         Normalize both flat and nested config schemas into evaluator internals.
@@ -204,6 +255,9 @@ class PipelineSafetyEvaluator:
             "metrics_weights",
             "penalty_weights",
             "statistical_tests",
+            "use_llm_judge",
+            "llm_judge_model",
+            "llm_judge_weight",
         ]:
             if key in config:
                 normalized[key] = config[key]
@@ -240,6 +294,15 @@ class PipelineSafetyEvaluator:
 
         if isinstance(config.get("statistical_tests"), list):
             normalized["statistical_tests"] = config["statistical_tests"]
+
+        llm_judge = config.get("llm_judge", {})
+        if isinstance(llm_judge, dict):
+            if "use_llm_judge" in llm_judge:
+                normalized["use_llm_judge"] = llm_judge["use_llm_judge"]
+            if "llm_judge_model" in llm_judge:
+                normalized["llm_judge_model"] = llm_judge["llm_judge_model"]
+            if "llm_judge_weight" in llm_judge:
+                normalized["llm_judge_weight"] = llm_judge["llm_judge_weight"]
 
         output = config.get("output", {})
         if isinstance(output, dict):
@@ -374,13 +437,28 @@ class PipelineSafetyEvaluator:
             logger.error(f"Model query failed: {e}")
             ai_response = f"[ERROR: {str(e)}]"
         
-        # Calculate metrics
-        metrics = self.metric_calculator.calculate(
+        # Calculate metrics (rule-based and/or LLM judge)
+        rule_metrics = self.metric_calculator.calculate(
             ai_response,
             scenario.expected_elements,
             scenario.expected_standards,
             scenario.category
         )
+        
+        if self.llm_judge and self.llm_judge_weight > 0:
+            llm_metrics = self.llm_judge.score(ai_response, scenario)
+            # Blend rule-based and LLM scores
+            w = self.llm_judge_weight
+            metrics = {}
+            for name in ["accuracy", "relevance", "safety", "completeness", "technical_depth", "sources"]:
+                r_score = rule_metrics.get(name, {})
+                l_score = llm_metrics.get(name, {})
+                r_val = float(r_score.get("score", 0)) if isinstance(r_score, dict) else float(r_score)
+                l_val = float(l_score.get("score", 0)) if isinstance(l_score, dict) else float(l_score)
+                blended = (1 - w) * r_val + w * l_val
+                metrics[name] = {"score": blended, "rule": r_val, "llm": l_val}
+        else:
+            metrics = rule_metrics
         
         # Apply risk multiplier
         risk_multiplier = self.RISK_MULTIPLIERS.get(scenario.risk_level, 1.0)

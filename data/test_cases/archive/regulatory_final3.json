@@ -1,0 +1,41 @@
+[
+    {
+        "test_id": "REG-022",
+        "name": "Drug Testing Program Compliance",
+        "category": "regulatory",
+        "subcategory": "operator_qualification",
+        "risk_level": 7,
+        "difficulty": "intermediate",
+        "time_limit_minutes": 15,
+        "situation": "Pipeline company employs 47 operators subject to DOT drug testing. Last year: 38 post-incident tests conducted, 3 positive results. Currently: 8 covered tasks identified, all operators qualified per 192.805. Testing policy last reviewed 2019. Random testing rate: 25% annually (12 operators). Consortium used for collections. MRO process in place.",
+        "task": "Evaluate compliance per 49 CFR 199 and 192.805. Review testing rates, assess positive cases, verify MRO procedures, determine notification requirements.",
+        "expected_response_detailed": "25% random rate meets minimum. 3 positives require MRO verification and removal from covered tasks until successful completion of SAP program per 192.805(c). Annual policy review overdue (2019 > current). Post-incident testing 38 shows commitment to safety. Consortium acceptable if chain of custody maintained. Notification to PHMSA within 5 days for any positive.",
+        "expected_elements": ["25% meets minimum", "3 positives need SAP", "Policy review overdue", "MRO required", "PHMSA notification 5 days"],
+        "critical_elements": ["Random rate compliance", "SAP requirement", "MRO process", "192.805"],
+        "total_possible_points": 100
+    },
+    {
+        "test_id": "REG-023",
+        "name": "Public Awareness Program Evaluation",
+        "category": "regulatory",
+        "subcategory": "public_awareness",
+        "risk_level": 6,
+        "difficulty": "basic",
+        "time_limit_minutes": 12,
+        "situation": "Pipeline traverses rural area transitioning to suburban. Current public awareness: Mailings to affected public every 2 years, One-call education via billboards, School presentations conducted annually. Complaint: Resident called stating no knowledge of pipeline despite being within 200 feet. Records show mailing sent 18 months ago.",
+        "task": "Assess compliance per API RP 1162. Evaluate notification timing, determine affected public requirements, identify program gaps, specify corrective actions.",
+        "expected_response_detailed": "2-year cycle borderline (annually recommended per RP 1162). 18 months since mailing within 2-year window acceptable but minimum. 200-foot resident MUST receive direct notification annually. One-call billboards insufficient - need door hangers for new residents. School presentations good practice. Corrective: Immediate mailing to complaining resident, annual cycle recommended, identify and notify all properties within 220 yards per 192.805."
+    },
+    {
+        "test_id": "REG-024",
+        "name": "Damage Prevention - One-Call Coordination",
+        "category": "regulatory",
+        "subcategory": "damage_prevention",
+        "risk_level": 8,
+        "difficulty": "intermediate",
+        "time_limit_minutes": 18,
+        "situation": "Excavation strike occurred at unmarked 8-inch service line. Investigation reveals: One-call ticket valid, locate contractor marked mainline but missed service, Service installed 1987 with no as-builts, Current locate accuracy requirement: ±18 inches horizontal, Excavator followed marks, Damage: 2-inch gouge, no leak.",
+        "task": "Evaluate compliance per 192.614 and API RP 1166. Assess locate performance, determine root cause, specify corrective actions, evaluate accuracy standards.",
+        "expected_response_detailed": "One-call valid per 192.614, excavator followed marks, locate contractor responsible for service line marking if within scope. 1987 service without records problematic. Root cause: incomplete mapping database. ±18 inches standard appropriate. Corrective: Update GIS database with service line location, field verify all similar services, enhanced training for locate contractors, consider inline inspection for verification. PHMSA notification required within 5 days if reportable damage."
+    }
+]

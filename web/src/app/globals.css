@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --psae-amber: #f59e0b;
+  --psae-slate: #1e293b;
+  --psae-slate-light: #334155;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}

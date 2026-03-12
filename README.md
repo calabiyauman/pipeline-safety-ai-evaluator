@@ -7,7 +7,7 @@
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![CI](https://github.com/calabiyauman/pipeline-safety-ai-evaluator/actions/workflows/ci.yml/badge.svg)](https://github.com/calabiyauman/pipeline-safety-ai-evaluator/actions/workflows/ci.yml)
 
-**Status:** Version 1.0.0 | **Maintained by:** Pipeline AI Solutions LLC  
+**Status:** Version 0.1.0 | **Maintained by:** Pipeline AI Solutions LLC  
 **Research Paper:** [In Preparation] | **Conference Submission:** 
 
 ---
@@ -385,7 +385,7 @@ This evaluation framework is based on:
   author = {Carnahan, Doug and et al.},
   year = {2026},
   url = {https://github.com/calabiyauman/pipeline-safety-ai-evaluator},
-  version = {1.0.0}
+  version = {0.1.0}
 }
 
 @article{chen2024fairness,

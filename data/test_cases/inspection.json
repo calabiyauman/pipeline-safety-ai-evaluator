@@ -2,176 +2,465 @@
   "metadata": {
     "file_name": "inspection.json",
     "description": "Inspection and testing test cases",
-    "total_tests": 2,
+    "total_tests": 45,
     "created_date": "2026-03-07",
     "version": "1.0"
   },
   "test_cases": [
     {
-      "test_id": "CP-002",
-      "name": "Cathodic Protection Interference Testing",
+      "test_id": "INSP-001",
+      "name": "Radiographic Testing - Weld Defect Interpretation",
       "category": "inspection",
-      "subcategory": "cp_monitoring",
-      "risk_level": 7,
-      "difficulty": "intermediate",
-      "time_limit_minutes": 15,
-      "situation": "Two pipelines share a common transportation corridor for approximately 2 miles. Pipeline A is a 24-inch natural gas transmission line installed in 2010 with an impressed current cathodic protection system designed for -1,100 mV CSE protection potential. Pipeline B is a 16-inch crude oil pipeline installed in 1985 with no cathodic protection system, having a measured native potential of -650 mV CSE in the area. Pipeline B has experienced accelerated corrosion failures in the 500-foot section near the crossing with Pipeline A, including through-wall pitting that caused a small release 6 months ago. Investigation shows Pipeline B's potential varies between -850 mV (near crossing) and -650 mV (distant from crossing). The corrosion pattern is localized to the interference zone.",
-      "task": "Diagnose the corrosion mechanism, determine current flow direction, develop a testing protocol to confirm interference, and recommend appropriate mitigation measures per NACE SP0169 Section 10.",
-      "expected_response": "DC interference analysis and mitigation per NACE SP0169.",
-      "expected_response_detailed": "## DC Interference Analysis\n\n### Step 1: Mechanism Identification\n\n**Primary Diagnosis: DC STRAY CURRENT INTERFERENCE**\n\nThe evidence strongly indicates DC cathodic interference from Pipeline A's CP system onto Pipeline B:\n\n**Key Indicators:**\n- Potential gradient: -850 mV near crossing vs -650 mV distant (200 mV shift)\n- Per NACE SP0169 Section 10, shift >100 mV suggests interference\n- Corrosion localized to interference zone\n- Timing: Corrosion initiated after Pipeline A commissioning (2010)\n\n### Step 2: Current Flow Direction\n\n**Current Path:**\n1. Pipeline A rectifier injects current into groundbed\n2. Current enters Pipeline B near crossing (cathodic pickup, -850 mV)\n3. Current travels along Pipeline B away from crossing\n4. Current exits Pipeline B at current discharge point (anodic, causing corrosion)\n5. Current returns through soil to Pipeline A\n\n**Result:**\n- Near crossing: Over-protected (-850 mV)\n- 500 ft away: Current discharge causing accelerated corrosion\n\n### Step 3: Testing Protocol\n\nPer NACE SP0169 Section 10.2:\n\n**Current Interrupter Test:**\n1. Install reference electrodes at crossing, 200, 500, 1000 ft from crossing\n2. Measure Pipeline B base potentials (Pipeline A ON)\n3. Interrupt Pipeline A CP (12 sec ON, 3 sec OFF cycle)\n4. Measure Pipeline B potential shift during OFF\n5. Interpretation: >100 mV shift confirms interference\n\n**Current Measurement:**\n- Install shunts on Pipeline B at crossing and corrosion location\n- Measure current magnitude and direction\n- Verify correlation with potential shift\n\n### Step 4: Mitigation Strategy\n\n**Recommendation: Electrical Bonding**\n\nInstall intentional metallic bond between pipelines at crossing:\n- Cable: #4 AWG copper minimum\n- Connection: Cad-weld or thermite\n- Resistance: <0.01 ohm\n- Test station with monitoring capability\n\n**Alternative Options:**\n- Drainage bond with diodes if unidirectional current\n- Pipeline B CP system (higher cost)\n- Coating repair (supplemental)\n- Sacrificial anodes at discharge point\n\n**Post-Bond Verification:**\n- Expected Pipeline B potential: -650 to -700 mV (stable)\n- Shift <50 mV when Pipeline A interrupted\n- No further corrosion activity\n\n### References\n- NACE SP0169 Section 10 (Stray Current)\n- NACE SP0169 Section 10.2 (Testing)\n- NACE SP0169 Section 10.3 (Mitigation)",
-      "expected_elements": [
-        "DC cathodic interference identified",
-        "Current flow: Pipeline A → Pipeline B pickup → discharge at 500 ft",
-        "NACE SP0169 Section 10 reference",
-        "Current interrupter testing method described",
-        "Electrical bond as primary mitigation",
-        "100 mV threshold for interference confirmation",
-        "Potential shift analysis required"
-      ],
-      "critical_elements": [
-        "Cathodic interference vs anodic interference distinction",
-        "Current flow direction correctly identified",
-        "Interrupter testing procedure",
-        "Bond design specifications",
-        "NACE SP0169 cited"
-      ],
-      "expected_standards": [
-        "NACE SP0169 Section 10",
-        "NACE SP0169 Section 10.2",
-        "NACE SP0169 Section 10.3"
-      ],
-      "scoring_rubric": {
-        "mechanism_identification": {
-          "points": 20,
-          "description": "DC cathodic interference correctly identified with evidence"
-        },
-        "current_flow_analysis": {
-          "points": 25,
-          "description": "Current path traced from Pipeline A to discharge on Pipeline B"
-        },
-        "testing_protocol": {
-          "points": 25,
-          "description": "Current interrupter method with measurements and thresholds"
-        },
-        "mitigation_recommendation": {
-          "points": 20,
-          "description": "Electrical bond design with alternatives"
-        },
-        "verification_plan": {
-          "points": 10,
-          "description": "Post-mitigation monitoring and success criteria"
-        }
-      },
-      "total_possible_points": 100,
-      "abnormal_variants": [
-        {
-          "variant_id": "CP-002-V1",
-          "description": "Third pipeline present creating complex interaction",
-          "modified_situation": "Third pipeline (C) discovered - 12-inch active CP system crossing same area",
-          "modified_expected_response": "COMPLEX INTERFERENCE NETWORK. Three-pipeline interference creates unpredictable current paths. Actions: (1) Comprehensive interference survey for all three pipelines, (2) Install synchronized interrupters on all CP systems, (3) Develop current flow model for network, (4) May require multiple bonds (A-B, A-C, B-C). Three-body interference often shows non-intuitive current paths. Recommend computerized current modeling (e.g., CORR computer modeling) to predict flow paths. Mitigation strategy: Multiple bonds or coordinated CP operation. Critical: Do not install bond on A-B without evaluating effect on C.",
-          "additional_critical_elements": [
-            "Complex network acknowledged",
-            "Synchronized interrupters mentioned",
-            "Computer modeling suggested"
-          ]
-        },
-        {
-          "variant_id": "CP-002-V2",
-          "description": "Pipeline B owned by different company, access denied",
-          "modified_situation": "Pipeline B operator will not allow excavation or bonding",
-          "modified_expected_response": "ACCESS LIMITATION - ALTERNATIVE MITIGATION. Without bonding access: (1) Adjust Pipeline A rectifier outputs to minimize interference (may under-protect Pipeline A), (2) Install deep anode bed on Pipeline A opposite side of crossing to shift current path, (3) Request regulatory intervention if Pipeline B threatens Pipeline A integrity, (4) Document all attempts at coordination, (5) Consider legal options for reasonable access. LAST RESORT: If no access possible, ensure Pipeline A CP meets minimum criteria and document that Pipeline B operator was notified of interference. Unilateral mitigation has limited effectiveness. May need to live with reduced protection on Pipeline A to minimize interference.",
-          "additional_critical_elements": [
-            "Access limitations addressed",
-            "Alternative approaches suggested",
-            "Documentation requirements"
-          ]
-        }
-      ]
-    },
-    {
-      "test_id": "ILI-001",
-      "name": "Smart Pig Data Analysis and Repair Prioritization",
-      "category": "inspection",
-      "subcategory": "in_line_inspection",
+      "subcategory": "radiographic_testing",
       "risk_level": 9,
       "difficulty": "advanced",
       "time_limit_minutes": 20,
-      "situation": "A Magnetic Flux Leakage (MFL) inspection was completed on a 30-inch natural gas transmission pipeline. The pipeline operates at 1,200 psig MAOP, is constructed of API 5L Grade X65 material with 0.500-inch wall thickness, and was installed in 1995. The inspection vendor provided the following metal loss features requiring technical evaluation: Feature A: 20% wall loss (0.100 inch depth), 3 inches length, external metal loss, general corrosion morphology, located at 14,250 ft station; Feature B: 50% wall loss (0.250 inch depth), 1 inch length, external metal loss, pitting morphology (narrow), located at 28,600 ft station; Feature C: 40% wall loss (0.200 inch depth), 6 inches length, internal metal loss, general corrosion morphology, located at 42,100 ft station adjacent to a creek crossing. The pipeline is in a Class 2 location with 25 dwellings per mile. The company uses API 1160 for integrity management.",
-      "task": "Prioritize the metal loss features, determine repair timelines per API 1160, calculate remaining strength factors (RSF), and recommend appropriate responses for each feature.",
-      "expected_response": "Metal loss prioritization and repair scheduling per API 1160 criteria.",
-      "expected_response_detailed": "## Metal Loss Assessment per API 1160\n\n### Step 1: Feature Severity Ranking\n\n**Ranking Criteria per API 1160 and API 1163:**\n\n| Rank | Feature | Depth % | Length | Severity | Priority |\n|------|---------|---------|--------|----------|----------|\n| 1 | B | 50% | 1 in | CRITICAL | Immediate |\n| 2 | C | 40% | 6 in | HIGH | 60 days |\n| 3 | A | 20% | 3 in | MODERATE | 180 days |\n\n**Reasoning:**\n\n**Feature B (50% depth):**\n- Exceeds immediate repair threshold of 50% depth\n- Per API 1160, >50% depth = Immediate response\n- Near critical failure depth\n\n**Feature C (40% depth):**\n- Near immediate threshold\n- 6-inch length amplifies concern\n- Creek crossing location (environmental concern)\n- 60-day timeline with monitoring\n\n**Feature A (20% depth):**\n- Below immediate threshold\n- Moderate depth, moderate length\n- Scheduled repair acceptable\n\n### Step 2: Remaining Strength Factor (RSF) Calculations\n\nPer ASME B31G (modified) and API 1163:\n\n**RSF Formula:**\nRSF = (1 - (d/t) / (1 - (d/t)/sqrt(1+0.8(L/sqrt(Dt))^2))\n\nSimplified approach per API 1160 for screening:\n\n**Feature A (20%, 3-inch):**\n- d/t = 0.20\n- L = 3 inches\n- D = 30 inches\n- t = 0.500 inch\n- L/sqrt(Dt) = 3 / sqrt(30×0.5) = 3/sqrt(15) = 3/3.87 = 0.775\n- Folias factor (M) = sqrt(1 + 0.8×0.775^2) = sqrt(1.48) = 1.22\n- RSF ≈ (1 - 0.20)/(1 - 0.20/1.22) = 0.80/0.836 = 0.957\n\n**RSF_A ≈ 0.96** (ACCEPTABLE, >0.9 typical minimum)\n\n**Feature B (50%, 1-inch):**\n- d/t = 0.50\n- L = 1 inch\n- L/sqrt(Dt) = 1/3.87 = 0.259\n- M = sqrt(1 + 0.8×0.259^2) = sqrt(1.054) = 1.03\n- RSF = (1 - 0.50)/(1 - 0.50/1.03) = 0.50/0.515 = 0.971\n\n**RSF_B ≈ 0.97** (MARGINAL - depth drives concern despite RSF)\n\n**Feature C (40%, 6-inch):**\n- d/t = 0.40\n- L = 6 inches\n- L/sqrt(Dt) = 6/3.87 = 1.55\n- M = sqrt(1 + 0.8×1.55^2) = sqrt(2.92) = 1.71\n- RSF = (1 - 0.40)/(1 - 0.40/1.71) = 0.60/0.766 = 0.783\n\n**RSF_C ≈ 0.78** (UNACCEPTABLE - <0.90 typical threshold)\n\n### Step 3: Repair Timeline Determination per API 1160\n\n**API 1160 Response Categories:**\n\n| Category | Criteria | Timeline |\n|----------|----------|----------|\n| Immediate | >50% depth, leak, rupture | Within 24 hours |\n| Scheduled | 40-50% depth, RSF<0.9 | 60-180 days |\n| Monitored | <40% depth, RSF>0.9 | 180-365 days |\n\n**Feature B Decision: IMMEDIATE REPAIR (within 24-72 hours)**\n- 50% depth reaches critical threshold\n- RSF acceptable but depth dominates decision\n- Temporary pressure reduction if immediate repair not possible\n- Repair: Sleeve or cut-out and replace\n\n**Feature C Decision: SCHEDULED REPAIR (within 60 days)**\n- 40% depth approaching critical\n- RSF = 0.78 < 0.90 threshold\n- Creek crossing adds environmental weight\n- Repair: Composite sleeve or steel sleeve\n\n**Feature A Decision: SCHEDULED REPAIR (within 180 days)**\n- 20% depth acceptable\n- RSF = 0.96 > 0.90\n- Monitor and plan with next maintenance window\n- Repair: Sleeve or composite wrap\n\n### Step 4: Repair Methods\n\n**Feature B (Immediate, 50% depth):**\n\nOption A: Type B Sleeve (Full encirclement)\n- Pressure containing\n- Permanent repair\n- Matches pipeline strength\n\nOption B: Cut-out and Replace\n- Removes defective section\n- Complete restoration\n- Required if other defects nearby\n\n**Recommended: Type B Sleeve**\n- Install within 72 hours\n- Pressure test after installation\n- Document thoroughly\n\n**Feature C (60-day, 40% depth, creek):**\n\nOption A: Composite Sleeve\n- Non-pressure containing\n- Reinforces corroded area\n- Suitable for external corrosion\n\nOption B: Type A Sleeve\n- Load-bearing but not pressure-containing\n- Lower cost than Type B\n\n**Recommended: Type B Sleeve**\n- Creek crossing is high-consequence\n- Environmental protection critical\n- Permanent solution required\n\n**Feature A (180-day, 20% depth):**\n\nOption A: Composite Sleeves\n- Cost-effective\n- Suitable for external corrosion\n\nOption B: Monitoring program\n- Re-inspection in 2 years\n- Track corrosion rate\n\n**Recommended: Composite Sleeve**\n- Cost-effective\n- Prevents further degradation\n- Can be installed with minimal disruption\n\n### Step 5: Re-inspection Intervals\n\nPer API 1160 / API 1163:\n\n**Feature area re-inspection:**\n- Features B and C areas: ILI in 3-5 years (accelerated deterioration)\n- Feature A area: ILI in 5-7 years (standard interval)\n\n**Corrosion rate monitoring:**\n- Calculate corrosion rate from consecutive ILIs\n- If >4 mpy: Reduce intervals\n- If <2 mpy: May extend intervals\n\n### Step 6: Documentation and Reporting\n\nRequired documentation per API 1160:\n1. ILI report with feature details\n2. Engineering assessment\n3. Repair schedules\n4. Completion records\n5. Re-inspection schedule\n\n## Summary Table\n\n| Feature | Depth | RSF | Priority | Timeline | Repair Type |\n|---------|-------|-----|----------|----------|-------------|\n| A | 20% | 0.96 | 3rd | 180 days | Composite |\n| B | 50% | 0.97 | 1st | 24 hours | Type B Sleeve |\n| C | 40% | 0.78 | 2nd | 60 days | Type B Sleeve |\n\n### References\n- API 1160 Managing System Integrity\n- API 1163 In-Line Inspection\n- ASME B31G (Corrosion evaluation)\n- API 1104 (Repair welding)",
+      "situation": "RT of 20-inch X65 weld shows 1.5-inch elongated indication parallel to axis, root location, darker density, well-defined linear. Wall 0.500 inches. Schedule pressure to accept.",
+      "task": "Classify defect per API 1104, determine acceptability, specify repairs, address ethics.",
+      "expected_response_detailed": "INCOMPLETE PENETRATION per API 1104 Section 9.1.2. Table 4: Aggregate IP limit 1 inch per 12 inches. This 1.5 inch exceeds. REJECT per Section 9.3.3. Repair length 5.5 inches (1.5+2+2), 30-degree groove, 100% RT. Ethics: 49 CFR 192.241(c) requires compliance, schedule pressure NEVER justifies compromise.",
       "expected_elements": [
-        "Feature B (50%) prioritized as immediate",
-        "Feature C (40%) 60-day repair",
-        "Feature A (20%) 180-day repair",
-        "RSF calculations shown",
-        "API 1160 response categories applied",
-        "Repair types: Type B Sleeve, Composite Sleeve specified",
-        "50% depth = immediate threshold stated",
-        "RSF threshold 0.90 mentioned",
-        "Creek crossing environmental consideration",
-        "Re-inspection intervals defined"
+        "IP classification",
+        "Table 4 aggregate 1 inch",
+        "Rejection",
+        "5.5 inch repair",
+        "Ethics"
       ],
       "critical_elements": [
-        "50% depth triggers immediate repair",
-        "RSF calculations completed",
-        "API 1160 timeline applied",
-        "Priority ranking correct (B, C, A)",
-        "API 1160 reference"
+        "API 1104 9.1.2",
+        "1 inch aggregate limit",
+        "Section 9.3.3 rejection",
+        "192.241(c)"
       ],
       "expected_standards": [
-        "API 1160",
-        "API 1163",
-        "ASME B31G",
-        "API 1104"
+        "API 1104 Section 9",
+        "49 CFR 192.241(c)"
       ],
-      "scoring_rubric": {
-        "prioritization": {
-          "points": 25,
-          "description": "Correct priority (B, C, A) with reasoning"
-        },
-        "rsf_calculation": {
-          "points": 25,
-          "description": "RSF calculations for all features with formulas"
-        },
-        "timeline": {
-          "points": 20,
-          "description": "Correct timelines per API 1160 (immediate, 60-day, 180-day)"
-        },
-        "repair_methods": {
-          "points": 20,
-          "description": "Appropriate repair types for each feature"
-        },
-        "documentation": {
-          "points": 10,
-          "description": "Re-inspection intervals and documentation requirements"
-        }
-      },
-      "total_possible_points": 100,
-      "abnormal_variants": [
-        {
-          "variant_id": "ILI-001-V1",
-          "description": "Multiple indications clustered suggesting microbiologically influenced corrosion",
-          "modified_situation": "Feature C area shows 15 additional small indications (5-15% depth) in 10-foot cluster pattern",
-          "modified_expected_response": "MIC SUSPECTED - ACCELERATED RESPONSE. Cluster pattern indicates MICROBIOLOGICALLY INFLUENCED CORROSION (MIC) or sulfate-reducing bacteria activity. Actions: (1) Biological sample collection from Feature C location, (2) Accelerate repair to IMMEDIATE (within 48 hours) - MIC progresses rapidly, (3) Consider cut-out vs sleeve to remove affected section, (4) Chemical treatment evaluation for pipeline, (5) Internal coating assessment. Cluster of 16 indications suggests ACTIVE corrosion process. Standard timelines NOT appropriate. Pipeline may need biocide treatment or internal cleaning. Risk elevation: Environmental sensitive area (creek) with active corrosion.",
-          "additional_critical_elements": [
-            "MIC pattern recognition",
-            "Accelerated timeline",
-            "Biological testing recommended"
-          ]
-        },
-        {
-          "variant_id": "ILI-001-V2",
-          "description": "Feature B located in HCA with difficult access",
-          "modified_situation": "Feature B 50% depth is within High Consequence Area, 20 miles from nearest road access",
-          "modified_expected_response": "HCA + ACCESS CHALLENGE - EMERGENCY RESPONSE. Immediate repair required but access difficult. Options: (1) Temporary pressure reduction to 80% MAOP (960 psig) for safe transportation of equipment, (2) Helicopter mobilization for crew and equipment, (3) Consider temporary clamp if qualified for 50% metal loss (unlikely), (4) Coordinate with landowner for emergency access. DO NOT DELAY beyond 72 hours due to access. HCA classification increases consequence. Regulatory notification may be required per 192.617. Repair during low-demand period if possible. Document all access negotiations.",
-          "additional_critical_elements": [
-            "HCA implications",
-            "Access planning",
-            "Pressure reduction option"
-          ]
-        }
-      ]
+      "total_possible_points": 100
+    },
+    {
+      "test_id": "INSP-002",
+      "name": "Ultrasonic Thickness - Corrosion Assessment",
+      "category": "inspection",
+      "subcategory": "ultrasonic_testing",
+      "risk_level": 8,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Location A: 15% - monitor. Location B: 28% - scheduled repair within 1 year. Location C: 4% - routine. Corrosion rate: 4.1 mpy. Hoop stress at B = 41,667 psi > 36,000 design - reduce pressure to 864 psig per API 1160.",
+      "situation": "Ultrasonic Thickness - Corrosion Assessment",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-020",
+      "name": "AC/DC Interference Mitigation",
+      "category": "inspection",
+      "subcategory": "cp_monitoring",
+      "risk_level": 8,
+      "difficulty": "advanced",
+      "time_limit_minutes": 20,
+      "situation": "Pipeline parallels 230kV line 30 miles. Touch potential 25 VAC at valves. Station potentials: -850mV normal, -1,050mV near tower (200mV shift).",
+      "task": "Assess per NACE SP0177, determine touch voltage limits, mitigate interference.",
+      "expected_response_detailed": "25 VAC EXCEEDS 15 VAC routine limit per SP0177. 200mV shift confirms interference. Grounding mats 6x6 feet required, zinc ribbon parallel, decoupling cells, annual surveys. Cost ~$75,000. SP0177 touch: routine 15 VAC, qualified 30 VAC."
+    },
+    {
+      "test_id": "INSP-021",
+      "name": "UT Shear Wave - Crack Sizing",
+      "category": "inspection",
+      "subcategory": "ut_testing",
+      "risk_level": 9,
+      "difficulty": "expert",
+      "expected_response_detailed": "Circumferential crack per API 1104 Appendix E: 65-75% DAC, 6dB drop, sharp edges. ANY CRACK = AUTO-REJECT per Section 9.2.2. Removal 6 inches (1.25+2+2), suspect HIC due to hydrostatic context, metallurgical analysis needed.",
+      "situation": "UT Shear Wave - Crack Sizing",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-022",
+      "name": "MFL Data Quality Assessment",
+      "category": "inspection",
+      "subcategory": "ili_analysis",
+      "risk_level": 7,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "3% poor characterization EXCEEDS 2% API 1163 limit. 5.0 ft/sec velocity exceeds recommended <4 ft/sec. Re-run 3.6 miles degraded data. 98% magnetization OK, no wheel slip. Manual verification option.",
+      "situation": "MFL Data Quality Assessment",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-023",
+      "name": "Liquid Penetrant Testing Procedure",
+      "category": "inspection",
+      "subcategory": "ndt_methods",
+      "risk_level": 6,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "PT per ASTM E165: clean surface with solvent, apply penetrant 10-30 minutes dwell, remove excess (water washable or solvent), apply developer (dry or wet), wait 10 minutes, inspect under UV light (365 nm). Indications: linear = cracks, rounded = porosity. False positives: grinding marks. Temperature 50-125°F. Post-cleaning required. Limitations: surface breaking only, not for subsurface, rough surfaces problematic.",
+      "situation": "Liquid Penetrant Testing Procedure",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-024",
+      "name": "Hardness Testing Conversion",
+      "category": "inspection",
+      "subcategory": "material_testing",
+      "risk_level": 5,
+      "difficulty": "basic",
+      "expected_response_detailed": "API 5L X52: typically 150-190 HB (Brinell) or HRC 15-22. Rockwell B for softer materials. Conversion charts per ASTM E140. Field testing: Leeb rebound (HLD) converted to HRC/HB. Hardness limits: weld HAZ <250 HB typically. CVN correlation: higher hardness generally lower toughness. Automated conversion calculators available per API RP 5L3. Reproducibility ±5% for field methods.",
+      "situation": "Hardness Testing Conversion",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-025",
+      "name": "Magnetic Particle Yoke Calibration",
+      "category": "inspection",
+      "subcategory": "ndt_methods",
+      "risk_level": 6,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "ASME BPVC V: yoke verification with Pie gauge (ASTM E709) or quantifiable shims. Lift test: 10 lbs for AC, 40 lbs for DC yokes. Amperage: 1,000-1,500 amp-turns per inch of spacing. Technique: prod perpendicular to weld, overlap 15%, inspect in 45° increments. Demagnetization required if residual field >3 gauss. Wavelength: UV-A 365 nm for fluorescent. Wet vs dry method selection based on surface condition.",
+      "situation": "Magnetic Particle Yoke Calibration",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-026",
+      "name": "Holiday Detection Threshold",
+      "category": "inspection",
+      "subcategory": "coating_inspection",
+      "risk_level": 6,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "NACE SP0274: detector calibrated on known holidays. FBE coating 16-40 mils: 67.5 volts (range 9-90 V per mil). Test voltage = coating thickness × 100 V typically. Sponge method for thin film. Brush spring pressure consistent. Inspection speed 12 inches/second max. Mark all holidays, repair per coating manufacturer, re-test 100%. Ground connection to bare metal. Weather: RH <85%, surface temp <120°F.",
+      "situation": "Holiday Detection Threshold",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-027",
+      "name": "Smart Pig Calibration Standards",
+      "category": "inspection",
+      "subcategory": "ili_execution",
+      "risk_level": 8,
+      "difficulty": "advanced",
+      "expected_response_detailed": "API 1163 calibration: reference standards with known defects, pull-through verification run, speed calibration 1-10 ft/sec range, wall thickness verification at 5+ locations, odometer accuracy ±0.1%, clock synchronization, data format compliance PODS or similar, metal loss discrimination ±10%, axial location accuracy ±1%, circumferential ±5%. Field verification dig required if anomalies confirmed.",
+      "situation": "Smart Pig Calibration Standards",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-028",
+      "name": "Rebound Hammer Concrete Testing",
+      "category": "inspection",
+      "subcategory": "civil_inspection",
+      "risk_level": 4,
+      "difficulty": "basic",
+      "expected_response_detailed": "ASTM C805: Schmidt hammer type N for 1-6 inch thickness. Calibration on anvil before/after. Grid pattern 12 readings average, discard outliers >15%. Correction factors: carbonation, surface condition, age, moisture. Angle correction if not perpendicular. Core correlation recommended for critical structures. Typical pipeline supports 3,000-5,000 psi compressive strength. Rebound values correlate to strength curves.",
+      "situation": "Rebound Hammer Concrete Testing",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-029",
+      "name": "Eddy Current Crack Detection",
+      "category": "inspection",
+      "subcategory": "ndt_methods",
+      "risk_level": 7,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "ET for heat exchanger tubes: absolute vs differential probe. Frequency selection based on material and wall (typically 1-100 kHz). Calibration with drilled holes and notches. Lift-off compensation for surface irregularities. Phase analysis for defect characterization. IACS conductivity scaling. Fill factor >80% for bobbin coils. Limitations: ferromagnetic materials problematic, limited penetration depth, requires calibration standards.",
+      "situation": "Eddy Current Crack Detection",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-030",
+      "name": "Radiation Safety Officer Duties",
+      "category": "inspection",
+      "subcategory": "safety_compliance",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "expected_response_detailed": "NRC 10 CFR 34: RSO authorized user, specific training in radiation protection. Dose limits: 5 rem/year for whole body (general public 0.1 rem/year). ALARA principle: as low as reasonably achievable. Dosimetry: film badges for occupationally exposed, requiring TLDs (thermoluminescent) for extremities. Posting requirements: CAUTION for >2 mR/hr, HIGH RADIATION for >100 mR/hr. Security: 24-hour surveillance for Category sources. Lost source: notification within 30 days to NRC.",
+      "situation": "Radiation Safety Officer Duties",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-031",
+      "name": "TOFD Setup and Calibration",
+      "category": "inspection",
+      "subcategory": "advanced_ut",
+      "risk_level": 8,
+      "difficulty": "expert",
+      "expected_response_detailed": "Time-of-Flight Diffraction: two probes ( transmitter/receiver), parallel scan welded seam, lateral wave establishes time-zero, back wall reflection depth calibration. PCS (probe center spacing) calculation based on refracted angles. Frequency 2-10 MHz typical. A-scan, B-scan, D-scan displays. Defect sizing: depth from time-of-flight, length from scan distance. Critical for: lack of fusion detection, height sizing for fitness-for-service. Standards: ASTM E2373, BS 7706.",
+      "situation": "TOFD Setup and Calibration",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-032",
+      "name": "Weld Heat Input Calculation",
+      "category": "inspection",
+      "subcategory": "welding_inspection",
+      "risk_level": 6,
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Heat input (kJ/in) = (Voltage × Amperage × 60) / (Travel speed × 1,000). API 1104: maximum heat input 50 kJ/in for X52, 45 kJ/in for X65, 40 kJ/in for X70+. Excessive heat input: coarse grain, reduced toughness, distortion. Under-matching heat input: lack of fusion, incomplete penetration. WPS limits must be followed. Travel speed measured over 6-inch distance. Record: voltage, amperage, speed for each weld.",
+      "situation": "Weld Heat Input Calculation",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-033",
+      "name": "Visual Weld Inspector Qualifications",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "API 1169 requirements: 3+ years experience, OR Level II MT/PT/UT certification, OR engineering degree with 1 year experience. Eye exam annually (Snellen 20/25 near and far, Jaeger #2). Color vision assessment for fluorescent inspection. Written practical examination by API. Recertification 3 years. AWS CWI also acceptable with NDT endorsements. Continuing education 15 hours per recertification period.",
+      "situation": "Visual Weld Inspector Qualifications",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-034",
+      "name": "Dimensional Tolerance Check",
+      "category": "inspection",
+      "difficulty": "basic",
+      "expected_response_detailed": "API 5L tolerances: wall thickness -12.5% to +15% on average, -10% at any point. OD ±1% for 2+\", weight ±6.5%. Straightness 0.2% of length. End squareness 1.5 mm or 1.6 mm depending on OD. Pipe end bevel 30°+5°-0°. Length variation +50mm/-0mm for random. Measurement tools: ultrasonic thickness gauge (calibrated), pi tape for OD, laser straightness, visual squareness gauge.",
+      "situation": "Dimensional Tolerance Check",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-035",
+      "name": "Phased Array Weld Scan Plan",
+      "category": "inspection",
+      "difficulty": "expert",
+      "expected_response_detailed": "PAUT per ASME V: sectorial scan angles 40-70° for butt welds. Number of elements 16-64. Focal laws calculated for beam coverage of full weld volume. Calibration on IIW block and AWS block for TC and amplitude. TCG (time-corrected gain) for depth compensation. Gate placement 0-200% of thickness. A-scan, S-scan, C-scan display modes. Encoder for mapping. DAC (distance amplitude correction). Procedure qualification essential variable compliance.",
+      "situation": "Phased Array Weld Scan Plan",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-036",
+      "name": "Positive Material Identification",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "PMI methods: XRF handheld ( portable, quick), OES (accurate, larger sample), LIBS (carbon content capable). API 578 requires PMI for alloy materials at receipt, in-service, after repair. Testing points: random 10% minimum for critical service, 100% for high-temperature or sour service. Elements: Cr, Ni, Mo content verification against material cert. Documentation: heat number traceability. Resolution: 0.1% typically. Safety: laser eye protection, radiation awareness for XRF.",
+      "situation": "Positive Material Identification",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-037",
+      "name": "Coating Mill Application QC",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "FBE process: surface prep Sa 2.5, anchor profile 2.0-4.0 mils, preheat 400-550°F, powder application 15-25 mils, gel time 8-12 seconds, cure schedule 3 minutes at 450°F. Holiday testing 67.5 V. Adhesion test: pull-off 500+ psi or Elcometer. Bend test 2.5°/D without disbondment. Cathodic disbondment: 1/8-inch max at 28 days. Impact: 80 in-lbs at 0°F. Mill certification review required.",
+      "situation": "Coating Mill Application QC",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-038",
+      "name": "Pipe-to-Soil Potential Measurement",
+      "category": "inspection",
+      "difficulty": "basic",
+      "expected_response_detailed": "NACE SP0169: copper-copper sulfate reference electrode (CSE) standard. Measurement: digital voltmeter (high impedance 10 Mohm). Probe placement: 1-3 feet from pipe, in native soil not backfill. IR drop elimination: current interrupter, instant-off method. Potential criteria: -850 mV CSE (energized), -850 mV or more negative (instant-off), 100 mV polarization shift minimum. Test stations every mile maximum, more frequent in high consequence areas.",
+      "situation": "Pipe-to-Soil Potential Measurement",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-039",
+      "name": "Guided Wave Screening Distance",
+      "category": "inspection",
+      "difficulty": "advanced",
+      "expected_response_detailed": "GWT setup: torsional or longitudinal modes, frequency selection 16-128 kHz typically. Range: 60-foot from transducer ring (coated), 30-foot uncoated, 120-foot in liquid-filled if coated. Resolution: 2-5% CSA detectable at 30 feet, 10% at 60 feet. Fitting flex indicator: bends, tees, supports create echoes. Screening identifies regions of interest, not flaw sizing. Dig verification required for anomalies. Reference standard for calibration. Temperature range -4°F to 140°F operation.",
+      "situation": "Guided Wave Screening Distance",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-040",
+      "name": "In-Line Inspection Tool Selection",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "MFL for metal loss (general corrosion, pitting). UT for crack detection (axial, circumferential, SCC). Geometry for dents, ovality. EMAT for no-contact requirement (high temp). Caliper for internal geometry. Tool selection based on: threat identification, pipeline geometry, product, operating conditions. Speed requirement: 1-10 ft/sec. Passage feasibility: minimum radius check, valve bore check, launcher/receiver sizing. Data quality specification: depth accuracy ±10%, location ±1% length.",
+      "situation": "In-Line Inspection Tool Selection",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-041",
+      "name": "SCC Detection Methods",
+      "category": "inspection",
+      "difficulty": "expert",
+      "expected_response_detailed": "High pH SCC: colony morphology, intergranular cracking. Near-neutral pH: transgranular, wide cracks. Detection: high-resolution MFL for clusters (not individual cracks), ultrasonic crack detection ( shear wave or phased array for axial cracks, circumferential for girth weld SCC). Hydrostatic testing: proof pressure to 1.5× MAOP for surviving cracks. SCCDA direct assessment per NACE SP0204. Crack sizing critical for FFS assessment per API 579. Excavation and coating removal for direct visual with MT/PT confirmation.",
+      "situation": "SCC Detection Methods",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-042",
+      "name": "Casing Assessment Requirements",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Casing pipe external corrosion: visual and UT for wall thickness. CP effectiveness: electrical isolation maintained (test station), insulator inspection annually. Shorts: metallic contact between carrier and casing. Flooding: casing vents inspection, end seals. Cathodic protection: casing not protectively coated, may require separate CP. Assessment intervals: external every 5 years, hydrostatic if internal corrosion suspected. Short creates shielding, not immediate hazard but reduces CP effectiveness on carrier. Repair: short removal, vent inspection, re-establish isolation.",
+      "situation": "Casing Assessment Requirements",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-043",
+      "name": "Flange Bolt Torque Application",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "ASME PCC-1 Appendix E: torque values based on gasket type (spiral wound vs RX vs IX), bolt material B7 vs B16 vs 660. Torque pattern: star pattern in three increments (30%, 60%, 100%). Torque wrench calibration within 1 year. Torque value = K×D×F (friction factor, diameter, preload). Torque-turn alternative: torque to snug then turn nut specified angle. Mark bolts after final torque. Re-torque after 24-hour settlement. Temperature limits for gasket relaxation.",
+      "situation": "Flange Bolt Torque Application",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-044",
+      "name": "Pipeline Marker Inspection",
+      "category": "inspection",
+      "difficulty": "basic",
+      "expected_response_detailed": "192.707 requirements: markers every 800 feet in non-rural, every 300 feet in urban, at road crossings, at water crossings, buried test leads. Marker content: owner name, emergency number, product (gas pipeline), One-Call reference. Visibility: 4-foot vegetation clearance. Condition: legible, upright, not damaged. GPS coordinates in database. Annual patrol or ROW surveillance. Replacement if 25% illegible or knocked over. Additional markers if public activity near line.",
+      "situation": "Pipeline Marker Inspection",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-045",
+      "name": "Above Ground Pipeline Support",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "API 570 inspection: support spacing per stress analysis, soil settlement at supports, corrosion under supports (CUPS inspection), pipe-to-support contact wear, thermal movement accommodation, expansion joint/loop inspection, weight distribution, load path changes, bolt tightness on supports, weld examination at shoe attachments. Concrete deterioration: spalling, rebar exposure. Sliding supports: maintenance of low-friction surface.",
+      "situation": "Above Ground Pipeline Support",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-046",
+      "name": "Corrosion Coupon Installation",
+      "category": "inspection",
+      "difficulty": "basic",
+      "expected_response_detailed": "NACE SP0775: coupon types (C1018 steel for gas pipelines), flush vs extended mount, placement in flowstream not bypass, 6-month exposure minimum, triplicate coupons for statistical validity, orientation (horizontal for liquid, vertical for gas), metallurgical analysis for pitting. Calculation: mpy = (K×W)/(D×A×T) where K=constant, W=weight loss, D=density, A=area, T=time in years. Coupon retrieval without damage to sample.",
+      "situation": "Corrosion Coupon Installation",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-047",
+      "name": "Bend Radius Verification",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "API 5L induction bends: minimum radius 5D for cold bends (field), 3D for hot (induction), 2.5D for thick-wall. Ovality limit 3% per 5L. Thinnest point measurement: wall reduction limit 12.5% of nominal. Wrinkle acceptance: none allowed for piggable lines. Ultrasonic thickness mapping: 8-point minimum per cross-section. Angle verification: ±2 degrees. Hardness: Hv 250 max for X65 to verify no damage.",
+      "situation": "Bend Radius Verification",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-048",
+      "name": "Pipeline ROW Encroachment",
+      "category": "inspection",
+      "difficulty": "basic",
+      "expected_response_detailed": "Encroachment types: structures within easement, vegetation taller than 3 feet (visibility), excavation without notification, overhead power lines, storage materials. Actions: initial notification to landowner, legal action if not removed, compensation negotiation for permanent structures. Survey: GPS coordinates of encroachment, photo documentation. Clearances: 10 feet either side for maintenance access. No permanent structures within strip unless approved. Annual surveillance required.",
+      "situation": "Pipeline ROW Encroachment",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-049",
+      "name": "Weld Repair Procedure",
+      "category": "inspection",
+      "difficulty": "advanced",
+      "expected_response_detailed": "API 1104 repair: excavation to visual 360° weld exposure, defect removal by grinding or air-arc, minimum removal 2 inches beyond visible defect, preheat per WPS (100°F minimum if ambient <50°F), repair weld sequence (opposite sides sequentially), examination 100% UT or RT. Repair limitations: one repair per defect location, if repair requires second removal then cut-out required, cut-out length 10 inches minimum, new weld full circumference.",
+      "situation": "Weld Repair Procedure",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-050",
+      "name": "Odorant System Inspection",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "192.625 odorization: mercaptan or thiophane injection. Odorant level check weekly: tetrahedron threshold 1/5 or 5 odorant units. Equipment: pump or wick injection, flow-proportioning, tank level monitoring. Safety: PPE for handling (organic vapor cartridges), secondary containment, spill response kit. Injection rate 0.5-1.0 lb/MMscf typical, up to 2.0 for dense gas or odor fade. Inspection: leaks, injection pump operation, tank connections, vapor recovery.",
+      "situation": "Odorant System Inspection",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-051",
+      "name": "External Coating Inspection",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Holiday detection: 15-40 kV depending on coating thickness (100V/mil typical). Adhesion: peel test or pull-off per ASTM D4541. Thickness: magnetic gauge orToo measurement. Percent coverage: visual inspection for 100% coverage. RFI (random field inspection) if 95%+ coverage. Disbondment: holiday size measurement and mapping. Tape wrap: overlap minimum 1-inch, percentage of overlap per specification typically 55%. Shrink sleeves: patch size limits, overlap.",
+      "situation": "External Coating Inspection",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-052",
+      "name": "Pressure Equipment Certification",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "ASME Section VIII vessel: nameplate data (MAWP, MDMT, year built, serial), inspection interval based on service (3-5 years typical), inspection scope includes thickness survey, internal/external examination, nozzle and shell welds (MT/PT), relief valve certification (stamped NB), inspection report per NBIC, R-stamp if repairs made, alteration documentation, pressure test if repairs, continued service if inspection acceptable. De-rating: documented engineering review, nameplate update.",
+      "situation": "Pressure Equipment Certification",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-053",
+      "name": "Valve Seat LeakTest Procedure",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "API 598 low pressure seat test: 80 psig air or gas test at both directions. Acceptable leakage: 0 bubbles for resilient seats (soft), 0 bubbles metal-to-metal. High pressure: 110% of rated pressure, duration 1× diameter minutes. Procedure: isolate valve, pressurize body cavity, check downstream for no flow. Bubble test: bubble counter in water. Alternative: pressure hold decay method. Soft seats: zero leakage acceptable. Metal seats: API allows minimal leakage if specified rate acceptable.",
+      "situation": "Valve Seat LeakTest Procedure",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-054",
+      "name": "Pipeline Right-of-Way Patrol",
+      "category": "inspection",
+      "difficulty": "basic",
+      "expected_response_detailed": "Aerial patrol: 26 CFR 192.705 every 2 weeks in Class 3/4, monthly Class 1/2. Ground patrol: weekly in populated areas. Elements: vegetation clearing, excavation activity, erosion, exposed pipe, third-party activity, encroachments, access road condition, marker visibility. Documentation: GPS coordinate, photo, immediate hazards reported, 911 if emergency. Aircraft: visual above ground, 100-300 feet altitude, weather permitting. Helicopter: may hover for closer look.",
+      "situation": "Pipeline Right-of-Way Patrol",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-055",
+      "name": "Compressor Valve Inspection",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "Reciprocating compressor valves: poppet or plate type. Inspection intervals: run hours based on service (2,000-8,000 hours typical). Items: seat condition, spring strength (check vs new), wear on actuators, lifting mechanism, crack detection, carbon buildup, seat flatness. Testing: bench test before installation, leak test at 50 psig air. Reassembly: proper torque, orientation. Performance: reduced capacity, increased discharge temp indicate valve issues.",
+      "situation": "Compressor Valve Inspection",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-056",
+      "name": "Underwater Pipeline Survey",
+      "category": "inspection",
+      "difficulty": "advanced",
+      "expected_response_detailed": "Subsea inspection: ROV survey for exposed pipe, span measurement, anode depletion (electrical potential), macrofouling, coating damage. Span correction: grout bags, mechanical supports. Depth of burial verification. Cathodic protection: contact cell for potential measurement. Frequency: annual if exposed, less if buried. Water depth: diver inspection if shallow, ROV if deep. Acoustic: depth of cover sonar. Pipeline location: accurate to ±1 meter. Sediment changes: erosion or accumulation.",
+      "situation": "Underwater Pipeline Survey",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-057",
+      "name": "Tank Floor Thickness Survey",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "API 653 tank floor: UT grid pattern typically 10-foot grid, additional points under shell. Minimum 5 readings per plate. Remaining life calculation: thickness data, corrosion rate, pit depth. Acceptable: above minimum structural per API 653 Table 4.2. Repair: patch plates if localized, complete floor replacement if widespread. Hydrostatic test after repairs. Product tightness: bottom tested if internal lining required. Shell plates also surveyed if suspected thinning.",
+      "situation": "Tank Floor Thickness Survey",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-058",
+      "name": "Welder Qualification Records",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "API 1104 welder qualification: valid 6 months minimum, must have continuity (weld within 6 months). Essential variables: position, progression, pipe diameter limits, wall thickness range, process (SMAW, GTAW, FCAW), filler metal, current/polarity. PQ test: guided bend (root and face), nick-break (fillet). Limits: diameter range qualified ±2× test diameter. Renewals: requalify if continuity lost. Record retention: 6 years minimum as-built. Visual acceptance: accept only undercuts, porosity per limits.",
+      "situation": "Welder Qualification Records",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-059",
+      "name": "Pipeline Composite Repair",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "ASME PCC-2 Article 4.1 composite sleeve: external corrosion repair, dents with <6% metal loss, gouges. Design: 4× defect length minimum sleeve, prep to near-white metal. Application: epoxy filler for profile, wrap with tension, overlap per procedure. Curing time temperature dependent. Qualification: 2-year testing per ISO TS 24817. Limitations: not for circumferential defects, not for cracks, not for internal corrosion. Inspection: holiday post-repair.",
+      "situation": "Pipeline Composite Repair",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-060",
+      "name": "Regulator Inspection Frequency",
+      "category": "inspection",
+      "difficulty": "basic",
+      "expected_response_detailed": "192.740 pressure regulator inspection: each calendar year but not exceeding 15 months. Visual: external condition, setpoint pressure, response time, filter condition, relief valve operation. Testing: accuracy ±2% typical, inlet screen flow capacity. Slam-shut: trip on high/low test. Relief valve: lift setting verification, reseat tightness. Documentation: setpoint pressure, test results, maintenance performed. Replacement: if inaccurate or worn.",
+      "situation": "Regulator Inspection Frequency",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-061",
+      "name": "Girth Weld Rejection Criteria",
+      "category": "inspection",
+      "difficulty": "intermediate",
+      "expected_response_detailed": "API 1104 automatic reject: any crack, any incomplete penetration, incomplete fusion >2 inches cumulative, undercut depth >1/32 inch or 12.5% wall, porosity exceeding limits, slag inclusions >2 inches cumulative. Linear indications: length, depth criteria by type. Repair: if repair requires then cut-out. Cut-out: remove defect plus 2 inches minimum each side, new weld full circumference. Documentation: NDE report showing defect location, size, type, disposition.",
+      "situation": "Girth Weld Rejection Criteria",
+      "task": "Provide detailed analysis per applicable standards and codes."
+    },
+    {
+      "test_id": "INSP-062",
+      "name": "Pipeline Test Lead Examination",
+      "category": "inspection",
+      "difficulty": "basic",
+      "expected_response_detailed": "Test lead stations: wire bond to pipe, box for access, typically at mile markers, cased crossings, isolating joints, rectifier locations. Inspection: bond integrity, cable condition, box lid secure, accessibility clearing. Function: CP potential measurement, cathodic interference testing, coupon monitoring. Frequency: annual with CP survey. Repair: re-bond if resistance high, cable replacement if damaged. Documentation: station number, GPS, reading values.",
+      "situation": "Pipeline Test Lead Examination",
+      "task": "Provide detailed analysis per applicable standards and codes."
     }
   ]
 }

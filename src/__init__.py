@@ -8,10 +8,10 @@ and safety-critical systems research.
 
 Author: Pipeline AI Solutions Research Team
 License: MIT
-Version: 1.0.0
+Version: 0.1.0
 """
 
-__version__ = "1.0.0"
+__version__ = "0.1.0"
 __author__ = "Pipeline AI Solutions LLC"
 __license__ = "MIT"
 
@@ -34,8 +34,8 @@ __all__ = [
 # Framework metadata
 FRAMEWORK_INFO = {
     "name": "Pipeline Safety AI Evaluator",
-    "version": "1.0.0",
-    "status": "Production",
+    "version": "0.1.0",
+    "status": "Beta",
     "target_domain": "Pipeline Safety-Critical Applications",
     "evaluation_dimensions": 11,
     "test_case_library": 24,

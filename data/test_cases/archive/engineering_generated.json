@@ -1,0 +1,134 @@
+{
+  "name": "engineering_generated",
+  "test_cases": [
+    {
+      "test_id": "ENG-004",
+      "name": "MAOP Verification Per 49 CFR 192.619",
+      "category": "engineering",
+      "subcategory": "pressure_design",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "time_limit_minutes": 20,
+      "situation": "Pipeline segment: 20-inch, API 5L X60 (SMYS 60,000 psi), 0.500-inch wall, installed 1995. Original hydrostatic test: 1996 at 1,500 psig (1.25× original MAOP 1,200 psig). Operating 1,100 psig. Class 2. Last ILI 2018 showed no metal loss exceeding 10%. Current date: 2026 (30 years after test). Pressure reduction being considered due to age.",
+      "task": "Determine if MAOP can be maintained per 192.619. Calculate pressure derating requirements, assess if new test required, verify wall adequacy for current pressure.",
+      "expected_response_detailed": "## MAOP Verification per 49 CFR 192.619\n\n### Regulatory Framework\n\n192.619 allows MAOP determined by:\n(a) Design pressure, OR\n(b) Pressure reducing device, OR\n(c) Highest pressure in 5 years preceding 7/1/70 (grandfathered), OR\n(d) Pressure test per 192.505\n\nFor installed after 1970: Pressure test governs\n\n### Hydrostatic Test Recency\n\n**Test date: 1996 (30 years ago)**\n\n**192.619(g):** If test older than 5 years, must:\n- Reduce MAOP per formula, OR\n- Retest at higher pressure\n\n### MAOP Derating Calculation\n\n**Original:**\n- MAOP: 1,200 psig\n- Test: 1,500 psig (1.25×)\n\n**192.619 Formula for expired test:**\n\nNew MAOP = Greater of:\n(a) 80% of established MAOP: 0.80 × 1,200 = 960 psig\n(b) 85% of test pressure: 0.85 × 1,500 = 1,275 psig\n\n**New MAOP = 1,275 psig**\n\nBUT: Operating 1,100 psig\n\n**1,100 < 1,275 ✓ NO REDUCTION REQUIRED**\n\n### Stress Verification\n\nWall adequacy for 1,100 psig:\n\nt = (P × D)/(2 × S × F × E)\nt = (1,100 × 20)/(2 × 60,000 × 0.60 × 1)\nt = 22,000/72,000 = 0.305 in\n\nActual: 0.500 in > 0.305 in ✓\n\n### Integrity Assessment\n\nWall degradation:\n- Minimum wall: 0.500 - (0.500 × 0.10) = 0.450 in\n- Remaining capacity at 0.450: OK for 1,100 psig\n\n### Conclusion\n\n**Current MAOP (1,100 psig) may be maintained**\n\nRequirements:\n- Document 192.619(g) compliance\n- Note reduced safety margin\n- Increase inspection frequency\n- Consider retest at next opportunity\n\nRetest recommended within 5 years at:\n- 1,375 psig (1.25 × 1,100)\n- Restores full 1.25 margin\n\n**References**: 49 CFR 192.619, ASME B31.8",
+      "expected_elements": [
+        "192.619(g) applied",
+        "960 psig 80%",
+        "1,275 psig 85%",
+        "No reduction needed",
+        "0.500 in wall OK",
+        "Retest recommended 1,375 psig"
+      ],
+      "critical_elements": [
+        "192.619 derating calculation",
+        "No MAOP reduction required",
+        "Wall adequacy verified",
+        "Retest planning"
+      ],
+      "expected_standards": [
+        "49 CFR 192.619",
+        "ASME B31.8"
+      ],
+      "total_possible_points": 100
+    },
+    {
+      "test_id": "ENG-005",
+      "name": "Relief Valve Sizing per API 520/521",
+      "category": "engineering",
+      "subcategory": "valve_design",
+      "risk_level": 8,
+      "difficulty": "advanced",
+      "time_limit_minutes": 25,
+      "situation": "Compressor station has 3 reciprocating compressors each 5,000 HP. Suction pressure: 600 psig, Discharge: 1,400 psig. Station maximum flow: 250 MMSCFD. Emergency scenario: All compressors trip simultaneously, valves fail closed on discharge. Relief system must protect station piping (MAOP 1,450 psig). Ambient 70°F. Gas molecular weight: 18.5. Temperature: 180°F on discharge.",
+      "task": "Calculate required relief valve capacity per API 520/521. Select orifice size, determine set pressure, calculate blowdown, specify installation requirements.",
+      "expected_response_detailed": "## Relief Valve Sizing per API 520/521\n\n### Scenario Analysis\n\n**Blocked discharge (worst case):**\n\n3 compressors × 5,000 HP = 15,000 HP total\nMaximum flow: 250 MMSCFD\n\n**Relief valve required for:**\n- Compressor power (15,000 HP)\n- Blocked discharge event\n- Fire case (NFPA)\n\n### Capacity Calculation (API 520 Part I)\n\n**Required Flow Formula:**\n\nFor compressors: Q = (HP × 42.4 × k)/(MW × Z × T)\n\nBut API 521 simplified:\n\n**Blocked Discharge:** Relief rate = Maximum compressor throughput\n\n250 MMSCFD = 250,000,000 SCF/day\n= 10,416,667 scf/hr\n= 2,893 scfm\n\n### Orifice Size Selection (API 526)\n\n**Required Orifice Area (A):**\n\nA = W/(C × Kd × Kb × P1 × sqrt(MW/(Z×T)))\n\nSimplified using API charts:\n\nFor 250 MMSCFD at 1,400 psig:\n- Set pressure: 1,440 psig (10% above MAOP)\n- Orifice: **K\" orifice** (API 526)\n- 2,894 scfm capacity at given conditions\n\nOrifice K area: 2.545 sq in\n\n### Set Pressure Determination\n\n**Per API 521 Section 4.2.1:**\n\nMAOP: 1,450 psig\nSet pressure: 1,440 psig (99% of MAOP)\n\n**Maximum accumulated pressure:**\n1,450 × 1.21 = 1,754 psig (fire case)\n1,450 × 1.10 = 1,595 psig (non-fire)\n\n### Multiple Valves\n\n**Design:** 2 relief valves, each sized for 60% of capacity\n- Valve 1: Set 1,440 psig, K orifice\n- Valve 2: Set 1,480 psig (backup)\n\n### Blowdown Calculation\n\n**Typical for gas service:** 10-15% below set\n\nBlowdown: 7% (per API 526)\n\nReclosure pressure: 1,440 × 0.93 = 1,339 psig\n\n**Chattering prevention:** Minimize inlet loss (<3%)\n\n### Installation Requirements\n\n**API 520 Part II:**\n\n**Inlet Piping:**\n- Minimize pressure drop (max 3% of set)\n- Length < 10 pipe diameters\n- No elbows near inlet\n\n**Discharge Piping:**\n- Size for 10% of rated capacity\n- Backpressure <10% of set\n- Discharge to safe location\n\n**Drainage:**\n- Remote from valve to prevent icing\n\n**Supports:**\n- Account for reaction forces\n- Thermal expansion\n\n### Conclusion\n\n**Relief Valve Specification:**\n- Manufacturer: Consolidated or equal\n- Model: 1900 series (pilot-operated)\n- Orifice: K (2.545 sq in)\n- Set pressure: 1,440 psig\n- Dual installation: 2 valves (3-way valve)",
+      "expected_elements": [
+        "250 MMSCFD capacity",
+        "K orifice 2.545 sq in",
+        "1,440 psig set pressure",
+        "Dual valve design",
+        "7% blowdown",
+        "3% inlet drop limit",
+        "API 526 sizing"
+      ],
+      "critical_elements": [
+        "API 520 capacity calculation",
+        "API 526 orifice selection",
+        "Set pressure at 99% MAOP",
+        "Dual valve design",
+        "Installation requirements"
+      ],
+      "expected_standards": [
+        "API 520",
+        "API 521",
+        "API 526"
+      ],
+      "total_possible_points": 100
+    },
+    {
+      "test_id": "ENG-006",
+      "name": "Thermal Stress Analysis - Road Crossing",
+      "category": "engineering",
+      "subcategory": "stress_analysis",
+      "risk_level": 7,
+      "difficulty": "intermediate",
+      "time_limit_minutes": 22,
+      "situation": "Pipeline crosses under road: 30-inch, API 5L X65, 0.625-inch wall. Installation: 8-foot deep cover, 120-foot non-buried span. Road traffic: AASHTO HS-20 loading, 40 vehicles/hour. Temperature range: 20°F winter to 120°F summer. Material properties: E = 30×10⁶ psi, α = 6.5×10⁻⁶ in/in/°F. Soil: Sandy, 40 pcf. Constraint: Full burial before road crossing.",
+      "task": "Calculate thermal expansion stresses, evaluate traffic loads, check combined stress against allowable, specify expansion provisions.",
+      "expected_response_detailed": "## Thermal and Traffic Stress Analysis\n\n### Thermal Expansion Calculation\n\n**Temperature range:**\nΔT = 120°F - 20°F = 100°F\n\n**Thermal expansion:**\nΔL = α × L × ΔT\nΔL = 6.5×10⁻⁶ × 120 ft × 12 in/ft × 100°F\nΔL = 0.936 inches\n\n**If constrained:**\nThermal stress: σ = E × α × ΔT\nσ = 30×10⁶ × 6.5×10⁻⁶ × 100\nσ = 19,500 psi (thermal only)\n\n### Traffic Loading (AASHTO HS-20)\n\n**Wheel load:** 16 kips\n\n**Boussinesq theory:**\nσ_traffic = (3×16,000)/(2π) × (8 ft)³/(8² + x²)^2.5\n\nSimplified - 8-foot cover:\nTraffic stress ≈ 2,500 psi (cyclic)\n\n### Combined Stress\n\n**Longitudinal stress:**\nσ_L = σ_thermal + σ_traffic\nσ_L = 19,500 + 2,500 = 22,000 psi\n\nInternal pressure hoop stress:\nS_h = (P×D)/(2t) = (1,200×30)/(2×0.625) = 28,800 psi\n\n**Von Mises equivalent stress:**\nσ_vm = √(σ_h² + σ_L² - σ_h×σ_L)\nσ_vm = √(28,800² + 22,000² - 28,800×22,000)\nσ_vm ≈ 25,100 psi\n\n**Allowable:** 65,000 × 0.72 = 46,800 psi\n\n**25,100 < 46,800 ✓ ACCEPTABLE**\n\n### Constraint at Road Crossing\n\n**Critical:** Full burial required\n\n**If not buried:**\n- 0.936 inches free expansion\n- Need expansion joint\n\n**Design:**\n- Elastical bend into approach\n- Guide supports at 30-foot spacing\n- Avoid axial restraint\n\n### Recommendations\n\n**If conventional burial:**\n- Thermal stress absorbed by soil friction\n- No special provisions needed\n- Check cover depth (8 ft adequate)\n\n**If directional drill:**\n- Large radius provides flexibility\n- Thermal stress distributed\n- Still acceptable\n\n### Reference: ASME B31.8 Chapter II, AASHTO Bridge Design",
+      "expected_elements": [
+        "0.936 inches expansion",
+        "19,500 psi thermal stress",
+        "25,100 psi von Mises",
+        "25,100 < 46,800 allowable",
+        "8-foot cover adequate",
+        "Soil friction damping"
+      ],
+      "critical_elements": [
+        "Thermal expansion calculation",
+        "Von Mises combined stress",
+        "Allowable check",
+        "Full burial importance"
+      ],
+      "expected_standards": [
+        "ASME B31.8",
+        "AASHTO"
+      ],
+      "total_possible_points": 100
+    },
+    {
+      "test_id": "ENG-007",
+      "name": "Leak Detection System Design",
+      "category": "engineering",
+      "subcategory": "leak_detection",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "time_limit_minutes": 25,
+      "situation": "150-mile pipeline: 36-inch, 1,400 psig MAOP, Class 4 in populated area. Design flow: 800 MMSCFD. Elevation profile: +500 to -200 feet MSL. Current leak detection: Manual patrol monthly (inadequate). Need new LDS per API RP 1130. Available technology: Computational mass balance, RTTM (real-time transient model), Acoustic fiber optic, Extended waveform analysis.",
+      "task": "Design LDS system per API RP 1130. Select appropriate technologies, specify sensor locations, determine sensitivity, establish alarm thresholds, define response procedures.",
+      "expected_response_detailed": "## LDS Design per API RP 1130\n\n### Technology Selection\n\n**Primary: Computational Mass Balance + RTTM**\n\nWhy: Class 4 area, high consequences\n- Proven technology for gas pipelines\n- Handles transient flows\n- Good accuracy (±2-5%)\n\n**Secondary: Acoustic + Extended Waveform**\n- Backup for small leaks\n- Rapid response capability\n- API detection in Class 4\n\n### API RP 1130 Requirements\n\n**Section 4.2: Performance Goals**\n\n| Parameter | Class 4 Target |\n|-----------|---------------|\n| Detection time | <5 minutes |\n| Sensitivity | 1-5% of flow |\n| Location accuracy | ±1% of length |\n\n**Flow: 800 MMSCFD → 1% = 8 MMSCFD**\n\n### System Architecture\n\n**Pressure/Temperature points:**\n- Every 10 miles: 15 stations\n- Compressor stations: 3\n- Valve locations: 8\n- Total: 26 measurement points\n\n**RTTM computational nodes:**\n- SCADA integration\n- Update rate: 1 second\n- Model segments: 1-mile resolution\n\n### Mass Balance Configuration\n\n**Inlet - Outlet comparison:**\n\nLeak alarm if:|ΔM_in - ΔM_out| > Threshold|\n\n**Threshold setting:**\n\nThreshold = (1% × 800 MMSCFD) + Noise Factor\nThreshold = 8 MMSCFD + 2 MMSCFD = 10 MMSCFD\n\n### Acoustic Detection\n\n**Fiber optic on pipeline:**\n- Continuous along entire 150 miles\n- Distributed acoustic sensing (DAS)\n- Detects third-party interference, leaks\n\n**Performance:**\n- Leak >1% flow produces distinct acoustic signature\n- Location: ±50 meters\n\n### Alarm Processing\n\n**Three-tier system:**\n\n| Level | Condition | Response |\n|-------|-----------|----------|\n| Advisory | 5% threshold | Monitor |\n| Alarm | 10% threshold | Investigate |\n| Emergency | 20% threshold | ESD |\n\n### False Alarm Management\n\n**Causes of imbalance (not leaks):\n- Transient startup/shutdown\n- Instrument drift\n- Temperature changes\n- Pigging operations\n\n**Mitigation:**\n- Transient filtering (10-minute window)\n- Instrument validation\n- Multi-parameter correlation\n- Operator confirmation before ESD\n\n### Response Procedures\n\n**Alarm workflow:**\n1. SCADA alerts control room (visual/audible)\n2. Operator verifies instrument health\n3. Check for pigging/compressor changes\n4. If confirmed: Dispatch field crew\n5. ESD available if worsens\n\n**References**: API RP 1130, API 1165",
+      "expected_elements": [
+        "Mass balance + RTTM",
+        "Acoustic fiber backup",
+        "10 MMSCFD threshold (1%)",
+        "26 measurement points",
+        "3-tier alarm system",
+        "1-second update",
+        "±1% location target"
+      ],
+      "critical_elements": [
+        "Technology selection",
+        "Threshold calculation",
+        "Alarm classification",
+        "False alarm mitigation",
+        "API RP 1130 compliance"
+      ],
+      "expected_standards": [
+        "API RP 1130",
+        "API 1165"
+      ],
+      "total_possible_points": 100
+    }
+  ]
+}

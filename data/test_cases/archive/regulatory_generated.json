@@ -1,0 +1,72 @@
+{
+  "name": "regulatory_generated",
+  "test_cases": [
+    {
+      "test_id": "REG-020",
+      "name": "Class Location Change Assessment",
+      "category": "regulatory",
+      "subcategory": "class_location",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "time_limit_minutes": 22,
+      "situation": "15-mile pipeline segment originally Class 2 (rural, 25 buildings). New development: 150-unit subdivision under construction across 3-mile section. Current: 20 units complete, 30 under construction, foundations for remaining 100. Pipeline section: 20-inch, X52, 0.500-inch wall, 1,200 psig MAOP. Last test: 2018 at 1,500 psig. Original build date: 1998. Required: Re-evaluate class and adjust design factor per 192.611.",
+      "task": "Determine new class per 192.5, calculate building density, assess required pressure reduction, specify MAOP reduction if needed, document notification requirements.",
+      "expected_response_detailed": "## Class Location Change Assessment\n\n### Building Density Calculation\n\n**New development:**\n- 150 units (all)\n- Completed: 20\n- Under construction: 30\n- Planned: 100\n\nCurrent status: **50 occupied/occupyable**\n\nBut 192.5 class determination:\n- Count buildings \"intended for human occupancy\"\n- Includes under construction\n- Planned buildings not yet started: NOT counted yet\n\n**Counted: 50 buildings in 3-mile stretch**\n\n**Density:**\n50 dwellings / 3 miles = **16.7 per mile**\n\n### Class Determination per 192.5\n\n**192.5(c): Class Location Units**\n\n| Class | Buildings per 1/10 mile/mile |\n|-------|----------------------------|\n| 1 <10 | |\n| 2 10-45 | |\n| 3 46+ | |\n| 4 | Multistory |\n\n**16.7 per mile → Class 2**\n\n**BUT: Trend is upward**\n\n**Conservative: Assess Class 3 potential**\n\nPer 192.5(b)(2):\nPlanned buildings may require consideration\n\n**With 150 total: After completion = 50 per mile → DEFINITELY Class 3**\n\n**Decision: TREAT AS CLASS 3 NOW**\n\n### Design Factor Change\n\n**Original: Class 2, F = 0.60**\n**New: Class 3, F = 0.50**\n\n**MAOP Reduction Required?**\n\n**Current operating pressure:** 1,200 psig\n\n**Recalculate allowable:**\n\nBarlow: t = (P×D)/(2×S×F)\n0.500 = (P×20)/(2×52,000×0.50)\n0.500 = 20P/52,000\nP = 1,300 psig\n\n**Current 1,200 psig < 1,300 psig ALLOWED**\n\n**NO PRESSURE REDUCTION REQUIRED**\n\n(But F change noted)\n\n### 192.611 Requirements\n\n**Pressure reduction notification:**\n\n192.611: If MAOP reduced, notify:\n1. PHMSA within 5 days\n2. Adjacent operators\n3. Affected customers\n\n**No reduction = No notification**\n\n### Documentation Required\n\n**Operator records must include:**\n- Class change date\n- Building count\n- Methodology (192.5)\n- Design factor change\n- Pressure verification\n\n### Timeline\n\n**Immediate:**\n- Update class records\n- Mark segment Class 3\n- Modify emergency response distance (220 yards vs 300)\n\n**Next annual report:**\n- Report class changes\n- Integrity management update\n\n**Before completion:**\n- Re-verify pressure adequacy\n\n### References: 49 CFR 192.5, 192.611",
+      "expected_elements": [
+        "16.7 per mile - Class 2",
+        "150 units planned - Class 3 future",
+        "1,200 psig < 1,300 allowed",
+        "No pressure reduction",
+        "F = 0.50 new",
+        "192.5 class determination",
+        "Update class records"
+      ],
+      "critical_elements": [
+        "Class 2 vs 3 determination",
+        "16.7 per mile calculation",
+        "No pressure reduction required",
+        "192.611 notification not needed",
+        "Design factor change documented"
+      ],
+      "expected_standards": [
+        "49 CFR 192.5",
+        "49 CFR 192.611"
+      ],
+      "total_possible_points": 100
+    },
+    {
+      "test_id": "REG-021",
+      "name": "HCA Analysis and Repair Priority",
+      "category": "regulatory",
+      "subcategory": "hca_analysis",
+      "risk_level": 9,
+      "difficulty": "advanced",
+      "time_limit_minutes": 25,
+      "situation": "Pipeline: 30-inch, 1,000 psig MAOP. Class 3 in commercial district. HCA identified 2 years ago. Current ILI shows: Feature A: 45% wall loss, 6-inch, piggable, 0.5 mile from school. Feature B: 55% wall loss, 2-inch, 200 feet from hospital. Feature C: 35% wall loss, 12-inch, under river crossing. Feature D: 25% wall loss, 8-inch, residential area. All external corrosion. Previous reassessment 3 years ago. Repair history none for these locations.",
+      "task": "Prioritize repairs per API 1160 and 192.933. Identify HCA consequences, determine timelines, specify repair methods, establish reassessment intervals.",
+      "expected_response_detailed": "## HCA Repair Prioritization per 192.933\n\n### HCA Severity Classification\n\n**192.933: HCA repair prioritization**\n\n| Factor | Score |\n|--------|-------|\n| Proximity | High |\n| Population | Moderate |\n| Leak rate | Low |\n| Ignition | Moderate |\n\n### Anomaly Prioritization\n\n**Feature A: 45%, 6-inch, near school**\n\n- Depth: 45% > immediate threshold\n- But: School distance? 0.5 mile = NOT HCA affected\n- RSF calculation (assuming L=6in): RSF ≈ 0.82\n- **Priority: HIGH but not immediate**\n- Timeline: 60 days (scheduled repair)\n\n**Feature B: 55%, 2-inch, near hospital**\n\n- Depth: 55% > 50% = IMMEDIATE per 192.933\n- Distance: 200 feet = definitely HCA\n- Hospital > school in consequence\n- **Priority: IMMEDIATE**\n- Timeline: 24 hours\n\n**Feature C: 35%, 12-inch, river crossing**\n\n- Depth: 35% < 50%\n- Length: 12 inches = long defect\n- Environment: River = water contamination\n- RSF likely <0.85\n- **Priority: HIGH**\n- Timeline: 30 days\n\n**Feature D: 25%, 8-inch, residential**\n\n- Depth: 25% (approaching but below threshold)\n- HCA: Residential \n- Moderate priority\n- **Priority: SCHEDULED**\n- Timeline: 180 days\n\n### Final Priority Order\n\n| Rank | Feature | Priority | Timeline | Method |\n|------|---------|----------|----------|--------|\n| 1 | B | Immediate | 24 hrs | Type B sleeve |\n| 2 | C | High | 30 days | Type B sleeve |\n| 3 | A | High | 60 days | Type B |\n| 4 | D | Scheduled | 180 days | Composite |\n\n### 192.933 Requirements\n\n**Immediate repairs (>50% or leak):**\n- Pressure reduction required if not repaired\n- Continuous monitoring\n- May require shutdown\n\n**Notification:**\n- Within 5 days of discovery to PHMSA\n- Feature B requires immediate notification\n\n### Repair Methods\n\n**HCA considerations:**\n- Minimize excavation (non-obtrusive)\n- Off-hours if possible\n- Coordinate with emergency services\n- Pre-plan evacuation\n\n### Reassessment\n\nCurrent: 3 years overdue\n\n**HCA requirements:**\n- Max 7 years reassessment interval\n- Should be immediate priority\n\n**Schedule:**\n- Complete repairs\n- ILI within 12 months\n- Address remaining anomalies\n\n### References: 49 CFR 192.933, API 1160",
+      "expected_elements": [
+        "Feature B immediate (55%)",
+        "Feature C 30 days (river)",
+        "Feature A 60 days (school)",
+        "Feature D 180 days",
+        "HCA prioritization",
+        "192.933 repair schedule",
+        "Type B sleeves",
+        "24 hours for >50%"
+      ],
+      "critical_elements": [
+        "55% immediate threshold",
+        "HCA prioritization method",
+        "Hospital > school",
+        "24-hour timeline",
+        "192.933 compliance"
+      ],
+      "expected_standards": [
+        "49 CFR 192.933",
+        "API 1160"
+      ],
+      "total_possible_points": 100
+    }
+  ]
+}

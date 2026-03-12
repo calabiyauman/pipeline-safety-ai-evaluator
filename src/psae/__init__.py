@@ -8,7 +8,7 @@ from core.statistical import StatisticalAnalyzer
 from scenarios.base import TestScenario, TestSuite
 from models.ai_interface import AIModelInterface
 
-__version__ = "1.0.0"
+__version__ = "0.1.0"
 __author__ = "Pipeline AI Solutions LLC"
 __license__ = "MIT"
 

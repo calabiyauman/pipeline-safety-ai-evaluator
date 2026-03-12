@@ -116,6 +116,12 @@ Initial implementation pass focused on runtime unblockers and baseline execution
   - CLI support: `psae evaluate --suite benchmark-sources`
   - auto-loads recursively from `benchmark_sources/` and picks up newly added JSON/markdown questions
   - tests: `tests/unit/test_benchmark_sources_loader.py`
+- Added Next.js informational web frontend:
+  - `web/` – Next.js 14 app with Tailwind
+  - Overview, Dataset, Documentation, Results, White Paper pages
+  - API routes to serve data from `results/`, `data/`, `Documentation/`
+  - Tables, bar visualizations, and inline documentation
+  - Documentation: `Documentation/web-frontend.md`
 
 ## Next
 - Add richer report sections (category significance interpretation and trend-ready layout).

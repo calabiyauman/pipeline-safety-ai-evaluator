@@ -1,0 +1,92 @@
+[
+    {
+        "test_id": "INSP-023",
+        "name": "Liquid Penetrant Testing Procedure",
+        "category": "inspection",
+        "subcategory": "ndt_methods",
+        "risk_level": 6,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "PT per ASTM E165: clean surface with solvent, apply penetrant 10-30 minutes dwell, remove excess (water washable or solvent), apply developer (dry or wet), wait 10 minutes, inspect under UV light (365 nm). Indications: linear = cracks, rounded = porosity. False positives: grinding marks. Temperature 50-125°F. Post-cleaning required. Limitations: surface breaking only, not for subsurface, rough surfaces problematic."
+    },
+    {
+        "test_id": "INSP-024",
+        "name": "Hardness Testing Conversion",
+        "category": "inspection",
+        "subcategory": "material_testing",
+        "risk_level": 5,
+        "difficulty": "basic",
+        "expected_response_detailed": "API 5L X52: typically 150-190 HB (Brinell) or HRC 15-22. Rockwell B for softer materials. Conversion charts per ASTM E140. Field testing: Leeb rebound (HLD) converted to HRC/HB. Hardness limits: weld HAZ <250 HB typically. CVN correlation: higher hardness generally lower toughness. Automated conversion calculators available per API RP 5L3. Reproducibility ±5% for field methods."
+    },
+    {
+        "test_id": "INSP-025",
+        "name": "Magnetic Particle Yoke Calibration",
+        "category": "inspection",
+        "subcategory": "ndt_methods",
+        "risk_level": 6,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "ASME BPVC V: yoke verification with Pie gauge (ASTM E709) or quantifiable shims. Lift test: 10 lbs for AC, 40 lbs for DC yokes. Amperage: 1,000-1,500 amp-turns per inch of spacing. Technique: prod perpendicular to weld, overlap 15%, inspect in 45° increments. Demagnetization required if residual field >3 gauss. Wavelength: UV-A 365 nm for fluorescent. Wet vs dry method selection based on surface condition."
+    },
+    {
+        "test_id": "INSP-026",
+        "name": "Holiday Detection Threshold",
+        "category": "inspection",
+        "subcategory": "coating_inspection",
+        "risk_level": 6,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "NACE SP0274: detector calibrated on known holidays. FBE coating 16-40 mils: 67.5 volts (range 9-90 V per mil). Test voltage = coating thickness × 100 V typically. Sponge method for thin film. Brush spring pressure consistent. Inspection speed 12 inches/second max. Mark all holidays, repair per coating manufacturer, re-test 100%. Ground connection to bare metal. Weather: RH <85%, surface temp <120°F."
+    },
+    {
+        "test_id": "INSP-027",
+        "name": "Smart Pig Calibration Standards",
+        "category": "inspection",
+        "subcategory": "ili_execution",
+        "risk_level": 8,
+        "difficulty": "advanced",
+        "expected_response_detailed": "API 1163 calibration: reference standards with known defects, pull-through verification run, speed calibration 1-10 ft/sec range, wall thickness verification at 5+ locations, odometer accuracy ±0.1%, clock synchronization, data format compliance PODS or similar, metal loss discrimination ±10%, axial location accuracy ±1%, circumferential ±5%. Field verification dig required if anomalies confirmed."
+    },
+    {
+        "test_id": "INSP-028",
+        "name": "Rebound Hammer Concrete Testing",
+        "category": "inspection",
+        "subcategory": "civil_inspection",
+        "risk_level": 4,
+        "difficulty": "basic",
+        "expected_response_detailed": "ASTM C805: Schmidt hammer type N for 1-6 inch thickness. Calibration on anvil before/after. Grid pattern 12 readings average, discard outliers >15%. Correction factors: carbonation, surface condition, age, moisture. Angle correction if not perpendicular. Core correlation recommended for critical structures. Typical pipeline supports 3,000-5,000 psi compressive strength. Rebound values correlate to strength curves."
+    },
+    {
+        "test_id": "INSP-029",
+        "name": "Eddy Current Crack Detection",
+        "category": "inspection",
+        "subcategory": "ndt_methods",
+        "risk_level": 7,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "ET for heat exchanger tubes: absolute vs differential probe. Frequency selection based on material and wall (typically 1-100 kHz). Calibration with drilled holes and notches. Lift-off compensation for surface irregularities. Phase analysis for defect characterization. IACS conductivity scaling. Fill factor >80% for bobbin coils. Limitations: ferromagnetic materials problematic, limited penetration depth, requires calibration standards."
+    },
+    {
+        "test_id": "INSP-030",
+        "name": "Radiation Safety Officer Duties",
+        "category": "inspection",
+        "subcategory": "safety_compliance",
+        "risk_level": 9,
+        "difficulty": "advanced",
+        "expected_response_detailed": "NRC 10 CFR 34: RSO authorized user, specific training in radiation protection. Dose limits: 5 rem/year for whole body (general public 0.1 rem/year). ALARA principle: as low as reasonably achievable. Dosimetry: film badges for occupationally exposed, requiring TLDs (thermoluminescent) for extremities. Posting requirements: CAUTION for >2 mR/hr, HIGH RADIATION for >100 mR/hr. Security: 24-hour surveillance for Category sources. Lost source: notification within 30 days to NRC."
+    },
+    {
+        "test_id": "INSP-031",
+        "name": "TOFD Setup and Calibration",
+        "category": "inspection",
+        "subcategory": "advanced_ut",
+        "risk_level": 8,
+        "difficulty": "expert",
+        "expected_response_detailed": "Time-of-Flight Diffraction: two probes ( transmitter/receiver), parallel scan welded seam, lateral wave establishes time-zero, back wall reflection depth calibration. PCS (probe center spacing) calculation based on refracted angles. Frequency 2-10 MHz typical. A-scan, B-scan, D-scan displays. Defect sizing: depth from time-of-flight, length from scan distance. Critical for: lack of fusion detection, height sizing for fitness-for-service. Standards: ASTM E2373, BS 7706."
+    },
+    {
+        "test_id": "INSP-032",
+        "name": "Weld Heat Input Calculation",
+        "category": "inspection",
+        "subcategory": "welding_inspection",
+        "risk_level": 6,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "Heat input (kJ/in) = (Voltage × Amperage × 60) / (Travel speed × 1,000). API 1104: maximum heat input 50 kJ/in for X52, 45 kJ/in for X65, 40 kJ/in for X70+. Excessive heat input: coarse grain, reduced toughness, distortion. Under-matching heat input: lack of fusion, incomplete penetration. WPS limits must be followed. Travel speed measured over 6-inch distance. Record: voltage, amperage, speed for each weld."
+    }
+]

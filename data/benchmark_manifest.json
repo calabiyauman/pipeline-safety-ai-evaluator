@@ -3,11 +3,11 @@
   "dataset_version": "2026-03-06",
   "hash_algorithm": "sha256",
   "files": {
-    "data/test_cases/safety_critical.json": "d28f3940d1a53b018cb49f583cb05c1b952ed77e541f773ca5d0d20877568bae",
-    "data/test_cases/engineering.json": "74a66048b74499e2dcf21e49826ac1c5ed907afa6abd9c06bd1e166eb5deb178",
-    "data/test_cases/inspection.json": "b7e95141a1f26a4fb8ea3b3997d74423daf34dcfcfae2ef7279a5431437aa0d4",
-    "data/test_cases/regulatory.json": "b3219e7976e8786b2f46f75f0dbfb3c149cb29b1c8ed6db89f422e54dee12181",
-    "data/human_baseline/responses.json": "35b2afe89b361733672afb25e00d94f33eeb2051dd096693030d8f850fac8407"
+    "data/test_cases/safety_critical.json": "3a94dd78dfc01ad87fd9915b2acbafb15c084dc9b8f3838a749cc18d526576d7",
+    "data/test_cases/engineering.json": "39ce6e20c7da680f59e1af74600716697cd6c4851bfd93a8c7bf978803056e1e",
+    "data/test_cases/inspection.json": "83dfaaa2c29116db09e88ea62724ce9e7d1b068a847b6dcaa3bdc8c85af3edb6",
+    "data/test_cases/regulatory.json": "5df0e4dbdf7c938dedbb72556651e960aa5af4d5fd569174af8d0dbbdcbc90cb",
+    "data/human_baseline/responses.json": "35f5721ba6081f4c50cd0b76edb79b3b26b20dc2ab588efb8bd2b70c3075fb1c"
   },
   "signature": {
     "algorithm": "hmac-sha256",

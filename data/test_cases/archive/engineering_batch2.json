@@ -1,0 +1,101 @@
+[
+    {
+        "test_id": "ENG-008",
+        "name": "Pipeline Anchor Design",
+        "category": "engineering",
+        "subcategory": "mechanical_design",
+        "risk_level": 7,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "River crossing anchors: thrust = pressure × area = 1,200 psig × 28.27 in² = 33,924 lbs. Safety factor 2.5: anchor capacity 84,810 lbs. Concrete anchor 5,000 lbs/yd³: volume needed 17 cubic yards. Include thermal movement accommodation, riverbed scour protection, cathodic isolation if dissimilar metals, 2-foot burial below scour depth per B31.8."
+    },
+    {
+        "test_id": "ENG-009",
+        "name": "Compressor Station Layout",
+        "category": "engineering",
+        "subcategory": "station_design",
+        "risk_level": 6,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "NFPA 37 spacing: 50 feet from property line, 10 feet between compressors (with 1-hour rated wall), 75 feet from high occupancy, noise 55 dBA at property line per OSHA 1910.95. Ventilation: 6 air changes/hour minimum, LEL detection at low points, fire-rated doors (1.5 hour), emergency shutdown within 100 feet of any point, eye wash/safety shower for chemical area, deluge system for compressors per NFPA 37."
+    },
+    {
+        "test_id": "ENG-010",
+        "name": "Flow Equation Selection",
+        "category": "engineering",
+        "subcategory": "hydraulics",
+        "risk_level": 5,
+        "difficulty": "basic",
+        "expected_response_detailed": "AGA NX-19 for high pressure transmission (typical for pipelines >500 psig and >12 inches). Weymouth for early planning/quick estimates. Panhandle A for longer lines with Reynolds >4,000. Modified Panhandle for higher accuracy with elevation changes. Isothermal flow assumption valid when temperature variation <20°F. B31.8 non-isothermal correction for significant elevation change."
+    },
+    {
+        "test_id": "ENG-011",
+        "name": "Valve Actuation Time",
+        "category": "engineering",
+        "subcategory": "valve_design",
+        "risk_level": 6,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "API 6D for pipeline valves: closure time target <30 seconds for 16-inch. Hydraulic actuator sizing: torque = 2,500 ft-lb for double-block valve. Operating pressure 1,500 psig, accumulator 2,500 psi, cylinder 6-inch bore. Valve CV requirement for blowdown: calculate orifice per API 521. Manual override required for power loss. Position indication to SCADA required for Class 3/4."
+    },
+    {
+        "test_id": "ENG-012",
+        "name": "Pig Launcher Design",
+        "category": "engineering",
+        "subcategory": "mechanical_design",
+        "risk_level": 6,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "Barrel diameter: 1.25 × pipe ID (30-inch becomes 37.5-inch). Length: 2× longest pig + 10 feet typically. Pressure rating: MAOP + test margin. Closure: quick-opening closure rated for cycles, safety interlock. Drain: 2-inch minimum to containment. Vent: 4-inch to safe elevation or flare. Bypass line for equalization. Supports: saddle supports with slide plates for thermal movement. ASME B31.3 for launcher piping."
+    },
+    {
+        "test_id": "ENG-013",
+        "name": "Scraper Design for Paraffin Removal",
+        "category": "engineering",
+        "subcategory": "pipeline_maintenance",
+        "risk_level": 5,
+        "difficulty": "basic",
+        "expected_response_detailed": "Progressive cavity pump requires: bypass around pump for pigging (3-port valve), scraper selection based on deposit thickness (mandrel pigs for light deposits, brush pigs for heavy), by-pass holes in discs for wax removal, speed 2-5 ft/sec optimum, tracking required for paraffin monitoring, batch vs continuous treatment evaluation, chemical inhibition if recurring, production impact during pigging, receiver capacity for debris."
+    },
+    {
+        "test_id": "ENG-014",
+        "name": "Vibration Analysis - Reciprocating Compressor",
+        "category": "engineering",
+        "subcategory": "mechanical_analysis",
+        "risk_level": 7,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "Pulsation study per API 618: pulsation bottle sizing for 1-2% peak-to-peak pressure variation. Acoustic filter: Helmholtz resonator if 2× frequency matches mechanical natural frequency. Mechanical vibration: 0.15 inches/second RMS maximum at bearings. Piping: 5× diameter minimum from bend to compressor. Orifice plates for pulsation damping. Study covers 0-2× running speed. Reciprocating: torque fluctuation analysis. Foundation: dynamic stiffness for vibration isolation."
+    },
+    {
+        "test_id": "ENG-015",
+        "name": "Fugitive Emissions Calculation",
+        "category": "engineering",
+        "subcategory": "environmental",
+        "risk_level": 5,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "EPA Method 21: screening values per leak definition. LDAR program: 500 ppm threshold for first attempt, repair within 15 days, re-screen within 90. Component counts: valves, flanges, pump seals, compressor seals. Emission factors: valves 0.0056 kg/hr (gas), flanges 0.0006 kg/hr. Annual throughput 250 MMSCFD = 365 days × leak factor. Greenhouse gas: methane 25× CO2. Reporting required >25,000 metric tons CO2e annually for GHGRP."
+    },
+    {
+        "test_id": "ENG-016",
+        "name": "Pipeline Crossings - Railroad",
+        "category": "engineering",
+        "subcategory": "crossing_design",
+        "risk_level": 8,
+        "difficulty": "advanced",
+        "expected_response_detailed": "DOT crossing regulations: 6-foot minimum cover under track (reinforced concrete if less). Railroad approval required: design submission 180 days in advance. Cathodic protection isolation at crossing. Casings: carrier pipe inside casing with casing insulators (electrical isolation vent to atmosphere). Bored crossings: HDD minimum 10-foot depth below subgrade. Monitoring: settlement gauges during construction. Insurance: railroad protective liability required."
+    },
+    {
+        "test_id": "ENG-017",
+        "name": "Meter Station Uncertainty",
+        "category": "engineering",
+        "subcategory": "measurement",
+        "risk_level": 6,
+        "difficulty": "intermediate",
+        "expected_response_detailed": "Orifice meter uncertainty: 0.5% of reading (AGA Report 3). Ultrasonic: 0.2% if calibrated, 0.5% if not. Coriolis: 0.1% for mass flow. Temperature correction: ±2°F = ±0.4% uncertainty. Pressure: ±2 psi at 1,000 psi = ±0.2%. Combined uncertainty: square root of sum of squares. Check: 5-year recalibration per API 21.1. Station balance: ±0.2% shipper/receiver agreement."
+    },
+    {
+        "test_id": "ENG-018",
+        "name": "Fiber Optic Cable Installation",
+        "category": "engineering",
+        "subcategory": "communications",
+        "risk_level": 4,
+        "difficulty": "basic",
+        "expected_response_detailed": "Cable in conduit: HDPE pipe 1.25-inch inside 2-inch conduit minimum, 40-foot spacing of intermediate access points, pulling tension 600 lbs maximum, bend radius 10× cable diameter, splice closures every 2 miles, SCADA integration for leak detection and third-party interference detection, power at each station for amplifiers, redundancy for critical sections (diverse routing if available), OTDR testing after installation for attenuation verification."
+    }
+]

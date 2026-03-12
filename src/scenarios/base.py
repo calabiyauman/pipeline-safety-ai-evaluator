@@ -89,6 +89,7 @@ class TestScenario:
     expected_elements: List[str] = field(default_factory=list)
     expected_standards: List[str] = field(default_factory=list)
     critical_elements: List[str] = field(default_factory=list)
+    expected_response_detailed: str = ""
     abnormal_variants: List[AbnormalVariant] = field(default_factory=list)
     validation_notes: str = ""
     
@@ -104,13 +105,19 @@ class TestScenario:
             "expected_elements": self.expected_elements,
             "expected_standards": self.expected_standards,
             "critical_elements": self.critical_elements,
+            "expected_response_detailed": self.expected_response_detailed,
             "abnormal_variants": [v.to_dict() for v in self.abnormal_variants],
             "validation_notes": self.validation_notes
         }
     
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'TestScenario':
-        """Create from dictionary."""
+        """Create from dictionary.
+
+        Supports both flat format (situation, task at top level) and STAR-R format
+        (situation, task inside star_r). Category is normalized to safety, engineering,
+        inspection, or regulatory.
+        """
         abnormal_variants = []
         for item in data.get("abnormal_variants", []):
             if not isinstance(item, dict):
@@ -126,19 +133,33 @@ class TestScenario:
                     severity=int(item.get("severity", 5)),
                 )
             )
-        
+
+        star_r = data.get("star_r") or {}
+        situation = str(
+            data.get("situation") or star_r.get("situation") or ""
+        ).strip()
+        task = str(data.get("task") or star_r.get("task") or "").strip()
+        if not situation or not task:
+            raise ValueError("Scenario must have situation and task")
+
+        name = str(data.get("name") or data.get("title") or data.get("test_id", "")).strip()
+        category = str(data.get("category", "engineering")).strip().lower()
+        if category not in {"safety", "engineering", "inspection", "regulatory"}:
+            category = "engineering"
+
         return cls(
             test_id=data["test_id"],
-            name=data["name"],
-            category=data["category"],
-            risk_level=data["risk_level"],
-            situation=data["situation"],
-            task=data["task"],
+            name=name or data["test_id"],
+            category=category,
+            risk_level=int(data.get("risk_level", 5)),
+            situation=situation,
+            task=task,
             expected_elements=data.get("expected_elements", []),
             expected_standards=data.get("expected_standards", []),
             critical_elements=data.get("critical_elements", []),
+            expected_response_detailed=str(data.get("expected_response_detailed", "") or "").strip(),
             abnormal_variants=abnormal_variants,
-            validation_notes=data.get("validation_notes", "")
+            validation_notes=data.get("validation_notes", ""),
         )
     
     def add_abnormal_variant(self, variant: AbnormalVariant):
@@ -200,21 +221,42 @@ class TestSuite:
     
     @classmethod
     def load_from_json(cls, filepath: str) -> 'TestSuite':
-        """Load suite from JSON file."""
+        """Load suite from JSON file.
+
+        Accepts:
+        - Raw array: [{"test_id": "...", "situation": "...", "task": "...", ...}, ...]
+        - Object with scenarios or test_cases: {"scenarios": [...]} or {"test_cases": [...]}
+        """
         with open(filepath, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
-        raw_scenarios = data.get("scenarios")
-        if raw_scenarios is None:
-            raw_scenarios = data.get("test_cases", [])
+        if isinstance(data, list):
+            raw_scenarios = data
+            suite_name = Path(filepath).stem.replace("_", " ").title()
+        else:
+            raw_scenarios = data.get("scenarios") or data.get("test_cases", [])
+            suite_name = (
+                data.get("name")
+                or (data.get("metadata") or {}).get("file_name")
+                or Path(filepath).stem.replace("_", " ").title()
+            )
 
         if not isinstance(raw_scenarios, list):
-            raise ValueError("Suite JSON must contain 'scenarios' or 'test_cases' as a list.")
+            raise ValueError("Suite JSON must be an array or contain 'scenarios' or 'test_cases' as a list.")
 
-        scenarios = [TestScenario.from_dict(s) for s in raw_scenarios]
-        suite_name = data.get("name") or data.get("metadata", {}).get("file_name", "Imported Suite")
+        scenarios = []
+        for s in raw_scenarios:
+            if not isinstance(s, dict):
+                continue
+            try:
+                scenario = TestScenario.from_dict(s)
+                scenarios.append(scenario)
+            except (KeyError, TypeError, ValueError) as exc:
+                logger.warning(f"Skipping invalid scenario in {filepath}: {exc}")
+                continue
+
         suite = cls(suite_name, scenarios)
-        
+
         logger.info(f"Loaded {len(scenarios)} scenarios from {filepath}")
         return suite
     

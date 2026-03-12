@@ -1,0 +1,106 @@
+{
+  "name": "engineering_100_final",
+  "test_cases": [
+    {
+      "test_id": "ENG-008",
+      "category": "cp_design",
+      "difficulty": "advanced",
+      "question": "Design a cathodic protection system for a 50-mile, 30\" buried pipeline using impressed current. Soil resistivity averages 5,000 ohm-cm. Coating efficiency is 95%. Pipeline operates at 1,200 psig with API 5L X65 material. Design for 30-year life with rectifier output of 50V maximum. Calculate: (1) Total current requirement, (2) Number and spacing of groundbeds, (3) Rectifier sizing using high-silicon cast iron anodes (consumption rate 1.0 lb/A-year), (4) Voltage drop along groundbed, (5) NACE SP0169 criteria verification.",
+      "expected_response_detailed": "**Cathodic Protection Design per NACE SP0169**\n\n**Step 1: Pipeline Surface Area**\n\nOD = 30 inches = 2.5 ft\nLength = 50 miles = 264,000 ft\n\nSurface area:\nA = π × OD × L = π × 2.5 × 264,000 = 2,074,000 ft²\n\n**Step 2: Current Requirement**\n\nPer NACE SP0169, current density:\ni = 0.5 mA/ft² (typical for good coating)\n\nGiven coating efficiency 95%, bare area = 5%:\n\nBare area = 0.05 × 2,074,000 = 103,700 ft²\n\nTotal current:\nI_total = i × A_bare = 0.5 mA/ft² × 103,700 ft²\n= 51,850 mA = 51.85 A\n\nAdd 20% margin:\nI_design = 1.2 × 51.85 = 62.2 A\n\n**Step 3: Anode and Groundbed Design**\n\nHigh-silicon cast iron anodes:\n- Consumption rate: 1.0 lb/A-year\n- Weight: 60 lb/anode\n- Max current density: 5 A/ft²\n\nFor 30-year life:\nTotal anode weight = 62.2 A × 1.0 lb/A-yr × 30 yr\n= 1,866 lb\n\nNumber of anodes:\nN = 1,866 / 60 = 31 anodes\n\nUse 32 anodes for symmetry\n\nCurrent per anode = 62.2/32 = 1.94 A\n\n**Step 4: Groundbed Configuration**\n\nSingle groundbed max current ≈ 15-20 A\nFor 62.2 A, need multiple groundbeds\n\nOption: 4 groundbeds @ 15.6 A each\nAnodes per groundbed = 32/4 = 8 anodes\n\nGroundbed spacing:\nMaximum spacing = 50 miles / 4 = 12.5 miles\nUse: 12 miles between groundbeds (4 @ mile 6, 18, 30, 42)\n\n**Step 5: Voltage Drop Calculation**\n\nAnode resistance (Dwight's formula for horizontal):\nR = ρ/(2πL) × [ln(2L/d) + ln(L/d)]\n\nWhere:\n- ρ = 5,000 ohm-cm = 50 ohm-m\n- L = groundbed length = 160 ft (8 anodes @ 20 ft spacing)\n- d = anode dia = 8 inch = 0.667 ft\n\nR = 50/(2π×48.8) × ln(2×160/0.667)\n= 0.163 × ln(480)\n= 0.163 × 6.17\n= 1.01 ohm\n\nStructure-to-soil resistance:\nR_structure = 0.5 ohm (typical for well-coated pipe)\n\nTotal circuit resistance:\nR_total = R_anode + R_structure + R_cable\n= 1.01 + 0.5 + 0.2 = 1.71 ohm\n\nFor 15.6 A per groundbed:\nV_anode = I × R = 15.6 × 1.71 = 26.7 V\n\n**Step 6: Rectifier Sizing**\n\nDC voltage required:\nV_dc = 26.7 V + back voltage = 26.7 + 2 = 28.7 V\n\nUsing standard 48V rectifier:\nI = 62.2/4 = 15.6 A per unit\nV = 28.7 V\n\nSpecify:\n- 4 rectifiers\n- Each rated 30A @ 48V (safety margin)\n- Total capacity: 120 A @ 48V\n\n**Step 7: Reference Electrode Spacing**\n\nPer NACE SP0169, test stations every 1 mile:\nN_stations = 50 stations\n\nClose-interval survey every 5 years:\nSpacing = 100 ft per reading\nTotal readings = 264,000/100 = 2,640 readings\n\n**Step 8: NACE SP0169 Criteria Verification**\n\nPipeline-to-soil potential (CSE):\n-850 mV (general criteria)\n-900 mV (with IR drop consideration)\n\nPolarization criteria:\n-100 mV polarization between native and protected potential\n\nInstant-off potential:\nΔE = I × R_structure = 62.2 × 0.5 = 31.1 mV IR drop\n\nRequired on-potential:\n-850 + 31 = -819 mV (but typically measure -950 mV on)\n\n**Step 9: Annual Power Consumption**\n\nPower per rectifier:\nP = V × I = 48 × 15.6 = 748.8 W\nTotal power = 4 × 748.8 = 2,995 W ≈ 3.0 kW\n\nAnnual consumption:\nE = 3.0 kW × 8,760 hr = 26,280 kWh/year\n\n**Final Design Summary:**\n- Current required: 62.2 A DC\n- 4 groundbeds @ 8 anodes each\n- Groundbed spacing: 12 miles\n- 4 rectifiers @ 30A, 48V\n- Expected pipe-to-soil: -950 mV (CSE)\n- Annual power: 26,280 kWh\n- Test stations: 50 @ 1-mile intervals",
+      "code_citations": [
+        "NACE SP0169",
+        "NACE SP0177",
+        "API RP 651"
+      ],
+      "scoring_rubric": {
+        "total_points": 100,
+        "criteria": {
+          "current_calculation": 25,
+          "anode_design": 20,
+          "groundbed_spacing": 15,
+          "rectifier_sizing": 20,
+          "nace_verification": 20
+        }
+      },
+      "abnormal_variants": [
+        {
+          "variant_id": "A",
+          "condition": "Soil resistivity increases to 15,000 ohm-cm in section",
+          "impact": "Anode resistance triples; may require 6 groundbeds to maintain current distribution"
+        },
+        {
+          "variant_id": "B",
+          "condition": "Coating degradation to 80% after 15 years",
+          "impact": "Current demand increases to 155 A; rectifiers undersized; requires retrofit"
+        }
+      ]
+    },
+    {
+      "test_id": "ENG-009",
+      "category": "leak_detection",
+      "difficulty": "advanced",
+      "question": "Analyze a Computational Pipeline Monitoring (CPM) leak detection system for a 100-mile crude oil pipeline with 12\" diameter. Batch transportation with density 850 kg/m³ at 70°F. Operating pressure 800 psig, flow rate 50,000 bbl/day. The system monitors flow at inlet/outlet meters every 5 seconds using volume balance method. Calculate: (1) Minimum detectable leak rate for 2-minute detection time, (2) Mass balance uncertainty at steady state, (3) Threshold alarm setting, (4) Line pack change compensation. API 1130 methodology required.",
+      "expected_response_detailed": "**CPM Leak Detection per API 1130**\n\n**Step 1: Pipeline Parameters**\n\nLength L = 100 miles = 528,000 ft\nD = 12 in = 1.0 ft\nArea A = π/4 × D² = 0.785 ft²\n\nFlow rate:\nQ = 50,000 bbl/day = 50,000 × 5.615 / 86,400 = 3.25 ft³/s\n\nVelocity:\nv = Q/A = 3.25/0.785 = 4.14 ft/s\n\n**Step 2: Volume Balance Method**\n\nInlet volume - Outlet volume = Accumulation + Unaccounted\n\nFor leak detection:\nV_leak = ΔV_pack + Q_in - Q_out\n\n**Step 3: Measurement Uncertainty**\n\nPer API 1130, typical turbine meter uncertainty:\n- Single meter: ±0.5%\n- Two-meter system: √(0.5² + 0.5²) = ±0.71%\n\nAt 50,000 bbl/day:\nDaily uncertainty = 0.0071 × 50,000 = 355 bbl/day\nPer second = 355 × 5.615 / 86,400 = 0.023 ft³/s\n\n**Step 4: Line Pack Changes**\n\nLine pack = Total volume in pipeline\nV_pack = A × L = 0.785 × 528,000 = 414,720 ft³\n= 73,860 bbl\n\nPack change with pressure:\ndV_pack = V_pack × C × dP\n\nWhere C = compressibility\n\nBulk modulus oil K ≈ 250,000 psi\nC = 1/K = 4×10⁻⁶ psi⁻¹\n\nFor pressure change of 10 psi:\nΔV_pack = 73,860 × 4×10⁻⁶ × 10 = 2.95 bbl\n\n**Step 5: Minimum Detectable Leak**\n\nFor 2-minute (120 sec) detection:\nAt 95% confidence (2σ):\n\nLeak threshold = 2 × (meter uncertainty + pack uncertainty)\n\nMeter drift in 2 min:\nU_meter = √2 × 0.005 × Q × t / 2\n= 1.414 × 0.005 × 3.25 × 120\n= 2.76 ft³ = 0.49 bbl\n\nPack uncertainty:\nU_pack = V_pack × C × U_pressure\n= 73,860 × 4×10⁻⁶ × 2\n= 0.59 bbl (for 2 psi pressure uncertainty)\n\nTotal uncertainty:\nU_total = √(2.76² + 0.59²) = 2.82 ft³\n= 0.50 bbl in 2 minutes\n\nMinimum detectable leak (MDL):\nMDL = 2 × U_total × t\n= 2 × 0.50 = 1.0 bbl in 2 min\n\nAs percentage of flow:\n1.0 bbl/2 min = 720 bbl/day = 1.44% of throughput\n\n**Step 6: Alarm Thresholds**\n\nPer API 1130 Table 1:",
+      "code_citations": [
+        "API 1130",
+        "API 1149"
+      ],
+      "scoring_rubric": {
+        "total_points": 100,
+        "criteria": {
+          "volume_balance": 25,
+          "uncertainty_calc": 25,
+          "line_pack": 20,
+          "mdl_calculation": 20,
+          "api_compliance": 10
+        }
+      },
+      "abnormal_variants": [
+        {
+          "variant_id": "A",
+          "condition": "Meter drift increases to 2% due to wear",
+          "impact": "MDL increases to 4%; requires meter calibration or replacement"
+        },
+        {
+          "variant_id": "B",
+          "condition": "Transient event causes 50 bbl line pack change",
+          "impact": "False alarm probability increases; requires extended averaging"
+        }
+      ]
+    },
+    {
+      "test_id": "ENG-010",
+      "category": "compressor_sizing",
+      "difficulty": "advanced",
+      "question": "Size a centrifugal compressor station for a natural gas pipeline delivering 800 MMSCFD from suction pressure 700 psia to discharge pressure 1,200 psia. Inlet temperature 80°F. Gas properties: MW=18, Cp/Cv=1.27, Z=0.91. Calculate: (1) Polytropic head required, (2) Required brake horsepower using isentropic efficiency 85%, (3) Number of stages needed (max head 12,000 ft per stage), (4) Discharge temperature, (5) Intercooling requirements if discharge exceeds 300°F per API 618.",
+      "expected_response_detailed": "**Centrifugal Compressor Sizing**\n\n**Step 1: Polytropic Exponent**\n\nk = Cp/Cv = 1.27\n\nPolytropic exponent n:\n(n-1)/n = (k-1)/k × 1/η_p\n\nFirst estimate polytropic efficiency:\nη_p ≈ 0.78 (typical for centrifugal)\n\n(n-1)/n = 0.27/1.27 × 1/0.78\n= 0.2126/0.78\n= 0.273\n\nn = 1.375\n\n**Step 2: Polytropic Head**\n\nH_p = (Z × R × T_s/MW) × n/(n-1) × [(P_d/P_s)^((n-1)/n) - 1]\n\nWhere:\n- R = 1545 ft-lb/lbmol-°R\n- T_s = 540°R (80°F)\n- P_d/P_s = 1,200/700 = 1.714\n- Gas constant: R/MW = 1545/18 = 85.83 ft-lb/lb-°R\n\nHead calculation:\nH_p = 0.91 × 85.83 × 540 × 1.375/0.375 × [1.714^0.273 - 1]\nH_p = 42,150 × 3.667 × [1.147 - 1]\nH_p = 154,570 × 0.147\nH_p = 22,720 ft-lb/lb\nH_p = 22,720 ft\n\n**Step 3: Number of Stages**\n\nMax head per stage = 12,000 ft\n\nStages required:\nN = 22,720/12,000 = 1.89\n\nUse: 2 stages\n\nHead per stage = 22,720/2 = 11,360 ft (within limit) ✓\n\n**Step 4: Gas Flow Rate**\n\nQ = 800 MMSCFD = 800×10⁶/86,400 = 9,259 SCF/s\n\nActual volumetric flow at suction:\nQ_actual = Q × (P_std/P_s) × (T_s/T_std) × Z\n= 9,259 × (14.7/700) × (540/520) × 0.91\n= 9,259 × 0.021 × 1.038 × 0.91\n= 183.5 ft³/s\n\n**Step 5: Brake Horsepower**\n\nUsing polytropic head:\nBHP = (W × H_p)/(33,000 × η_mech)\n\nMass flow:\nW = ρ × Q_actual\n\nDensity at suction:\nρ = P_s × MW/(Z × R × T_s)\n= 700 × 18/(0.91 × 10.73 × 540)\n= 12,600/5,273\n= 2.39 lb/ft³\n\nMass flow:\nW = 2.39 × 183.5 = 438.6 lb/s\n= 26,316 lb/min\n\nBHP = 26,316 × 22,720 / (33,000 × 0.97)\n= 598,000,000/32,010\n= 18,680 HP\n\n**Step 6: Isentropic Efficiency Check**\n\nGiven η_isen = 0.85:\n\nIsentropic head:\nH_isen = H_p × η_p/η_isen?\n\nBetter approach:\nCalculate isentropic discharge temp:\n\nT_d,s = T_s × (P_d/P_s)^((k-1)/k)\n= 540 × 1.714^0.2126\n= 540 × 1.133\n= 611.8°R\n= 152°F\n\nActual discharge temp from polytropic:\nT_d = T_s × (P_d/P_s)^((n-1)/n)\n= 540 × 1.714^0.273\n= 540 × 1.147\n= 619.4°R\n= 159.7°F\n\nConvert: T_d = 159.7°F\n\n**Step 7: Intercooling Check**\n\nPer API 618:\nMax allowable discharge = 300°F\n\nActual discharge: 159.7°F < 300°F ✓\n\nNo intercooling required for single stage.\n\n**Step 8: Stage Efficiency**\n\nOverall polytropic efficiency:\nη_p = [(P_d/P_s)^((n-1)/n) - 1] / [(P_d/P_s)^((k-1)/k) - 1] × η_isen\n\nCheck:\nHead ratio: 22,720 ft for 1.714 pressure ratio\n\nSpecific speed verification:\nN_s = N × √Q / H^0.75\n\nAssuming 3,600 RPM:\nN_s = 3,600 × √183.5/22,720^0.75\n= 3,600 × 13.55/1,020\n= 47.9\n\nThis is within typical centrifugal range (40-100) ✓\n\n**Final Specifications:**\n- Polytropic head: 22,720 ft\n- BHP required: 18,680 HP\n- Stages: 2\n- Discharge temperature: 160°F (no intercooling needed)\n- Suction volume: 183.5 ft³/s\n- Isentropic efficiency: 85%\n- Polytropic efficiency: 78%\n\nRecommend: Two 10,000 HP units in parallel (N+1 redundancy)",
+      "code_citations": [
+        "API 618",
+        "API 11P",
+        "ASME PTC 10"
+      ],
+      "scoring_rubric": {
+        "total_points": 100,
+        "criteria": {
+          "polytropic_head": 25,
+          "bhp_calculation": 25,
+          "stage_selection": 15,
+          "discharge_temp": 15,
+          "api_verification": 20
+        }
+      },
+      "abnormal_variants": [
+        {
+          "variant_id": "A",
+          "condition": "Suction pressure drops to 600 psia",
+          "impact": "Pressure ratio increases to 2.0; head increases 30% to 29,536 ft; requires 3 stages"
+        },
+        {
+          "variant_id": "B",
+          "condition": "Inlet temperature rises to 120°F",
+          "impact": "Discharge temperature reaches 200°F; still within limits"
+        }
+      ]
+    }
+  ]
+}
